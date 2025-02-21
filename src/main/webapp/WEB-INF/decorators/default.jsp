@@ -26,7 +26,7 @@
 	}
 	#section1 {
 		width: 100%;
-		height: 100px; /* Adjust the height as needed */
+		height: 40px; /* Adjust the height as needed */
 		position: relative;
 		max-width: 1900px;
 		margin: auto;
@@ -109,28 +109,39 @@
 		text-decoration: none;
 		color: #00467F;
 	}
+	#logo {
+		width: 100%;
+		height: 50px;
+		background: #005bac;
+	}
+	#logospace {
+		margin-left: 8%;
+		height: 50px;
+		background: #005bac;
+		dispalay: inline-block;
+		font-size: 25px;
+		font-weight: 900;
+	}
+	#logospace a {
+		text-decoration: none;
+		color: white;
+	}
 	#section2 {
 		width: 100%;
-		height: 100px; /* Adjust the height as needed */
+		height: 60px; /* Adjust the height as needed */
 		position: relative;
 		max-width: 1900px;
 		margin: auto;
-		background: #005bac;
-		color: white;
-	}
-	#section2 #logo {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		margin-left: 8%; /* Adjust if necessary */
 	}
 	#section2 nav #main {
-		padding-left: 0px;
-		margin-left: 0px; /* Adjusted to align properly */
+		line-height:70px;
+		margin: auto; /* Adjusted to align properly */
+		text-align: center;
 	}
 	#section2 nav #main > li {
 		display: inline-block;
 		list-style-type: none;
+		width: 180px;
 		height: 30px !important;
 		padding: 0 20px 0 0; 
 		line-height: 30px !important;
@@ -151,6 +162,10 @@
 		border-radius:5px;
 		z-index: 2000;
 	}
+	#section2 nav #main > li > a{
+		text-decoration: none;
+		color: black;
+	}
 	#section2 nav #main > li > .menu > li {
 		list-style-type: none;
 		width: 150px;
@@ -160,6 +175,13 @@
 		font-size: 14px;
 		font-weight: 600;
 		z-index: 2000;
+	}
+	#section2 nav #main > li > .menu > li > a{
+		text-decoration: none;
+		color: black;
+	}
+	hr {
+		color: blue;
 	}
 	/* #login {
 		position: absolute;
@@ -468,10 +490,15 @@
 				</div>
 			</div>
 		</div>
-		<div id="section2">
-			<div id="logo">
-				<a href="../main/index"> <img src="../static/resources/train.png" height="90px"> </a>
+		<div id="logo">
+			<div id="logospace">
+				<a href="../main/index">
+					<!-- <img src="../static/resources/train.png" height="50px"> -->
+					Let's GGoRail
+				</a>
 			</div>
+		</div>
+		<div id="section2">
 			<div id="nav">
 				<nav>
 					<ul id="main">
@@ -484,7 +511,7 @@
 							</ul>
 						</li>
 						<li id="main2" onmouseover="viewMenu(1)" onmouseout="hideMenu(1)">
-							<a href="../guide/checkinGuide" style="color: white;"><span class="iconb">🚄</span>관광열차</a>
+							<a href="../guide/checkinGuide"><span class="iconb">🚄</span>관광열차</a>
 							<ul class="menu">
 								<li><a href="../guide/checkinGuide">체크인 안내</a></li>
 								<li><a href="../guide/seatGuide">좌석배정 안내</a></li>
@@ -492,7 +519,7 @@
 							</ul>
 						</li>
 						<li id="main3" onmouseover="viewMenu(2)" onmouseout="hideMenu(2)">
-							<a href="../guide/travel" style="color: white;"> <span class="iconc">🚄</span>자유여행</a>
+							<a href="../guide/travel"><span class="iconc">🚄</span>자유여행</a>
 							<ul class="menu">
 								<li><a href="">국내 여행</a></li>
 								<li><a href="">해외 여행</a></li>
@@ -500,7 +527,7 @@
 							</ul>
 						</li>
 						<li id="main4" onmouseover="viewMenu(3)" onmouseout="hideMenu(3)">
-							<a href="../guide/travel" style="color: white;"> <span class="icond">🚄</span>여행상품</a>
+							<a href="../guide/travel"><span class="icond">🚄</span>여행상품</a>
 							<ul class="menu">
 								<li><a href="">국내 여행</a></li>
 								<li><a href="">해외 여행</a></li>
@@ -517,13 +544,9 @@
 					</ul>
 				</nav>
 			</div>
-			
-			<div id="login">
-				
-			</div>
 		</div>
 	</header>
-
+	<hr>
 <script>
 	function endChat() {
 		sendMessage("상담이 종료되었습니다.");
