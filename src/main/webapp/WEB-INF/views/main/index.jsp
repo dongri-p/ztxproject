@@ -17,6 +17,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		min-width: 1150px;
 		max-width: 1200px;
 		margin: auto;
 	}
@@ -100,18 +101,18 @@
 					<input type="date">
 					<select>
 						<option>전체</option>
-						<option>무궁화호</option>
-						<option>KTX</option>
-						<option>ITX-청춘</option>
+						<option>삼천리호</option>
+						<option>ZTX</option>
+						<option>MZX-청춘</option>
 					</select>
 					<button>검색</button>
 				</div>
 			</div>
 			<div class="main-content">
 				<div class="banner">열차 승차권 부정 판매 행위 절대 금지</div>
-				<h2>KTX 할인상품</h2>
+				<h2>ZTX 할인상품</h2>
 				<div class="discounts">
-				    <p>청소년 드림 | 힘내라 청춘 | 맘편한 코레일 | 다자녀 행복</p>
+				    <p>청소년 드림 | 힘내라 청춘 | 맘편한 꼬레일 | 다자녀 행복</p>
 				</div>
 				<h2>BEST 여행상품</h2>
 				<p>기차+숙박+렌터카+입장권을 한번에!</p>
@@ -149,7 +150,7 @@
 				</ul>
 			</div>
 			<div class="wide-box">
-				<h3>한국철도 SNS</h3>
+				<h3>은하철도 SNS</h3>
 				<p>블로그 | 페이스북 | 인스타그램 | 유튜브 | 트위터</p>
 			</div>
 		</div>

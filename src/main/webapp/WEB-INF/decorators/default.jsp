@@ -25,8 +25,9 @@
 		margin: auto;
 	}
 	#section1 {
-		width: 100%;
-		height: 40px; /* Adjust the height as needed */
+		width: 1450px;
+		min-width: 1000px;
+		height: 30px; /* Adjust the height as needed */
 		position: relative;
 		max-width: 1900px;
 		margin: auto;
@@ -40,7 +41,7 @@
 		text-align: right;
 		font-size: 14px;
 		font-weight: 600;
-		padding: 10px;
+		line-height: 30px;
 	}
 	#section1 #loginMenu a {
 		text-decoration: none;
@@ -111,13 +112,14 @@
 	}
 	#logo {
 		width: 100%;
+		min-width: 1000px;
 		height: 50px;
 		background: #083B82;
 		align-items: center;
 		display: flex;
 	}
 	#logo > #logoimg {
-		margin-left: 10%;
+		margin-left: 15%;
 		width: 50px;
 		height: 50px;
 		background: #083B82;
@@ -136,6 +138,7 @@
 	}
 	#section2 {
 		width: 100%;
+		min-width: 1000px;
 		height: 60px; /* Adjust the height as needed */
 		position: relative;
 		max-width: 1900px;
@@ -210,30 +213,60 @@
 		cursor: pointer;
 	} */
 	footer {
-		padding: 10px 0;
 		width: 100%;
+		min-width: 1200px;
+		height: 50px;
 		background: lightgray;
-		color: white;
+		color: #5F6368;
 		text-align: center;
 		font-family: 'Hahmlet';
-		font-size: 13px;
+		font-size: 10px;
+		margin-top: 40px;
 	}
 	.footer-container {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		max-width: 1000px;
+		min-width: 1000px;
+		max-width: 1200px;
 		margin: auto;
 		flex-wrap: wrap;
 	}
-	.footer-logo img {
-		height: 80px;
+	.footer-logo {
+		font-size: 25px;
+		line-height: 50px;
+		font-weight: 900;
+		font-family: Arial, sans-serif;
 	}
-	.footer-info, .footer-contact {
+	.footer-logo img {
+		height: 50px;
+	}
+	#logof {
+		width: 100%;
+		min-width: 1000px;
+		height: 50px;
+		background: lightgray;
+		align-items: center;
+		display: flex;
+	}
+	#logof > #logotext {
+		height: 50px;
+		width: 200px;
+		background: lightgray;
+		font-size: 25px;
+		font-weight: 900;
+		line-height: 50px;
+	}
+	.footer-info {
 		text-align: left;
 	}
-	.footer-info div, .footer-contact div {
+	.footer-info div {
 		margin-bottom: 5px;
+	}
+	.footer {
+		background: #083B82;
+		color: white !important;
+		text-align: center;
 	}
 	
 	@media (max-width: 768px) {
@@ -425,13 +458,7 @@
 	#chat-toggle:hover {
 		background-color: #1A9987;
 	}
-	.footer {
-		background: #083B82;
-		color: white !important;
-		text-align: center;
-		padding: 15px 0;
-		margin-top: 40px;
-	}
+	
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -501,7 +528,7 @@
 		<div id="logo">
 			<div id="logoimg">
 				<a href="../main/index">
-					<img src="../static/resources/train.png" height="50px" align="middle">
+					<img src="../static/resources/train(white).png" height="50px" align="middle">
 				</a>
 			</div>
 			<div id="logotext">
@@ -677,30 +704,37 @@
 	
 <sitemesh:write property="body" />
 	
-	<div class="footer" style="color: white">
-		<p>&copy; 2025 꼬레일. 모든 권리 보유.</p>
-	</div>
-	
 	<footer>
 		<div class="footer-container">
 			<div class="footer-logo">
-				<img alt="logo" src="../static/resources/train.png" align="middle">
+				<img alt="logo" src="../static/resources/train(gray).png" align="top">
+				Let's GGoRail
 			</div>
 			<div class="footer-info">
 				<div>(주)MonoRail</div>
-				<div>대표이사 철이</div>
-				<div>본사 : 경기도 파주시 야당동</div>
-				<div>사업자 등록번호 444-44-44444</div>
-				<div>통신판매업신고 : 2023-은하철도-999</div>
 			</div>
-			<div class="footer-contact">
-				<div>365고객센터</div>
-				<div>080-888-1234(무료)</div>
-				<div>email : Tmaster@rail.co.kr</div>
-				<div>전화번호 010-1234-5678</div>
-				<div>&nbsp;</div>
+			<div class="footer-info">
+				<div>대표이사 : 철이</div>
+			</div>
+			<div class="footer-info">
+				<div>사업자등록 : 314-82-99999</div>
+			</div>
+			<div class="footer-info">
+				<div>통신판매업신고 : 은하철도-999</div>
+			</div>
+			<div class="footer-info">
+				<div>본사 : 경기도 파주시 야당동</div>
+			</div>
+			<div class="footer-info">
+				<div>TEL: 090-888-1234(유료)</div>
+			</div>
+			<div class="footer-info">
+				<div>전화번호 : 010-1234-5678</div>
 			</div>
 		</div>
 	</footer>
+	<div class="footer" style="color: white">
+		<p>&copy; 2025 꼬레일. 모든 권리 보유.</p>
+	</div>
 </body>
 </html>
