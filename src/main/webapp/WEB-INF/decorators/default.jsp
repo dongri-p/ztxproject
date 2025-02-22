@@ -112,17 +112,25 @@
 	#logo {
 		width: 100%;
 		height: 50px;
-		background: #005bac;
+		background: #083B82;
+		align-items: center;
+		display: flex;
 	}
-	#logospace {
-		margin-left: 8%;
+	#logo > #logoimg {
+		margin-left: 10%;
+		width: 50px;
 		height: 50px;
-		background: #005bac;
-		dispalay: inline-block;
+		background: #083B82;
+	}
+	#logo > #logotext {
+		height: 50px;
+		width: 200px;
+		background: #083B82;
 		font-size: 25px;
 		font-weight: 900;
+		line-height: 50px;
 	}
-	#logospace a {
+	#logotext a {
 		text-decoration: none;
 		color: white;
 	}
@@ -418,7 +426,7 @@
 		background-color: #1A9987;
 	}
 	.footer {
-		background: #00467F;
+		background: #083B82;
 		color: white !important;
 		text-align: center;
 		padding: 15px 0;
@@ -491,9 +499,13 @@
 			</div>
 		</div>
 		<div id="logo">
-			<div id="logospace">
+			<div id="logoimg">
 				<a href="../main/index">
-					<!-- <img src="../static/resources/train.png" height="50px"> -->
+					<img src="../static/resources/train.png" height="50px" align="middle">
+				</a>
+			</div>
+			<div id="logotext">
+				<a href="../main/index">
 					Let's GGoRail
 				</a>
 			</div>
@@ -666,13 +678,13 @@
 <sitemesh:write property="body" />
 	
 	<div class="footer" style="color: white">
-		<p>&copy; 2025 코레일. 모든 권리 보유.</p>
+		<p>&copy; 2025 꼬레일. 모든 권리 보유.</p>
 	</div>
 	
 	<footer>
 		<div class="footer-container">
 			<div class="footer-logo">
-				<img alt="logo" src="../static/resources/eltlogo.png"  align="middle">
+				<img alt="logo" src="../static/resources/train.png" align="middle">
 			</div>
 			<div class="footer-info">
 				<div>(주)MonoRail</div>
