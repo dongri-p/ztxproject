@@ -82,8 +82,7 @@
     box-sizing: border-box;
   }
   #umsg, #pmsg {
-    color: #e74c3c;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 5px;
   }
   input[type="submit"],
@@ -95,13 +94,14 @@
   }
 </style>
 <script>
-  function useridCheck(uc)
+  function useridCheck(userid)
   {
-	  if(uc.length >= 6)
+	  if(userid.length >= 6)
 	  {
 		  var chk=new XMLHttpRequest();
 		  chk.onload=function()
 		  {
+			  //alert(chk.responseText);
 			  if(chk.responseText == "0")
 			  {
 				  document.getElementById("umsg"),innerText="사용 가능한 아이디";
@@ -113,12 +113,12 @@
 			  
 		  }
 		  
-		  chk.open("get", "useridCheck?uc="+uc);
+		  chk.open("get", "useridCheck?userid="+userid);
 		  chk.send();
 	  }
 	  else
 	  {
-		  
+		  document.getElementById("umsg").innerText="아이디의 길이는 6자 이상입니다";
 	  }
 	  
   }
