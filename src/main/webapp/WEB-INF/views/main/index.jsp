@@ -89,6 +89,12 @@
 		text-align: center;
 	}
 </style>
+<script>
+	function startSt() {
+		
+	}
+
+</script>
 </head>
 <body>
 	<div class="container">
@@ -96,7 +102,7 @@
 			<div class="sidebar">
 				<h3>승차권 판매</h3>
 				<div class="search-box">
-					<input type="text" placeholder="출발지">
+					<input type="text" placeholder="출발지" onclick="startSt()">
 					<input type="text" placeholder="도착지">
 					<input type="date">
 					<select>
