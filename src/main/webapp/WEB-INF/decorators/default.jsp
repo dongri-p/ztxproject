@@ -496,7 +496,7 @@
 					<a href="../admin/index" style="color: orange;"> 관리자 홈 </a>&nbsp;|&nbsp;
 				</c:if>
 				<c:if test="${userid==null}">
-					<a href="../member/member" id="into"> <span class="iconmem">📋</span>회원가입 </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a href="../user/user" id="into"> <span class="iconmem">📋</span>회원가입 </a>&nbsp;&nbsp;|&nbsp;&nbsp;
 					<!-- <a href="../login/login"> 로그인 </a>&nbsp;|&nbsp; -->
 				</c:if>
 				<c:if test="${userid==null}">
