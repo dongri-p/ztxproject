@@ -3,7 +3,9 @@
 
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
-
+  <select id="useridCheck" resultType="Integer">
+    select count(*) from user where userid=#{userid}
+  </select>
 
 
 

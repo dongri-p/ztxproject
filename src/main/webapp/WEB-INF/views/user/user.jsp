@@ -91,7 +91,35 @@
     text-decoration:none;
   }
 </style>
-
+<script>
+  function useridCheck(uc)
+  {
+	  if(uc.length >= 6)
+	  {
+		  var chk=new XMLHttpRequest();
+		  chk.onload=function()
+		  {
+			  if(chk.responseText == "0")
+			  {
+				  document.getElementById("umsg"),innerText="사용 가능한 아이디";
+			  }
+			  else
+			  {
+				  document.getElementById("umsg"),innerText="사용 불가능한 아이디";
+			  }  
+			  
+		  }
+		  
+		  chk.open("get", "useridCheck?uc="+uc);
+		  chk.send();
+	  }
+	  else
+	  {
+		  
+	  }
+	  
+  }
+</script>
 </head>
 <body> <!-- user/user.jsp -->
  <section>

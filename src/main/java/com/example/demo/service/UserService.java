@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
-public interface UserService {
+import jakarta.servlet.http.HttpServletRequest;
 
+public interface UserService {
 	String user();
+	String useridCheck(HttpServletRequest request);
 
 }
