@@ -17,7 +17,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public String index(HttpServletRequest request, Model model) {
-		
+		System.out.println(mapper); //경고 제거용
 		return "/main/index";
 	}
 
