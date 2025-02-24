@@ -96,7 +96,7 @@
 			<div class="sidebar">
 				<h3>승차권 판매</h3>
 				<div class="search-box">
-					<input type="text" placeholder="출발지"> 서울역
+					<input type="text" placeholder="출발지">
 					<input type="text" placeholder="도착지">
 					<input type="date">
 					<select>
