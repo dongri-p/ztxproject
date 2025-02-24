@@ -108,7 +108,6 @@
 		document.getElementById('passenger-selection-popup').style.display = 'none';
 		document.getElementById('popup').style.display = 'none';
 		document.getElementById('arrival-popup').style.display = 'none';
-		document.getElementById('seats-popup').style.display = 'none';
 	}
 	function closePopup(type) {
 		if (type === 'passenger') {
@@ -119,9 +118,6 @@
 		}
 		else if (type === 'arrival') {
 			document.getElementById('arrival-popup').style.display = 'none';
-		}
-		else if (type === 'seats') {
-			document.getElementById('seats-popup').style.display = 'none';
 		}
 	}
 
@@ -134,11 +130,11 @@
 				<h3>승차권 판매</h3>
 				<div class="search-box">
 					<div id="quick_booking">
-						<button type="button" class="quick_booking_button" onclick="openPopup('departure')">
+						<button type="button" class="bookingbutton" onclick="openPopup('departure')">
 							<span id="from-text">From</span> 
 							<span id="departure-text">&nbsp;출발지</span>
 						</button>
-						<button type="button" class="quick_booking_button" onclick="openPopup('arrival')">
+						<button type="button" class="bookingbutton" onclick="openPopup('arrival')">
 							<span id="to-text">To</span> 
 							<span id="arrival-text">&nbsp;도착지</span>
 						</button>
