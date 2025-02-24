@@ -83,7 +83,15 @@
     font-size: 14px;
     margin-top: 5px;
   }
+  input[type="submit"],
+  input[type="button"] {
+    width:49.2%;
+  }
+  section a {
+    text-decoration:none;
+  }
 </style>
+
 </head>
 <body> <!-- user/user.jsp -->
  <section>
@@ -117,8 +125,8 @@
       <input type="text" name="phone" id="txt" placeholder="전화번호"> 
     </div>
     <div> 
-      <input type="submit" value="회원 가입" id="submit">
       <a href="../main/index"> <input type="button" value="취 소" id="button"> </a>
+      <input type="submit" value="회원 가입" id="submit">
     </div>
   </form> 
  </section>
