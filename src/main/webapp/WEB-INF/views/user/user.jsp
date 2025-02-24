@@ -69,6 +69,9 @@
   #txt {
     width: 100%;
   }
+  #sandc {
+  
+  }
   select {
     width: 47%;
     padding: 12px;
@@ -116,7 +119,7 @@
     <div> 
       <input type="text" name="phone" id="txt" placeholder="전화번호"> 
     </div>
-    <div> 
+    <div id="sandc"> 
       <input type="submit" value="회원 가입" id="submit">
       <a href="../main/index"> <input type="button" value="취 소" id="button"> </a>
     </div>
