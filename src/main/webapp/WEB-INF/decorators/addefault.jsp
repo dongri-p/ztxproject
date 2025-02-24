@@ -26,16 +26,6 @@
 		box-sizing: border-box;
 		color: white;
 	}
-	header #second {
-		display: flex;
-		height: 50px;
-		align-items: center;
-		justify-content: space-between;
-		background-color: #001160;
-		padding: 10px 20px;
-		box-sizing: border-box;
-		color: white;
-	}
 	header #one {
 		flex-shrink: 0;
 		font-size: 17px;
@@ -47,11 +37,29 @@
 	header #one a:hover {
 		font-weight: bold;
 	}
+	header #second {
+		display: flex;
+		height: 50px;
+		align-items: center;
+		justify-content: space-between;
+		background-color: #001160;
+		padding: 10px 20px;
+		box-sizing: border-box;
+		color: white;
+	}
 	header #logo {
-		width: 200px;
+		display: flex;
+		justify-content: space-between;
+		width: 250px;
 		flex-shrink: 0;
-		line-height: 70px;
 		margin-left: 10px;
+		margin-bottom: 20px;
+	}
+	header #logo a{
+		font-size: 24px;
+		color: white;
+		text-decoration: none;
+		font-weight: bold;
 	}
 	header #two {
 		display: flex;
@@ -193,16 +201,24 @@
 		</div>
 		<div id="second">
 			<div id="logo">
-				<a href="../admin/index">
-					<img src="../static/resources/1234.png" height="60px" alt="로고">
-				</a>
+				<div id="logoimg">
+					<a href="../admin/index">
+						<img src="../static/resources/train(white).png" height="70px" align="middle">
+					</a>
+				</div>
+				<div id="logotext">
+					<a href="../admin/index">
+						Let's GGoRail				
+						Administrator
+					</a>
+				</div>
 			</div>
 			<div id="two">
 				<button onclick="location.href='reserveList'">예약현황</button>
 				<button onclick="location.href='gongjiList'">공지사항</button>
 				<button onclick="location.href='inquiryList'">고객문의</button>
 				<button onclick="location.href='memberList'">회원관리</button>
-				<button onclick="location.href='flightsList'">비행일정</button>
+				<button onclick="location.href='flightsList'">운행일정</button>
 				<button onclick="location.href='promotList'">프로모션</button>
 				<button onclick="location.href='rsvChart'">예약통계</button>
 			</div>
