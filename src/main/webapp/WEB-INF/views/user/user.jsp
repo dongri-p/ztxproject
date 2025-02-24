@@ -69,6 +69,9 @@
   #txt {
     width: 100%;
   }
+  #sandc {
+  
+  }
   select {
     width: 47%;
     padding: 12px;

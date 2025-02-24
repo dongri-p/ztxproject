@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>administrator</title>
 <style>
-	/* 전체적인 레이아웃 */
 	body {
 		font-family: 'Noto Sans KR', sans-serif;
 		background-color: #f0f4f8;
@@ -110,12 +109,12 @@
 <section>
 	<h4>&nbsp;&nbsp;&nbsp; | 예약 현황</h4>
 	<div id="first">
-	    <div id="gmpFlights">
+	    <div id="seoulst">
 	        <table>
-	            <caption><span id="h5"> GMP 출항 </span></caption>
+	            <caption><span id="h5"> 서울역 출발 </span></caption>
 	            <tr>
-	                <td>항공편명</td>
-	                <td>출항시간</td>
+	                <td>출발일</td>
+	                <td>출발시간</td>
 	                <td>예약</td>
 	            </tr>
 	            <c:forEach items="${gmpRsv}" var="grsv">
@@ -127,16 +126,16 @@
 	            </c:forEach>
 	            <c:if test="${empty gmpRsv}">
 	                <tr>
-	                    <td colspan="3">GMP 예약 데이터가 없습니다.</td>
+	                    <td colspan="3">예약 데이터가 없습니다.</td>
 	                </tr>
 	            </c:if>
 	        </table>
 	    </div>
-	    <div id="icnFlights">
+	    <div id="pusanst">
 	        <table>
-	            <caption><span id="h5"> ICN 출항 </span></caption>
+	            <caption><span id="h5"> 부산역 출발 </span></caption>
 	            <tr>
-	                <td>항공편명</td>
+	                <td>출발일</td>
 	                <td>출항시간</td>
 	                <td>예약</td>
 	            </tr>
@@ -149,16 +148,16 @@
 	            </c:forEach>
 	            <c:if test="${empty icnRsv}">
 	                <tr>
-	                    <td colspan="3">ICN 예약 데이터가 없습니다.</td>
+	                    <td colspan="3">예약 데이터가 없습니다.</td>
 	                </tr>
 	            </c:if>
 	        </table>
 	    </div>
 	    <div id="otherFlights">
 	        <table>
-	            <caption><span id="h5"> 기타 항공편 </span></caption>
+	            <caption><span id="h5"> 기타 </span></caption>
 	            <tr>
-	                <td>항공편명</td>
+	                <td>출발일</td>
 	                <td>출항시간</td>
 	                <td>예약</td>
 	            </tr>
@@ -171,7 +170,7 @@
 	            </c:forEach>
 	            <c:if test="${empty otherRsv}">
 	                <tr>
-	                    <td colspan="3">기타 예약 데이터가 없습니다.</td>
+	                    <td colspan="3">예약 데이터가 없습니다.</td>
 	                </tr>
 	            </c:if>
 	        </table>
@@ -182,13 +181,13 @@
 	<div id="second">
 		<div id="flights">
 			<table>
-				<caption><span id="h5"> 출항 </span></caption>
+				<caption><span id="h5"> 출발 </span></caption>
 				<tr>
 					<td>출발</td>
 					<td>도착</td>
 					<td>출발 시간</td>
-					<td>현지도착 시간</td>
-					<td>비행 시간</td>
+					<td>도착 시간</td>
+					<td>여객 시간</td>
 				</tr>
 				<c:forEach items="${departureList}" var="flight">
 					<c:if test="${(flight.departureAirport eq 'GMP')||(flight.departureAirport eq 'ICN')}">
@@ -205,13 +204,13 @@
 		</div>
 		<div id="flights">
 			<table>
-				<caption><span id="h5"> 입항 </span></caption>
+				<caption><span id="h5"> 도착 </span></caption>
 				<tr>
 					<td>출발</td>
 					<td>도착</td>
-					<td>현지출발 시간</td>
+					<td>출발 시간</td>
 					<td>도착 시간</td>
-					<td>비행 시간</td>
+					<td>여객 시간</td>
 				</tr>
 				<c:forEach items="${arrivalList}" var="flight">
 					<c:if test="${(flight.arrivalAirport eq 'GMP')||(flight.arrivalAirport eq 'ICN')}">

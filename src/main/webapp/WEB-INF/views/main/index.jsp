@@ -89,6 +89,43 @@
 		text-align: center;
 	}
 </style>
+<script>
+	function startSt(type) {
+		closeAllPopups();
+		if (type === 'passenger') {
+			document.getElementById('passenger-selection-popup').style.display = 'block';
+		}
+		else if (type === 'departure') {
+			document.getElementById('popup').style.display = 'block';
+			loadDeparture();
+		}
+		else if (type === 'arrival') {
+			document.getElementById('arrival-popup').style.display = 'block';
+			loadArrival();
+		}
+	}
+	function closeAllPopups() {
+		document.getElementById('passenger-selection-popup').style.display = 'none';
+		document.getElementById('popup').style.display = 'none';
+		document.getElementById('arrival-popup').style.display = 'none';
+		document.getElementById('seats-popup').style.display = 'none';
+	}
+	function closePopup(type) {
+		if (type === 'passenger') {
+			document.getElementById('passenger-selection-popup').style.display = 'none';
+		}
+		else if (type === 'departure') {
+			document.getElementById('popup').style.display = 'none';
+		}
+		else if (type === 'arrival') {
+			document.getElementById('arrival-popup').style.display = 'none';
+		}
+		else if (type === 'seats') {
+			document.getElementById('seats-popup').style.display = 'none';
+		}
+	}
+
+</script>
 </head>
 <body>
 	<div class="container">
@@ -96,7 +133,7 @@
 			<div class="sidebar">
 				<h3>승차권 판매</h3>
 				<div class="search-box">
-					<input type="text" placeholder="출발지">
+					<input type="text" placeholder="출발지" onclick="startSt('departure')">
 					<input type="text" placeholder="도착지">
 					<input type="date">
 					<select>
