@@ -26,8 +26,6 @@
     font-size: 24px;
     margin-bottom: 30px;
   }
-  div {
-  }
   input[type="text"],
   input[type="password"],
   input[type="submit"],
@@ -60,17 +58,8 @@
   #submit:hover {
     background-color: #45a049;
   }
-  #button {
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-  }
   #txt {
     width: 100%;
-  }
-  #sandc {
-  
   }
   select {
     width: 47%;
@@ -88,10 +77,12 @@
   input[type="submit"],
   input[type="button"] {
     width:49.2%;
+    cursor: pointer;
   }
   section a {
     text-decoration:none;
   }
+  
 </style>
 <script>
   function useridCheck(userid)
