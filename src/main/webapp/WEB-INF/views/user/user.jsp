@@ -12,77 +12,50 @@
     padding: 0;
   }
   section {
-    width: 100%;
     max-width: 500px;
     margin: 50px auto;
-    background-color: white;
+    background: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   h3 {
     text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
-  input[type="text"],
-  input[type="password"],
-  input[type="submit"],
-  input[type="button"] {
-    width: 47%;
-    padding: 12px;
+  input, select {
+    width: 100%;
+    padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
     font-size: 16px;
+    box-sizing: border-box;
   }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: #66afe9;
-    outline: none;
-  }
-  .email {
-    width: 48%;
-    display: inline-block;
+  input[type="submit"], input[type="button"] {
+    width: 49%;
+    cursor: pointer;
+    border: none;
+    padding: 12px;
   }
   #submit {
     background-color: #083B82;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
   }
   #submit:hover {
-    background-color: #45a049;
+    background-color: #0450a1;
   }
-  #txt {
-    width: 100%;
+  .email-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
-  select {
-    width: 47%;
-    padding: 12px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
+  .email-container input {
+    flex: 1;
   }
-  #umsg, #pmsg {
-    font-size: 12px;
-    margin-top: 5px;
+  .email-container select {
+    width:44%;
   }
-  input[type="submit"],
-  input[type="button"] {
-    width:49.2%;
-    cursor: pointer;
-  }
-  section a {
-    text-decoration:none;
-  }
-  
 </style>
 <script>
   function useridCheck(userid)
@@ -196,7 +169,7 @@
       <input type="password" name="pwd2" onkeyup="pwdCheck()" id="txt" placeholder="비밀번호 확인">
       <br> <span id="pmsg"> </span>
     </div>
-    <div>
+    <div class="email-container">
       <input type="text" name="uid" class="email"> @
       <select name="dserver" id="select" onchange="getServer(this)">
         <option value=""> 직접입력 </option>
@@ -210,7 +183,7 @@
       <input type="text" name="phone" id="txt" placeholder="전화번호"> 
     </div>
     <div> 
-      <a href="../main/index"> <input type="button" value="취 소" id="button"> </a>
+      <input type="button" value="취 소" id="button" onclick="location.href='../main/index'">
       <input type="submit" value="회원 가입" id="submit">
     </div>
   </form> 
