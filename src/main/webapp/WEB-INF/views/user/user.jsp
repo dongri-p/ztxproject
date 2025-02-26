@@ -104,23 +104,83 @@
 			  //alert(chk.responseText);
 			  if(chk.responseText == "0")
 			  {
-				  document.getElementById("umsg"),innerText="사용 가능한 아이디";
+				  document.getElementById("umsg").innerText="사용 가능한 아이디";
+				  document.getElementById("umsg").style.color="blue";
+				  uchk=1;
 			  }
 			  else
 			  {
-				  document.getElementById("umsg"),innerText="사용 불가능한 아이디";
+				  document.getElementById("umsg").innerText="사용 불가능한 아이디";
+				  document.getElementById("umsg").style.color="red";
+				  uchk=0;
 			  }  
 			  
 		  }
-		  
 		  chk.open("get", "useridCheck?userid="+userid);
 		  chk.send();
 	  }
 	  else
 	  {
 		  document.getElementById("umsg").innerText="아이디의 길이는 6자 이상입니다";
+		  document.getElementById("umsg").style.color="red";
+		  uchk=0;
 	  }
+  }
+  
+  function pwdCheck()
+  {
+  	var pwd=document.uform.pwd.value;
+  	var pwd2=document.uform.pwd2.value;
+  	
+  	if(pwd2.length != 0)
+  	{
+  		if(pwd == pwd2)
+  		{
+  			document.getElementById("pmsg").innerText="비밀가 일치합니다";
+  			document.getElementById("pmsg").style.color="blue";
+  			pchk=1;
+  		}
+  		else
+  		{
+  			document.getElementById("pmsg").innerText="비밀번호가 일치하지 않습니다";
+  			document.getElementById("pmsg").style.color="red";
+  			pchk=0;
+  		}
+  	}
+  }
+  
+  function getServer(gs)
+  {
+	  document.uform.server.value=gs.value;
+  }
+  
+  var uchk=0;
+  var pchk=0;
+  function check()
+  {
+	  var emailOk=document.uform.uid.value+"@"+document.uform.server.value;
+	  document.uform.email.value=emailOk;
 	  
+	  if(uchk == 0)
+	  {
+		  return false;
+	  }
+	  else if(pchk == 0)
+	  {
+		  return false;
+	  }
+	  else if(document.uform.name.value == "")
+	  {
+		  return false;
+	  }
+	  else if(document.uform.phone.value == 0)
+	  {
+		  retrun false;
+	  }
+	  else
+	  {
+		  return true;
+	  }
   }
 </script>
 </head>
