@@ -43,7 +43,7 @@
     color: white;
   }
   #submit:hover {
-    background-color: #0450a1;
+    background-color: #45a049;
   }
   .email-container {
     display: flex;
@@ -55,6 +55,9 @@
   }
   .email-container select {
     width:44%;
+  }
+  #umsg, #pmsg {
+    font-size:12px;
   }
 </style>
 <script>
