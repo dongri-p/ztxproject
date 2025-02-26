@@ -136,7 +136,7 @@
   	{
   		if(pwd == pwd2)
   		{
-  			document.getElementById("pmsg").innerText="비밀가 일치합니다";
+  			document.getElementById("pmsg").innerText="비밀번호가 일치합니다";
   			document.getElementById("pmsg").style.color="blue";
   			pchk=1;
   		}
@@ -158,7 +158,7 @@
   var pchk=0;
   function check()
   {
-	  var emailOk=document.uform.uid.value+"@"+document.uform.server.value;
+	  var emailOk=document.uform.uid.value+"@"+document.uform.dserver.value;
 	  document.uform.email.value=emailOk;
 	  
 	  if(uchk == 0)
@@ -169,13 +169,15 @@
 	  {
 		  return false;
 	  }
-	  else if(document.uform.name.value == "")
+	  else if(document.uform.name.value.trim() == "")
 	  {
+		  alert("이름을 입력하세요.");
 		  return false;
 	  }
-	  else if(document.uform.phone.value == 0)
+	  else if(document.uform.phone.value.trim() == 0)
 	  {
-		  retrun false;
+		  alert("전화번호를 입력하세요.");
+		  return false;
 	  }
 	  else
 	  {
@@ -186,7 +188,8 @@
 </head>
 <body> <!-- user/user.jsp -->
  <section>
-  <form method="post" name="uform" action="userOk" onsubmit="">
+  <form method="post" name="uform" action="userOk" onsubmit="return check();">
+    <input type="hidden" name="email">
     <h3>회원 가입</h3>
     <div>
       <input type="text" name="userid" onblur="useridCheck(this.value)" id="txt" placeholder="아이디(6자이상)">
