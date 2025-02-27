@@ -12,93 +12,151 @@
     padding: 0;
   }
   section {
-    width: 100%;
     max-width: 500px;
     margin: 50px auto;
-    background-color: white;
+    background: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   h3 {
     text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
-  div {
-  }
-  input[type="text"],
-  input[type="password"],
-  input[type="submit"],
-  input[type="button"] {
-    width: 47%;
-    padding: 12px;
+  input, select {
+    width: 100%;
+    padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
     font-size: 16px;
+    box-sizing: border-box;
   }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: #66afe9;
-    outline: none;
-  }
-  .email {
-    width: 48%;
-    display: inline-block;
+  input[type="submit"], input[type="button"] {
+    width: 49%;
+    cursor: pointer;
+    border: none;
+    padding: 12px;
   }
   #submit {
     background-color: #083B82;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
   }
   #submit:hover {
     background-color: #45a049;
   }
-  #button {
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+  .email-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
-  #txt {
-    width: 100%;
+  .email-container input {
+    flex: 1;
   }
-  #sandc {
-  
-  }
-  select {
-    width: 47%;
-    padding: 12px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
+  .email-container select {
+    width:44%;
   }
   #umsg, #pmsg {
-    color: #e74c3c;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  input[type="submit"],
-  input[type="button"] {
-    width:49.2%;
-  }
-  section a {
-    text-decoration:none;
+    font-size:12px;
   }
 </style>
-
+<script>
+  function useridCheck(userid)
+  {
+	  if(userid.length >= 6)
+	  {
+		  var chk=new XMLHttpRequest();
+		  chk.onload=function()
+		  {
+			  //alert(chk.responseText);
+			  if(chk.responseText == "0")
+			  {
+				  document.getElementById("umsg").innerText="사용 가능한 아이디";
+				  document.getElementById("umsg").style.color="blue";
+				  uchk=1;
+			  }
+			  else
+			  {
+				  document.getElementById("umsg").innerText="사용 불가능한 아이디";
+				  document.getElementById("umsg").style.color="red";
+				  uchk=0;
+			  }  
+			  
+		  }
+		  chk.open("get", "useridCheck?userid="+userid);
+		  chk.send();
+	  }
+	  else
+	  {
+		  document.getElementById("umsg").innerText="아이디의 길이는 6자 이상입니다";
+		  document.getElementById("umsg").style.color="red";
+		  uchk=0;
+	  }
+  }
+  
+  function pwdCheck()
+  {
+  	var pwd=document.uform.pwd.value;
+  	var pwd2=document.uform.pwd2.value;
+  	
+  	if(pwd2.length != 0)
+  	{
+  		if(pwd == pwd2)
+  		{
+  			document.getElementById("pmsg").innerText="비밀번호가 일치합니다";
+  			document.getElementById("pmsg").style.color="blue";
+  			pchk=1;
+  		}
+  		else
+  		{
+  			document.getElementById("pmsg").innerText="비밀번호가 일치하지 않습니다";
+  			document.getElementById("pmsg").style.color="red";
+  			pchk=0;
+  		}
+  	}
+  }
+  
+  function getServer(gs)
+  {
+	  document.uform.server.value=gs.value;
+  }
+  
+  var uchk=0;
+  var pchk=0;
+  function check()
+  {
+	  var emailOk=document.uform.uid.value+"@"+document.uform.dserver.value;
+	  document.uform.email.value=emailOk;
+	  
+	  if(uchk == 0)
+	  {
+		  return false;
+	  }
+	  else if(pchk == 0)
+	  {
+		  return false;
+	  }
+	  else if(document.uform.name.value.trim() == "")
+	  {
+		  alert("이름을 입력하세요.");
+		  return false;
+	  }
+	  else if(document.uform.phone.value.trim() == 0)
+	  {
+		  alert("전화번호를 입력하세요.");
+		  return false;
+	  }
+	  else
+	  {
+		  return true;
+	  }
+  }
+</script>
 </head>
 <body> <!-- user/user.jsp -->
  <section>
-  <form method="post" name="uform" action="userOk" onsubmit="">
+  <form method="post" name="uform" action="userOk" onsubmit="return check();">
+    <input type="hidden" name="email">
     <h3>회원 가입</h3>
     <div>
       <input type="text" name="userid" onblur="useridCheck(this.value)" id="txt" placeholder="아이디(6자이상)">
@@ -114,7 +172,7 @@
       <input type="password" name="pwd2" onkeyup="pwdCheck()" id="txt" placeholder="비밀번호 확인">
       <br> <span id="pmsg"> </span>
     </div>
-    <div>
+    <div class="email-container">
       <input type="text" name="uid" class="email"> @
       <select name="dserver" id="select" onchange="getServer(this)">
         <option value=""> 직접입력 </option>
@@ -128,7 +186,7 @@
       <input type="text" name="phone" id="txt" placeholder="전화번호"> 
     </div>
     <div> 
-      <a href="../main/index"> <input type="button" value="취 소" id="button"> </a>
+      <input type="button" value="취 소" id="button" onclick="location.href='../main/index'">
       <input type="submit" value="회원 가입" id="submit">
     </div>
   </form> 

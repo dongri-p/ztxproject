@@ -3,7 +3,14 @@
 
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
-
+  <select id="useridCheck" resultType="Integer">
+    select count(*) from user where userid=#{userid}
+  </select>
+  
+  <insert id="userOk" parameterType="com.example.demo.dto.UserDto">
+    insert into user(userid,name,pwd,email,phone,writeday)
+    values(#{userid},#{name},#{pwd},#{email},#{phone},now())
+  </insert>
 
 
 
