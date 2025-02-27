@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.UserDto;
@@ -24,45 +23,37 @@ public class LoginController {
 	private LoginService service;
 	
 	@GetMapping("/login/login")
-	public String login(HttpServletRequest request, Model model)
-	{
+	public String login(HttpServletRequest request, Model model) {
 		return service.login(request, model);
 	}
 	
 	@PostMapping("/login/loginOk")
-	public String loginOk(UserDto udto, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session)
-	{
+	public String loginOk(UserDto udto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return service.loginOk(udto, request, response, session);
 	}
 	
 	@GetMapping("/login/logout")
-	public String logout(HttpSession session)
-	{
+	public String logout(HttpSession session) {
 		return service.logout(session);
 	}
 	
 	@GetMapping("/login/fUserid")
-	public String fUserid()
-	{
+	public String fUserid() {
 		return service.fUserid();
 	}
 	
 	@GetMapping("/login/getUserid")
-	public @ResponseBody String getUserid(UserDto udto)
-	{
+	public @ResponseBody String getUserid(UserDto udto) {
 		return service.getUserid(udto);
 	}
 	
 	@GetMapping("/login/fPassword")
-	public String fPassword()
-	{
+	public String fPassword() {
 		return service.fPassword();
 	}
 	
 	@GetMapping("/login/getPwd")
-	public @ResponseBody String getPwd(UserDto udto) throws Exception
-	{
+	public @ResponseBody String getPwd(UserDto udto) throws Exception {
 		return service.getPwd(udto);
 	}
 	
