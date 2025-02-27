@@ -12,17 +12,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 @Qualifier("ls")
 public class LoginServiceImpl implements LoginService {
-	
 	@Autowired
 	private LoginMapper mapper;
 
 	@Override
 	public String login(HttpServletRequest request, Model model) {
-		
 		String err=request.getParameter("err");
 		
 		model.addAttribute("err", err);
-		
 		return "/login/login";
 	}
 	
