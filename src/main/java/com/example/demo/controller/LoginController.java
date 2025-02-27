@@ -5,10 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.dto.UserDto;
 import com.example.demo.service.LoginService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -22,5 +26,25 @@ public class LoginController {
 	{
 		return service.login(request, model);
 	}
-
+	
+	@PostMapping("/login/loginOk")
+	public String loginOk(UserDto udto, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session)
+	{
+		return service.loginOk(udto, request, response, session);
+	}
+	
+	@GetMapping("/login/logout")
+	public String logout(HttpSession session)
+	{
+		return service.logout(session);
+	}
+	
+	@GetMapping("/login/fUserid")
+	public String fUserid()
+	{
+		return service.fUserid();
+	}
+	
+	
 }

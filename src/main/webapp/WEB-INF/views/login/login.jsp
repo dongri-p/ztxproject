@@ -66,7 +66,7 @@
   .footer-links {
     display: flex;
     justify-content: center;
-    gap: 20px;  /* 공간을 일정하게 */
+    gap: 20px;
     font-size: 14px;
     margin-top: 10px;
   }
@@ -79,6 +79,17 @@
     color: #083B82;
   }
 </style>
+<script>
+  function findU()
+  {
+	open("fUserid","op","width=700,height=600");
+  }
+  
+  function findP()
+  {
+	open("fPassword","op","width=600,height=500");  
+  }
+</script>
 </head>
 <body> <!-- login/login.jsp -->
  <section>
@@ -97,11 +108,9 @@
       <input type="submit" value="로그인" id="submit"> 
     </div>
     <div class="footer-links">
-      <span>아이디 찾기</span>
-      <span>|</span>
-      <span>비밀번호 찾기</span>
-      <span>|</span>
-      <span><a href="../member/member">회원가입</a></span>
+      <span onclick="findU()">아이디 찾기</span> |
+      <span onclick="findP()">비밀번호 찾기</span> |
+      <span><a href="../user/user">회원가입</a></span>
     </div>
   </form>
  </section>

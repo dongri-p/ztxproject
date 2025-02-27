@@ -3,6 +3,10 @@
 
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
+  <select id="loginOk" resultType="com.example.demo.dto.UserDto">
+    select name from member where
+    userid=#{userid} and ( pwd=#{pwd} or oldPwd=#{pwd} )
+  </select>
 
 
 
