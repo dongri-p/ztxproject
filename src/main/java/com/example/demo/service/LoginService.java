@@ -14,6 +14,7 @@ public interface LoginService {
 	String logout(HttpSession session);
 	String fUserid();
 	String getUserid(UserDto udto);
-	
+	String fPassword();
+	String getPwd(UserDto udto) throws Exception;
 	
 }
