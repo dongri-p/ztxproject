@@ -421,7 +421,7 @@
 		color: white;
 	}
 	#station-list li::before, #arrival-list li::before {
-		content: "\f072";
+		content: "🚄";
 		font-family: "Font Awesome 5 Free";
 		margin-right: 10px;
 		font-weight: 900;
@@ -697,7 +697,7 @@
 					var defaultStation = data.find(station => station.station_name === 'SEL');
 					if (defaultStation) {
 						document.getElementById('from-text').textContent = defaultStation.station_name;
-						document.getElementById('departure-text').textContent = defaultStation.location + '/' + defaultStation.line;
+						document.getElementById('departure-text').textContent = defaultStation.station_name;
 					}
 					else {
 						document.getElementById('from-text').textContent = 'SEL';
@@ -707,25 +707,25 @@
 						var li = document.createElement('li');
 						var location = document.createElement('span');
 						location.classList.add('location');
-						location.textContent = station.location;
+						location.textContent = station.station_name;
 						var stationInfo = document.createElement('span');
 						if (station.line == 'null' || station.line == null) {
-							stationInfo.textContent = ' ' + station.location;
+							stationInfo.textContent =' / ' + station.location;
 						}
 						else {
-							stationInfo.textContent = ' ' + station.location + '/' + station.line;
+							stationInfo.textContent =' / ' + station.location;
 						}
 						li.appendChild(location);
 						li.appendChild(stationInfo);
 						li.onclick = function() {
-							document.getElementById('from-text').textContent = station.location;
+							document.getElementById('from-text').textContent = station.station_name;
 							if (station.line == 'null' || station.line == null) {
 								document.getElementById('departure-text').textContent = station.location;
 							}
 							else {
-								document.getElementById('departure-text').textContent = station.location + '/' + station.location;
+								document.getElementById('departure-text').textContent = station.location;
 							}
-							document.getElementById('from-hidden').value = station.location;
+							document.getElementById('from-hidden').value = station.station_name;
 							closePopup('departure');
 						};
 						stationList.appendChild(li);
@@ -755,40 +755,48 @@
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', '/train/stations');
 		xhr.onload = function() {
-			var data = JSON.parse(xhr.responseText);
+			var data;
+			try {
+				data = JSON.parse(xhr.responseText);
+			}
+			catch (error) {
+				return;
+			}
+			if (!Array.isArray(data)) {
+				return;
+			}
 			var stationList = document.getElementById('arrival-list');
 			stationList.innerHTML = '';
-			data.forEach(function(station) {
+			data.forEach(function(station, index) {
+				console.log(`역 ${index + 1}:`, station);
+				
 				var li = document.createElement('li');
 				var location = document.createElement('span');
 				location.classList.add('location');
-				location.textContent = station.location;
+				
+				// 올바른 키명을 확인 후 적용
+				location.textContent = station.station_name +' / ';
+				
 				var stationInfo = document.createElement('span');
-				if (station.location == 'null' || station.location == null) {
-					stationInfo.textContent = ' ' + station.location;
-				}
-				else {
-					stationInfo.textContent = ' ' + station.location + '/' + station.location;
-				}
+				stationInfo.textContent = (station.location && station.location !== "null") ? station.location : "정보 없음";
+				
 				li.appendChild(location);
 				li.appendChild(stationInfo);
+				
 				li.onclick = function() {
-					document.getElementById('to-text').textContent = station.location;
-					if (station.location == 'null' || station.location == null) {
-						document.getElementById('arrival-text').textContent = station.location;
-					}
-					else {
-						document.getElementById('arrival-text').textContent = station.location + '/' + station.location;
-					}
-					document.getElementById('to-hidden').value = station.location;
+					document.getElementById('to-text').textContent = station.station_name;
+					document.getElementById('arrival-text').textContent = station.location;
+					document.getElementById('to-hidden').value = station.station_name;
 					console.log("도착지 설정됨: " + station.location);
 					closePopup('arrival');
 				};
+				
 				stationList.appendChild(li);
 			});
 		};
 		xhr.send();
 	}
+	
 	document.addEventListener('DOMContentLoaded', function () {
 	    const bookingButton = document.getElementById('booking');
 	    const dateInput = document.getElementById('date-btn');
@@ -940,14 +948,14 @@
 	window.onload=function() {
 		document.getElementById("txt").focus();
 	}
-	function selectDeparture(location, location) {
-		document.getElementById('from-text').textContent = station.location;
-		document.getElementById('departure-text').textContent = location;
-		document.getElementById('from-hidden').value = station.location;
-		console.log("출발지 설정: " + station.location);
+	function selectDeparture(station_name, station_name) {
+		document.getElementById('from-text').textContent = station;
+		document.getElementById('departure-text').textContent = station;
+		document.getElementById('from-hidden').value = station.station_name;
+		console.log("출발지 설정: " + station_name);
 		closePopup('departure');
 	}
-	function selectArrival(location, location) {
+	function selectArrival(station_name, station_name) {
 		document.getElementById('to-text').textContent = station_name;
 		document.getElementById('arrival-text').textContent = station_name;
 		document.getElementById('to-hidden').value = station_name;
