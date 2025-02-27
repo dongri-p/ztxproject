@@ -21,7 +21,7 @@
 		display: none;
 		
 	}
-	.air_service {
+	.train_service {
 		position: relative;
 		background-image: url('../static/resources/t0.jpg');
 		background-size: cover;
@@ -29,13 +29,14 @@
 		height: 800px;
 		background-repeat: no-repeat;
 		z-index: 2;
+		margin: auto;
 	}
-	.air_align {
+	.train_align {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
-	.air_contentbox {
+	.train_contentbox {
 		position: relative;
 		top: 35.3rm;
 		left: 0;
@@ -47,7 +48,7 @@
 		align-items: center;
 		z-index: 2;
 	}
-	.air_widget {
+	.train_widget {
 		position: relative;
 		top: 33rem;
 		display: block;
@@ -73,7 +74,6 @@
 		text-align: center;
 		border: 1px solid #65728a;
 		padding-block: 15px;
-
 		margin: 0.5px;
 		background-color: #65728a;
 		z-index: 2;
@@ -108,10 +108,10 @@
 		top: -5px;
 	}
 	.booking_contents {
-		position:relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		background-color: rgba(0, 91, 172, 0.8);
 		border: 1px solid white;
 		border-radius: 15px;
@@ -124,8 +124,10 @@
 		z-index: 3;
 	}
 	.booking_methods {
-		display: absolute;
+		display: flex;
+		flex-direction: row;
 		align-items: center;
+		justify-content: center;
 		width: 100%;
 		height: 170px;
 	}
@@ -244,17 +246,17 @@
 		z-index:1000;
 		list-style:none;
 	}
-	.airport-list {
+	.station-list {
 		height:270px;
 		overflow-y:auto;
 	}
 	.quick_booking_aligner {	
 		display: flex;
-		align-items: center;
-		gap: 0px;
-		width: 100%;
-		margin-left: -15px;
-		margin-top: 35px;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    width: 100%;
+	    margin-top: 20px;
 	}
 	.flatpickr-calendar {
 		position: absolute !important;
@@ -292,7 +294,7 @@
 		top:18px;
 		left:0;
 		font-size:18px;
-		color:#white;
+		color: white;
 	}
 	#date_selection .date_wrap input {
 		width:100%;
@@ -370,7 +372,7 @@
 		display: inline-block;
 		margin-right: 10px;
 		position: relative;
-		color: black;
+		color: white;
 	}
 	input[name="t_methods"]:checked + label {
 		font-weight: bold;
@@ -405,7 +407,7 @@
 		align-self: flex-end;
 		align-items: center;
 	}
-	#airport-list li, #arrival-list li {
+	#station-list li, #arrival-list li {
 		list-style-type: none;
 		padding: 10px;
 		background-color: white;
@@ -415,15 +417,15 @@
 		color: #333;
 		transition: background-color 0.3s ease;
 	}
-	#airport-list li:hover, #arrival-list li:hover {
+	#station-list li:hover, #arrival-list li:hover {
 		background-color: #e0e0e0;
 		color: #000;
 	}
-	#airport-list li.selected, #arrival-list li.selected {
+	#station-list li.selected, #arrival-list li.selected {
 		background-color: #1f0c59;
 		color: white;
 	}
-	#airport-list li::before, #arrival-list li::before {
+	#station-list li::before, #arrival-list li::before {
 		content: "\f072";
 		font-family: "Font Awesome 5 Free";
 		margin-right: 10px;
@@ -560,7 +562,7 @@
 		transform: translateY(-5px);
 		transition: transform 0.3s ease;
 	}
-	.airport-code {
+	.station-code {
 		font-weight: bold;
 	}
 	#date, #cdate{
@@ -690,56 +692,56 @@
 	});
 	function loadDeparture() {
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/api/flights/airports');
+		xhr.open('GET', '/api/flights/stations');
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				var data = JSON.parse(xhr.responseText);
-				var airportList = document.getElementById('airport-list');
-				if (airportList) {
-					airportList.innerHTML = '';
-					var defaultAirport = data.find(airport => airport.airportCode === 'SEL');
-					if (defaultAirport) {
-						document.getElementById('from-text').textContent = defaultAirport.airportCode;
-						document.getElementById('departure-text').textContent = defaultAirport.city + '/' + defaultAirport.detailedCity;
+				var stationList = document.getElementById('station-list');
+				if (stationList) {
+					stationList.innerHTML = '';
+					var defaultstation = data.find(station => station.location === 'SEL');
+					if (defaultstation) {
+						document.getElementById('from-text').textContent = defaultstation.location;
+						document.getElementById('departure-text').textContent = defaultstation.city + '/' + defaultstation.detailedCity;
 					}
 					else {
 						document.getElementById('from-text').textContent = 'SEL';
 						document.getElementById('departure-text').textContent = '서울';
 					}
-					data.forEach(function(airport) {
+					data.forEach(function(station) {
 						var li = document.createElement('li');
-						var airportCode = document.createElement('span');
-						airportCode.classList.add('airport-code');
-						airportCode.textContent = airport.airportCode;
-						var airportInfo = document.createElement('span');
-						if (airport.detailedCity == 'null' || airport.detailedCity == null) {
-							airportInfo.textContent = ' ' + airport.city + ', ' + airport.country;
+						var location = document.createElement('span');
+						location.classList.add('station-code');
+						location.textContent = station.location;
+						var stationInfo = document.createElement('span');
+						if (station.detailedCity == 'null' || station.detailedCity == null) {
+							stationInfo.textContent = ' ' + station.city + ', ' + station.country;
 						}
 						else {
-							airportInfo.textContent = ' ' + airport.city + '/' + airport.detailedCity + ', ' + airport.country;
+							stationInfo.textContent = ' ' + station.city + '/' + station.detailedCity + ', ' + station.country;
 						}
-						li.appendChild(airportCode);
-						li.appendChild(airportInfo);
+						li.appendChild(location);
+						li.appendChild(stationInfo);
 						li.onclick = function() {
-							document.getElementById('from-text').textContent = airport.airportCode;
-							if (airport.detailedCity == 'null' || airport.detailedCity == null) {
-								document.getElementById('departure-text').textContent = airport.city;
+							document.getElementById('from-text').textContent = station.location;
+							if (station.detailedCity == 'null' || station.detailedCity == null) {
+								document.getElementById('departure-text').textContent = station.city;
 							}
 							else {
-								document.getElementById('departure-text').textContent = airport.city + '/' + airport.detailedCity;
+								document.getElementById('departure-text').textContent = station.city + '/' + station.detailedCity;
 							}
-							document.getElementById('from-hidden').value = airport.airportCode;
+							document.getElementById('from-hidden').value = station.location;
 							closePopup('departure');
 						};
-						airportList.appendChild(li);
+						stationList.appendChild(li);
 					});
 				}
 				else {
-					console.error('The element with id "airport-list" is not found.');
+					console.error('The element with id "station-list" is not found.');
 				}
 			}
 			else if (xhr.readyState === 4 && xhr.status !== 200) {
-				console.error('Failed to load airports data. Status: ' + xhr.status);
+				console.error('Failed to load stations data. Status: ' + xhr.status);
 				document.getElementById('from-text').textContent = 'SEL';
 				document.getElementById('departure-text').textContent = '서울';
 			}
@@ -756,124 +758,90 @@
 	});
 	function loadArrival() {
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/api/flights/airports');
+		xhr.open('GET', '/api/flights/stations');
 		xhr.onload = function() {
 			var data = JSON.parse(xhr.responseText);
-			var airportList = document.getElementById('arrival-list');
-			airportList.innerHTML = '';
-			data.forEach(function(airport) {
+			var stationList = document.getElementById('arrival-list');
+			stationList.innerHTML = '';
+			data.forEach(function(station) {
 				var li = document.createElement('li');
-				var airportCode = document.createElement('span');
-				airportCode.classList.add('airport-code');
-				airportCode.textContent = airport.airportCode;
-				var airportInfo = document.createElement('span');
-				if (airport.detailedCity == 'null' || airport.detailedCity == null) {
-					airportInfo.textContent = ' ' + airport.city + ', ' + airport.country;
+				var location = document.createElement('span');
+				location.classList.add('station-code');
+				location.textContent = station.location;
+				var stationInfo = document.createElement('span');
+				if (station.detailedCity == 'null' || station.detailedCity == null) {
+					stationInfo.textContent = ' ' + station.city + ', ' + station.country;
 				}
 				else {
-					airportInfo.textContent = ' ' + airport.city + '/' + airport.detailedCity + ', ' + airport.country;
+					stationInfo.textContent = ' ' + station.city + '/' + station.detailedCity + ', ' + station.country;
 				}
-				li.appendChild(airportCode);
-				li.appendChild(airportInfo);
+				li.appendChild(location);
+				li.appendChild(stationInfo);
 				li.onclick = function() {
-					document.getElementById('to-text').textContent = airport.airportCode;
-					if (airport.detailedCity == 'null' || airport.detailedCity == null) {
-						document.getElementById('arrival-text').textContent = airport.city;
+					document.getElementById('to-text').textContent = station.location;
+					if (station.detailedCity == 'null' || station.detailedCity == null) {
+						document.getElementById('arrival-text').textContent = station.city;
 					}
 					else {
-						document.getElementById('arrival-text').textContent = airport.city + '/' + airport.detailedCity;
+						document.getElementById('arrival-text').textContent = station.city + '/' + station.detailedCity;
 					}
-					document.getElementById('to-hidden').value = airport.airportCode;
-					console.log("도착지 설정됨: " + airport.airportCode);
+					document.getElementById('to-hidden').value = station.location;
+					console.log("도착지 설정됨: " + station.location);
 					closePopup('arrival');
 				};
-				airportList.appendChild(li);
+				stationList.appendChild(li);
 			});
 		};
 		xhr.send();
 	}
 	document.addEventListener('DOMContentLoaded', function () {
-		const bookingButton = document.getElementById('booking');
-		showContent('booking');
-		document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
-			el.classList.remove('active');
-		});
-		bookingButton.parentNode.classList.add('active');
-		function activateMenu(event) {
-			document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
-				el.classList.remove('active');
-			});
-			event.currentTarget.parentNode.classList.add('active');
-		}
-		document.querySelectorAll('.booking_widget_list li button').forEach(function(button) {
-			button.addEventListener('click', activateMenu);
-		});
-		var tripMethod = "round";
-		var calendar = flatpickr("#date-btn", {
-			locale: "ko",
-			mode: "range",
-			dateFormat: "Y-m-d",
-			showMonths: 2,
-			minDate: "today",
-			onChange: function(selectedDates, dateStr, instance) {
-				if (tripMethod === "round" && selectedDates.length === 2) {
-					document.getElementById('date-btn').value = selectedDates[0].toLocaleDateString() +
-					" ~ " + selectedDates[1].toLocaleDateString();
-					document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
-					document.getElementById('arrivalDate-hidden').value = instance.formatDate(selectedDates[1], "Y-m-d");
-				}
-				else if (tripMethod === "one-way" && selectedDates.length === 1) {
-					document.getElementById('date-btn').value = "가는 날: " + selectedDates[0].toLocaleDateString();
-					document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
-					document.getElementById('arrivalDate-hidden').value = "";
-				}
-			}
-		});
-		var tripMethods = document.querySelectorAll('input[name="t_methods"]');
-		tripMethods.forEach(function (radio) {
-			radio.addEventListener('change', function () {
-				var dateInput = document.getElementById('date-btn');
-				if (this.value === "round") {
-					tripMethod = "round";
-					calendar = flatpickr("#date-btn", {
-						locale: "ko",
-						mode: "range",
-						dateFormat: "Y-m-d",
-						showMonths: 2,
-						defaultDate: "today",
-						minDate: "today",
-						onChange: function (selectedDates, dateStr, instance) {
-							if (selectedDates.length === 2) {
-								dateInput.value = selectedDates[0].toLocaleDateString() + " ~ " + selectedDates[1].toLocaleDateString();
-								document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
-								document.getElementById('arrivalDate-hidden').value = instance.formatDate(selectedDates[1], "Y-m-d");
-							}
-						}
-					});
-					dateInput.placeholder = "가는 날 ~ 오는 날";
-				}
-				else if (this.value === "one-way") {
-					tripMethod = "one-way";
-					calendar = flatpickr("#date-btn", {
-						locale: "ko",
-						mode: "single",
-						dateFormat: "Y-m-d",
-						showMonths: 2,
-						defaultDate: "today",
-						minDate: "today",
-						onChange: function (selectedDates, dateStr, instance) {
-							if (selectedDates.length === 1) {
-								dateInput.value = "가는 날: " + selectedDates[0].toLocaleDateString();
-								document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
-								document.getElementById('arrivalDate-hidden').value = "";
-							}
-						}
-					});
-					dateInput.placeholder = "가는 날";
-				}
-			});
-		});
+	    const bookingButton = document.getElementById('booking');
+	    const dateInput = document.getElementById('date-btn');
+	    let tripMethod = "one-way";
+
+	    if (bookingButton) {
+	        // showContent 함수가 정의되어 있다고 가정
+	        showContent('booking');
+	        bookingButton.parentNode.classList.add('active');
+	    }
+
+	    document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
+	        el.classList.remove('active');
+	    });
+
+	    function activateMenu(event) {
+	        document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
+	            el.classList.remove('active');
+	        });
+	        event.currentTarget.parentNode.classList.add('active');
+	    }
+
+	    document.querySelectorAll('.booking_widget_list li button').forEach(function(button) {
+	        button.addEventListener('click', activateMenu);
+	    });
+
+	    flatpickr("#date-btn", {
+	        locale: "ko",
+	        mode: "single",
+	        dateFormat: "Y-m-d",
+	        showMonths: 2,
+	        defaultDate: "today",
+	        minDate: "today",
+	        onChange: function (selectedDates, dateStr, instance) {
+	            if (selectedDates.length === 1) {
+	                dateInput.value = "가는 날: " + selectedDates[0].toLocaleDateString();
+	                document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
+	                document.getElementById('arrivalDate-hidden').value = "";
+	            }
+	        }
+	    });
+
+	    if (dateInput) {
+	        dateInput.placeholder = "가는 날";
+	    }
 	});
+
+	
 	document.addEventListener('DOMContentLoaded', function() {
 		flatpickr("#date", {
 			locale: "ko",
@@ -905,7 +873,7 @@
 	}
 	function updatePassengerButton() {
 		var adultCount = parseInt(document.getElementById('adult-count').textContent, 10) || 0;
-		var passengerText = '성인 ' + adultCount + '명';
+		var passengerText = adultCount + '명';
 		var additionalPassengers = [];
 		if (additionalPassengers.length > 0) {
 			if (additionalPassengers.length === 1) {
@@ -919,7 +887,6 @@
 		var passengerBtn = document.getElementById('passenger-btn');
 		passengerBtn.innerHTML = '';
 		var icon = document.createElement('i');
-		icon.className = 'fa-regular fa-user';
 		passengerBtn.appendChild(icon);
 		passengerBtn.append(' ' + passengerText);
 		var passengersValue = adultCount + childCount;
@@ -978,18 +945,18 @@
 	window.onload=function() {
 		document.getElementById("txt").focus();
 	}
-	function selectDeparture(airportCode, city) {
-		document.getElementById('from-text').textContent = airport.airportCode;
+	function selectDeparture(location, city) {
+		document.getElementById('from-text').textContent = station.location;
 		document.getElementById('departure-text').textContent = city;
-		document.getElementById('from-hidden').value = airport.airportCode;
-		console.log("출발지 설정: " + airport.airportCode);
+		document.getElementById('from-hidden').value = station.location;
+		console.log("출발지 설정: " + station.location);
 		closePopup('departure');
 	}
-	function selectArrival(airportCode, city) {
-		document.getElementById('to-text').textContent = airportCode;
+	function selectArrival(location, city) {
+		document.getElementById('to-text').textContent = location;
 		document.getElementById('arrival-text').textContent = city;
-		document.getElementById('to-hidden').value = airportCode;
-		console.log("도착지 설정: " + airportCode);
+		document.getElementById('to-hidden').value = location;
+		console.log("도착지 설정: " + location);
 		closePopup('arrival');
 	}
 	function getDayOfWeek(day) {
@@ -1027,11 +994,11 @@
 	<body>
 	<section>
 		<div class="main_content">
-			<div class="air_service">
-				<div class="air_align">
-					<div class="air_contentbox">
-						<div id="air_alert"></div>
-						<div class="air_widget">
+			<div class="train_service">
+				<div class="train_align">
+					<div class="train_contentbox">
+						<div id="train_alert"></div>
+						<div class="train_widget" >
 							<div class="booking_widget_list">
 								<div class="booking_menu">
 									<button type="button" onclick="showContent('booking')" id="booking">
@@ -1040,21 +1007,8 @@
 							</div>
 							<div class="booking_contents">
 								<div class="booking_methods">
-									<div class="b_methodbox">
-										<ul class="booking_types">
-											<li>
-												<button type="button" id="general">예매</button>
-											</li>
-										</ul>
-									</div>
 									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
 									<form action="${pageContext.request.contextPath}/flights/search" method="get">
-										<div id="trip-methods" class="trip-methods">
-											<input type="radio" name="t_methods" value="round" id="round-trip" checked> 
-											<label for="round-trip">왕복</label>
-											<input type="radio" name="t_methods" value="one-way" id="one-way"> 
-											<label for="one-way">편도</label>
-										</div>
 										<div class="quick_booking_aligner">
 											<div id="quick_booking">
 												<button type="button" class="quick_booking_button" onclick="openPopup('departure')">
@@ -1072,12 +1026,12 @@
 											<div id="popup" class="popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('departure')">&times;</span>
 												<h2>출발지 선택</h2>
-												<ul id="airport-list" class="airport-list"></ul>
+												<ul id="station-list" class="station-list"></ul>
 											</div>
 											<div id="arrival-popup" class="popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('arrival')">&times;</span>
 												<h2>도착지 선택</h2>
-												<ul id="arrival-list" class="airport-list"></ul>
+												<ul id="arrival-list" class="station-list"></ul>
 											</div>
 											<input type="hidden" name="departure" id="from-hidden">
 											<input type="hidden" name="arrival" id="to-hidden">
@@ -1091,20 +1045,18 @@
 											<input type="hidden" name="departureDate" id="departureDate-hidden">
 											<input type="hidden" name="arrivalDate" id="arrivalDate-hidden">
 											<div id="passenger_selection">
-												<p>탑승객&nbsp;</p>
+												<p>탑승인원&nbsp;</p>
 												<button type="button" id="passenger-btn" onclick="openPopup('passenger')">
 													<span>인원수</span>
-													<i class="fa-regular fa-user"></i>
 												</button>
 											</div>
 											<input type="hidden" name="passengers" id="passenger-hidden">
 											<input type="hidden" name="adultCount" id="adult-hidden" value="1">
 											<div id="passenger-selection-popup" class="passenger-popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('passenger')">&times;</span>
-												<h2>승객 선택</h2>
+												<h2>탑승인원</h2>
 												<div class="passenger-counter">
 													<div class="passenger-type">
-														<h4>성인</h4>
 														<button type="button" class="decrease-btn" onclick="decrease('adult')">-</button>
 														<span id="adult-count">1</span>
 														<button type="button"class="increase-btn" onclick="increase('adult')">+</button>
