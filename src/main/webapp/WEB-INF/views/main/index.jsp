@@ -16,10 +16,8 @@
 		font-family: Arial, sans-serif;
 		background-color: #f4f4f4;
 	}
-	section {}
 	.main_content {
 		display: none;
-		
 	}
 	.train_service {
 		position: relative;
@@ -50,7 +48,7 @@
 	}
 	.train_widget {
 		position: relative;
-		top: 33rem;
+		top: 35rem;
 		display: block;
 		width: 100%;
 		height: 54px;
@@ -114,13 +112,10 @@
 		justify-content: center;
 		background-color: rgba(0, 91, 172, 0.8);
 		border: 1px solid white;
-		border-radius: 15px;
+		
 		width: 100%;
-		height: 235px;
-		padding-left: 40px;
-		padding-top: 30px;
-		padding-right: 40px;
-		padding-bottom: 10px;
+		height: 180px;
+		
 		z-index: 3;
 	}
 	.booking_methods {
@@ -172,7 +167,7 @@
 		transform: translateY(40%);
 		left: 9px;
 		top: 1px;
-		opacity: 0.6;
+		opalocation: 0.6;
 		background:#fff;
 		z-index:2;
 	}
@@ -235,8 +230,8 @@
 	}
 	.popup {
 		position: absolute;
-		top: 250px;
-		left: 0%;
+		top: 130px;
+		left: 20%;
 		width: 740px;
 		padding: 20px;
 		background-color: white;
@@ -261,7 +256,7 @@
 	.flatpickr-calendar {
 		position: absolute !important;
 		left: 35% !important;
-		top : 560px !important;
+		top : 760px !important;
 		border-radius: 10px !important;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 		font-size: 16px !important;
@@ -271,7 +266,7 @@
 		color: white;
 	}
 	#date_selection, #passenger_selection {
-		margin-right:40px;
+		margin-right: 40px;
 	}
 	#date_selection input, #passenger_selection button {
 		padding-top: 20px;
@@ -327,9 +322,9 @@
 	}
 	.passenger-popup {
 		position: absolute;
-		top: 250px;
-		left: 40%;
-		width: 740px;
+		top: 130px;
+		left: 58%;
+		width: 180px;
 		padding: 20px;
 		background-color: white;
 		border: 1px solid #ccc;
@@ -481,12 +476,12 @@
 		width: 100%;
 		margin: auto;
 		padding: 50px 0;
-		opacity: 0;
+		opalocation: 0;
 		transform: translateY(20px);
-		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		transition: opalocation 0.6s ease-out, transform 0.6s ease-out;
 	}
 	.fade-in-section.visible {
-		opacity: 1;
+		opalocation: 1;
 		transform: translateY(0);
 	}
 	.promotion-section {
@@ -692,17 +687,17 @@
 	});
 	function loadDeparture() {
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/api/flights/stations');
+		xhr.open('GET', '/train/stations');
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				var data = JSON.parse(xhr.responseText);
 				var stationList = document.getElementById('station-list');
 				if (stationList) {
 					stationList.innerHTML = '';
-					var defaultstation = data.find(station => station.location === 'SEL');
-					if (defaultstation) {
-						document.getElementById('from-text').textContent = defaultstation.location;
-						document.getElementById('departure-text').textContent = defaultstation.city + '/' + defaultstation.detailedCity;
+					var defaultStation = data.find(station => station.station_name === 'SEL');
+					if (defaultStation) {
+						document.getElementById('from-text').textContent = defaultStation.station_name;
+						document.getElementById('departure-text').textContent = defaultStation.location + '/' + defaultStation.line;
 					}
 					else {
 						document.getElementById('from-text').textContent = 'SEL';
@@ -711,24 +706,24 @@
 					data.forEach(function(station) {
 						var li = document.createElement('li');
 						var location = document.createElement('span');
-						location.classList.add('station-code');
+						location.classList.add('location');
 						location.textContent = station.location;
 						var stationInfo = document.createElement('span');
-						if (station.detailedCity == 'null' || station.detailedCity == null) {
-							stationInfo.textContent = ' ' + station.city + ', ' + station.country;
+						if (station.line == 'null' || station.line == null) {
+							stationInfo.textContent = ' ' + station.location;
 						}
 						else {
-							stationInfo.textContent = ' ' + station.city + '/' + station.detailedCity + ', ' + station.country;
+							stationInfo.textContent = ' ' + station.location + '/' + station.line;
 						}
 						li.appendChild(location);
 						li.appendChild(stationInfo);
 						li.onclick = function() {
 							document.getElementById('from-text').textContent = station.location;
-							if (station.detailedCity == 'null' || station.detailedCity == null) {
-								document.getElementById('departure-text').textContent = station.city;
+							if (station.line == 'null' || station.line == null) {
+								document.getElementById('departure-text').textContent = station.location;
 							}
 							else {
-								document.getElementById('departure-text').textContent = station.city + '/' + station.detailedCity;
+								document.getElementById('departure-text').textContent = station.location + '/' + station.location;
 							}
 							document.getElementById('from-hidden').value = station.location;
 							closePopup('departure');
@@ -758,7 +753,7 @@
 	});
 	function loadArrival() {
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/api/flights/stations');
+		xhr.open('GET', '/train/stations');
 		xhr.onload = function() {
 			var data = JSON.parse(xhr.responseText);
 			var stationList = document.getElementById('arrival-list');
@@ -766,24 +761,24 @@
 			data.forEach(function(station) {
 				var li = document.createElement('li');
 				var location = document.createElement('span');
-				location.classList.add('station-code');
+				location.classList.add('location');
 				location.textContent = station.location;
 				var stationInfo = document.createElement('span');
-				if (station.detailedCity == 'null' || station.detailedCity == null) {
-					stationInfo.textContent = ' ' + station.city + ', ' + station.country;
+				if (station.location == 'null' || station.location == null) {
+					stationInfo.textContent = ' ' + station.location;
 				}
 				else {
-					stationInfo.textContent = ' ' + station.city + '/' + station.detailedCity + ', ' + station.country;
+					stationInfo.textContent = ' ' + station.location + '/' + station.location;
 				}
 				li.appendChild(location);
 				li.appendChild(stationInfo);
 				li.onclick = function() {
 					document.getElementById('to-text').textContent = station.location;
-					if (station.detailedCity == 'null' || station.detailedCity == null) {
-						document.getElementById('arrival-text').textContent = station.city;
+					if (station.location == 'null' || station.location == null) {
+						document.getElementById('arrival-text').textContent = station.location;
 					}
 					else {
-						document.getElementById('arrival-text').textContent = station.city + '/' + station.detailedCity;
+						document.getElementById('arrival-text').textContent = station.location + '/' + station.location;
 					}
 					document.getElementById('to-hidden').value = station.location;
 					console.log("도착지 설정됨: " + station.location);
@@ -945,18 +940,18 @@
 	window.onload=function() {
 		document.getElementById("txt").focus();
 	}
-	function selectDeparture(location, city) {
+	function selectDeparture(location, location) {
 		document.getElementById('from-text').textContent = station.location;
-		document.getElementById('departure-text').textContent = city;
+		document.getElementById('departure-text').textContent = location;
 		document.getElementById('from-hidden').value = station.location;
 		console.log("출발지 설정: " + station.location);
 		closePopup('departure');
 	}
-	function selectArrival(location, city) {
-		document.getElementById('to-text').textContent = location;
-		document.getElementById('arrival-text').textContent = city;
-		document.getElementById('to-hidden').value = location;
-		console.log("도착지 설정: " + location);
+	function selectArrival(location, location) {
+		document.getElementById('to-text').textContent = station_name;
+		document.getElementById('arrival-text').textContent = station_name;
+		document.getElementById('to-hidden').value = station_name;
+		console.log("도착지 설정: " + station_name);
 		closePopup('arrival');
 	}
 	function getDayOfWeek(day) {
@@ -999,29 +994,26 @@
 					<div class="train_contentbox">
 						<div id="train_alert"></div>
 						<div class="train_widget" >
-							<div class="booking_widget_list">
-								<div class="booking_menu">
-									<button type="button" onclick="showContent('booking')" id="booking">
-									</button>
-								</div>
-							</div>
 							<div class="booking_contents">
 								<div class="booking_methods">
 									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
 									<form action="${pageContext.request.contextPath}/flights/search" method="get">
 										<div class="quick_booking_aligner">
 											<div id="quick_booking">
+												<div class="quick_booking_button">
+												<span>출발</span><p>
 												<button type="button" class="quick_booking_button" onclick="openPopup('departure')">
 													<span id="from-text">From</span> 
 													<span id="departure-text">&nbsp;출발지</span>
 												</button>
-												<button type="button" class="quick_booking_button circle_button">
-													<img src="../static/resources/booking_reverse.png" width="40px" height="40px">
-												</button>
+												</div>
+												<div class="quick_booking_button">
+												<span>도착</span><p>
 												<button type="button" class="quick_booking_button" onclick="openPopup('arrival')">
 													<span id="to-text">To</span> 
 													<span id="arrival-text">&nbsp;도착지</span>
 												</button>
+												</div>
 											</div>
 											<div id="popup" class="popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('departure')">&times;</span>
@@ -1045,7 +1037,7 @@
 											<input type="hidden" name="departureDate" id="departureDate-hidden">
 											<input type="hidden" name="arrivalDate" id="arrivalDate-hidden">
 											<div id="passenger_selection">
-												<p>탑승인원&nbsp;</p>
+												<p>인원&nbsp;</p>
 												<button type="button" id="passenger-btn" onclick="openPopup('passenger')">
 													<span>인원수</span>
 												</button>
@@ -1054,7 +1046,7 @@
 											<input type="hidden" name="adultCount" id="adult-hidden" value="1">
 											<div id="passenger-selection-popup" class="passenger-popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('passenger')">&times;</span>
-												<h2>탑승인원</h2>
+												<h2>인원</h2>
 												<div class="passenger-counter">
 													<div class="passenger-type">
 														<button type="button" class="decrease-btn" onclick="decrease('adult')">-</button>
@@ -1108,6 +1100,6 @@
 				</c:forEach>
 			</div>
 		</div>
-		</section>
+	</section>
 	</body>
 </html>
