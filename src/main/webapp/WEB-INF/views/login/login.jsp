@@ -82,7 +82,7 @@
 <script>
   function findU()
   {
-	open("fUserid","op","width=700,height=600");
+	open("fUserid","op","width=600,height=500");
   }
   
   function findP()

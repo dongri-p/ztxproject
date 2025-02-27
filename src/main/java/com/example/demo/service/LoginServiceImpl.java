@@ -34,22 +34,38 @@ public class LoginServiceImpl implements LoginService {
 	public String loginOk(UserDto udto, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session)
 	{
-		
 		return "redirect:/main/index";
 	}
 	
 	@Override
-	public String logout(HttpSession session) {
-		
+	public String logout(HttpSession session)
+	{	
 		session.invalidate();
 		
 		return "redirect:/main/index";
 	}
 
 	@Override
-	public String fUserid() {
-		
+	public String fUserid()
+	{
 		return "/login/fUserid";
+	}
+	
+	@Override
+	public String getUserid(UserDto udto)
+	{
+		String userid=mapper.getUserid(udto);
+		if(userid == null)
+		{
+			System.out.println("null");
+		}
+		else
+		{
+			System.out.println(userid.length());
+		}
+		System.out.println("userid:"+userid);
+		
+		return userid;
 	}
 	
 

@@ -14,7 +14,10 @@
     	var chk=new XMLHttpRequest();
     	chk.onload=function()
     	{
-    		alert(typeof(chk.responseText));
+    		document.getElementById("uform").style.display="none";
+    		document.getElementById("uform").name.value="";
+    		document.getElementById("uform").email.value="";
+    		document.getElementById("view").innerText="아이디 : "+chk.responseText;
     	}
     	chk.open("get", "getUserid?name="+name+"&email="+email);
     	chk.send();
@@ -30,5 +33,7 @@
       <input type="button" value="아이디 찾기" id="submit" onclick="getUserid(this.form)">
     </div>
   </form>
+  
+  <div id="view">  </div>
 </body>
 </html>

@@ -13,6 +13,7 @@ public interface LoginService {
 	String loginOk(UserDto udto, HttpServletRequest request, HttpServletResponse response, HttpSession session);
 	String logout(HttpSession session);
 	String fUserid();
+	String getUserid(UserDto udto);
 	
 	
 }
