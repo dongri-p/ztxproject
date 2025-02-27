@@ -186,7 +186,7 @@
       <input type="text" name="phone" id="txt" placeholder="전화번호"> 
     </div>
     <div> 
-      <input type="button" value="취 소" id="button" onclick="location.href='../main/index'">
+      <input type="button" value="취 소" id="button" onclick="location='../main/index'">
       <input type="submit" value="회원 가입" id="submit">
     </div>
   </form> 

@@ -3,6 +3,14 @@
 
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
+  <select id="loginOk" resultType="String">
+    select name from user where
+    userid=#{userid} and ( pwd=#{pwd} or oldPwd=#{pwd} )
+  </select>
+  
+  <select id="getUserid" resultType="String">
+     select userid from user where name=#{name} and email=#{email}
+  </select>
 
 
 
