@@ -54,5 +54,17 @@ public class LoginController {
 		return service.getUserid(udto);
 	}
 	
+	@GetMapping("/login/fPassword")
+	public String fPassword()
+	{
+		return service.fPassword();
+	}
+	
+	@GetMapping("/login/getPwd")
+	public @ResponseBody String getPwd(UserDto udto) throws Exception
+	{
+		return service.getPwd(udto);
+	}
+	
 	
 }

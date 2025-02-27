@@ -56,6 +56,41 @@ public class LoginServiceImpl implements LoginService {
 	    
 	    return userid != null ? userid : "존재하지 않는 사용자입니다.";
 	}
+
+	@Override
+	public String fPassword()
+	{
+		return "/login/fPassword";
+	}
+
+	@Override
+	public String getPwd(UserDto udto) throws Exception
+	{
+		String pwd=mapper.getPwd(udto);
+		
+		if(pwd != null)
+		{
+			String newPwd="";
+			
+			for(int i=1;i<5;i++)
+			{
+				int num=(int)(Math.random()*90);
+				
+				num=num+33;
+				
+				newPwd=newPwd+(char)num;
+			}
+			
+			mapper.chgPwd(udto.getUserid(),newPwd);
+			
+			return "임시 비밀번호 : "+newPwd;
+		}
+		else
+		{
+			return "정보가 일치하지 않습니다";
+		}
+		
+	}
 	
 
 }

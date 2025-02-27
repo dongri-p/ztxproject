@@ -89,7 +89,7 @@
     <div>
       <input type="button" value="아이디 찾기" id="submit" onclick="getUserid(this.form)">
     </div>
-</form>
+  </form>
   
   <div id="view">  </div>
 </body>
