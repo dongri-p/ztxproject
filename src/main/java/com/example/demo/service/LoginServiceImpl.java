@@ -52,18 +52,9 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String getUserid(UserDto udto)
 	{
-		String userid=mapper.getUserid(udto);
-		if(userid == null)
-		{
-			System.out.println("null");
-		}
-		else
-		{
-			System.out.println(userid.length());
-		}
-		System.out.println("userid:"+userid);
-		
-		return userid;
+	    String userid = mapper.getUserid(udto);
+	    
+	    return userid != null ? userid : "존재하지 않는 사용자입니다.";
 	}
 	
 
