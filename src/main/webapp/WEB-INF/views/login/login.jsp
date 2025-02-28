@@ -110,7 +110,7 @@
     <div class="footer-links">
       <span onclick="findU()">아이디 찾기</span> |
       <span onclick="findP()">비밀번호 찾기</span> |
-      <span><a href="../user/user">회원가입</a></span>
+      <span onclick="location='../user/user'">회원가입</a></span>
     </div>
   </form>
  </section>
