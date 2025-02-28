@@ -22,15 +22,11 @@ public class RoutesServiceImpl implements RoutesService {
 			@RequestParam(required = false) Integer resnum, Model model) {
 		LocalDate today = LocalDate.now();
 		
-		
-		
-		// 가는날 항공편 검색: seatClass와 passengers가 제공된 경우 필터링
 		List<RoutesDto> departingRoutes=mapper.findRoutes(departure, arrival, departureDate, resnum);
 		
-		// 조회된 가는날 데이터를 모델에 추가
 		model.addAttribute("today", today);
 		model.addAttribute("routes", departingRoutes);
-		model.addAttribute("passengers", resnum);
+		model.addAttribute("resnum", resnum);
 		
 		// 검색 결과를 보여줄 JSP 파일로 이동
 		return "routes/search";

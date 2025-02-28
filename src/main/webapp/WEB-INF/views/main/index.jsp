@@ -221,11 +221,11 @@
 		margin: 0;
 	}
 	#from-text, #to-text {
-		font-size: 42px;
+		font-size: 32px;
 		font-weight: bold;
 	}
 	#departure-text, #arrival-text {
-		font-size: 15px;
+		font-size: 14px;
 		color: #666;
 	}
 	.popup {
@@ -383,15 +383,15 @@
 		left: 10%;
 	}
 	#search_button {
-		width: 150px;
+		width: 140px;
 		background-color: #1f0c59;
 		color: white;
-		padding: 10px 30px;
+		padding: 7px 15px;
 		border: none;
-		border-radius: 15px;
+		border-radius: 25px;
 		cursor: pointer;
 		height: 50px;
-		font-size: 16px;
+		font-size: 14px;
 		margin-left: 10px;
 		margin-bottom:5px;
 	}
@@ -1066,7 +1066,7 @@
 											</div>
 											<div id="search_airline">
 												<button type="submit" id="search_button">
-													<span>검색</span>
+													<span>열차조회</span>
 												</button>
 											</div>
 										</div>

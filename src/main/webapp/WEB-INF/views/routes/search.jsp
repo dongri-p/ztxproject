@@ -145,7 +145,7 @@
                                 <input type="hidden" name="selectedGoingrouteArrival" value="${route.arrival}">
                                 <input type="hidden" name="selectedGoingrouteTime" value="${route.departureTime}">
                                 <input type="hidden" name="selectedGoingrouteArrivalTime" value="${route.arrivalTime}">
-                                <input type="hidden" name="passengers" value="${passengers}">
+                                <input type="hidden" name="resnum" value="${resnum}">
                                 <button type="submit" class="select-flight-btn">선택</button>
                             </form>
                         </td>
