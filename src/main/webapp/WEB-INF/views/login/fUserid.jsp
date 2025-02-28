@@ -85,13 +85,13 @@
 	    
 	    if (!name || !email)
 	    {
-	        alert("이름과 이메일을 입력해주세요.");
+	        alert("빈칸이 있습니다.");
 	        return;
 	      }
 
 	    var chk = new XMLHttpRequest();
 	    chk.onload = function () {
-	        document.getElementById("uform").style.visibility="hidden";
+	        document.getElementById("uform").style.display="none";
 	        document.getElementById("uform").name.value ="";
 	        document.getElementById("uform").email.value="";
 	        document.getElementById("view").innerText = "아이디 : " + (chk.responseText.trim() || "존재하지 않는 사용자입니다.");
@@ -111,6 +111,6 @@
     </div>
   </form>
   
-  <div id="view">  </div>
+  <div id="view"></div>
 </body>
 </html>
