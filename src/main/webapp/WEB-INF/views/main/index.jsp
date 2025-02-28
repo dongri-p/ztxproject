@@ -112,8 +112,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background-color: rgba(0, 91, 172, 0.8);
-		border: 1px solid white;
+		background-color: rgba(7, 142, 185, 0.8);
+		border: none;
 		width: 100%;
 		height: 130px;
 		z-index: 3;
@@ -182,6 +182,24 @@
 		height: 80px;
 		padding:0px;
 	}
+	.qbbtitle {
+		display: inline-block;
+		width: 280px;
+		justify-content: space-between;
+		font-size: 18px;
+		font-weight: 600;
+		color: white;
+	}
+	.qbbdep {
+		display: inline-block;
+		width: 130px;
+		text-align: center;
+	}
+	.qbbarr {
+		display: inline-block;
+		width: 130px;
+		text-align: center;
+	}
 	.quick_booking_button {
 		flex: 1;
 		text-align: center;
@@ -193,19 +211,10 @@
 		font-size: 16px;
 		color: #333;
 		border-radius: 15px;
+		height: 70px;
 	}
 	.quick_booking_button span {
 		display:block;
-	}
-	.circle_button {
-		flex-grow: 1;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		padding: 0px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 	}
 	.quick_booking_button:first-child {
 		flex-grow: 2;
@@ -259,6 +268,7 @@
 		border-radius: 10px !important;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 		font-size: 16px !important;
+		font-weight: 500;
 	}
 	p {
 		font-size: 15px;
@@ -384,14 +394,15 @@
 	}
 	#search_button {
 		width: 140px;
-		background-color: #1f0c59;
-		color: white;
-		padding: 7px 15px;
+		background-color: white;
+		color: #078eb9;
+		padding: 5px 10px;
 		border: none;
 		border-radius: 25px;
 		cursor: pointer;
 		height: 50px;
-		font-size: 14px;
+		font-size: 18px;
+		font-weight: 600;
 		margin-left: 10px;
 		margin-bottom:5px;
 	}
@@ -1009,17 +1020,19 @@
 								<div class="booking_methods">
 									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
 									<form action="${pageContext.request.contextPath}/routes/search" method="get">
+										<div class="qbbtitle">
+											<div class="qbbdep">출발</div>
+											<div class="qbbarr">도착</div>
+										</div>
 										<div class="quick_booking_aligner">
 											<div id="quick_booking">
 												<div class="quick_booking_button">
-												<span>출발</span><p>
 												<button type="button" class="quick_booking_button" onclick="openPopup('departure')">
 													<span id="from-text">From</span> 
 													<span id="departure-text">&nbsp;출발지</span>
 												</button>
 												</div>
 												<div class="quick_booking_button">
-												<span>도착</span><p>
 												<button type="button" class="quick_booking_button" onclick="openPopup('arrival')">
 													<span id="to-text">To</span> 
 													<span id="arrival-text">&nbsp;도착지</span>
