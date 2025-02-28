@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RoutesMapper">
+	<select id="findRoutes" resultType="com.example.demo.dto.RoutesDto">
+    SELECT * from routes WHERE departure=#{departure} AND arrival=#{arrival}
+    
+    <!-- 출발일 필터링 -->
+    <if test="departureDate != null and departureDate != ''">
+        AND DATE(departure_time) = #{departureDate}
+    </if>
+    
+    <!-- 좌석 가용성 필터링 -->
+    <if test="resnum != null">
+        AND seat > #{resnum}
+    </if>
+</select>
+
+
+</mapper>
+
+
+
+

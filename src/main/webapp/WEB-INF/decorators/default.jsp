@@ -546,14 +546,14 @@
 							<ul class="menu">
 								<li><a href="../reserve/reservation">예약</a></li>
 								<li><a href="../reserve/reserveInfo">예약 조회</a></li>
-								<li><a href="../reserve/flightList">운항정보</a></li>
+								<li><a href="../reserve/routeList">운항정보</a></li>
 							</ul>
 						</li>
 						<li id="main2" onmouseover="viewMenu(1)" onmouseout="hideMenu(1)">
 							<a href="../guide/checkinGuide"><span class="iconb">🚄</span>관광열차</a>
 							<ul class="menu">
-								<li><a href="../guide/checkinGuide">체크인 안내</a></li>
-								<li><a href="../guide/seatGuide">좌석배정 안내</a></li>
+								<li><a href="../guide/boardingGuide">탑승 안내</a></li>
+								<li><a href="../guide/seatGuide">좌석 안내</a></li>
 								<li><a href="../guide/baggageGuide">수하물 안내</a></li>
 							</ul>
 						</li>

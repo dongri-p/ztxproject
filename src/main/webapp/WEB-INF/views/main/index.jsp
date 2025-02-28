@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,9 +23,10 @@
 	.train_service {
 		position: relative;
 		background-image: url('../static/resources/t0.jpg');
+		background-position: bottom;
 		background-size: cover;
 		width: 100%;
-		height: 800px;
+		height: 700px;
 		background-repeat: no-repeat;
 		z-index: 2;
 		margin: auto;
@@ -39,7 +41,7 @@
 		top: 35.3rm;
 		left: 0;
 		width: 100%;
-		height: 70%;
+		height: 50%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -112,10 +114,8 @@
 		justify-content: center;
 		background-color: rgba(0, 91, 172, 0.8);
 		border: 1px solid white;
-		
 		width: 100%;
-		height: 180px;
-		
+		height: 130px;
 		z-index: 3;
 	}
 	.booking_methods {
@@ -124,7 +124,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 170px;
+		height: 130px;
 	}
 	.b_methodbox {
 		float: left;
@@ -251,7 +251,6 @@
 	    justify-content: center;
 	    align-items: center;
 	    width: 100%;
-	    margin-top: 20px;
 	}
 	.flatpickr-calendar {
 		position: absolute !important;
@@ -332,7 +331,7 @@
 		z-index: 1000;
 		border-radius: 15px;
 	}
-	.passenger-counter {
+	.passenger-er {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
@@ -834,7 +833,6 @@
 	            if (selectedDates.length === 1) {
 	                dateInput.value = "가는 날: " + selectedDates[0].toLocaleDateString();
 	                document.getElementById('departureDate-hidden').value = instance.formatDate(selectedDates[0], "Y-m-d");
-	                document.getElementById('arrivalDate-hidden').value = "";
 	            }
 	        }
 	    });
@@ -875,8 +873,8 @@
 		}
 	}
 	function updatePassengerButton() {
-		var adultCount = parseInt(document.getElementById('adult-count').textContent, 10) || 0;
-		var passengerText = adultCount + '명';
+		var resnum = parseInt(document.getElementById('resnum').textContent, 10) || 0;
+		var passengerText = resnum + '명';
 		var additionalPassengers = [];
 		if (additionalPassengers.length > 0) {
 			if (additionalPassengers.length === 1) {
@@ -892,25 +890,30 @@
 		var icon = document.createElement('i');
 		passengerBtn.appendChild(icon);
 		passengerBtn.append(' ' + passengerText);
-		var passengersValue = adultCount + childCount;
-		document.getElementById('passenger-hidden').value = passengersValue;
-		document.getElementById('adult-hidden').value = adultCount;
+		var passengersValue = resnum;
+		document.getElementById('resnum-hidden').value = resnum;
 	}
 	document.addEventListener('DOMContentLoaded', function() {
 		updatePassengerButton();
 	});
 	function increase(type) {
-		var adultCount = parseInt(document.getElementById('adult-count').textContent);
-		var totalPassengers = adultCount;
-		if (type === 'adult' && totalPassengers < 10) {
-			document.getElementById('adult-count').textContent = adultCount + 1;
+		var resnum = parseInt(document.getElementById('resnum').textContent);
+		var totalPassengers = resnum;
+		if (type === 'resnum' && totalPassengers < 10) {
+			resnum += 1;
+	        document.getElementById('resnum').textContent = resnum;
+	        // 여기서 resnum-hidden의 value 값을 업데이트
+	        document.getElementById('resnum-hidden').value = resnum;
 		}
 		updatePassengerButton();
 	}
 	function decrease(type) {
-		var adultCount = parseInt(document.getElementById('adult-count').textContent);
-		if (type === 'adult' && adultCount > 0) {
-			document.getElementById('adult-count').textContent = adultCount - 1;
+		var resnum = parseInt(document.getElementById('resnum').textContent);
+		if (type === 'resnum' && resnum > 1) {
+			resnum -= 1;
+	        document.getElementById('resnum').textContent = resnum;
+	        // 여기서 resnum-hidden의 value 값을 업데이트
+	        document.getElementById('resnum-hidden').value = resnum;
 		}
 		updatePassengerButton();
 	}
@@ -949,9 +952,9 @@
 		document.getElementById("txt").focus();
 	}
 	function selectDeparture(station_name, station_name) {
-		document.getElementById('from-text').textContent = station;
-		document.getElementById('departure-text').textContent = station;
-		document.getElementById('from-hidden').value = station.station_name;
+		document.getElementById('from-text').textContent = station_name;
+		document.getElementById('departure-text').textContent = station_name;
+		document.getElementById('from-hidden').value = station_name;
 		console.log("출발지 설정: " + station_name);
 		closePopup('departure');
 	}
@@ -1005,7 +1008,7 @@
 							<div class="booking_contents">
 								<div class="booking_methods">
 									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
-									<form action="${pageContext.request.contextPath}/flights/search" method="get">
+									<form action="${pageContext.request.contextPath}/routes/search" method="get">
 										<div class="quick_booking_aligner">
 											<div id="quick_booking">
 												<div class="quick_booking_button">
@@ -1043,23 +1046,21 @@
 												</div>
 											</div>
 											<input type="hidden" name="departureDate" id="departureDate-hidden">
-											<input type="hidden" name="arrivalDate" id="arrivalDate-hidden">
 											<div id="passenger_selection">
 												<p>인원&nbsp;</p>
 												<button type="button" id="passenger-btn" onclick="openPopup('passenger')">
 													<span>인원수</span>
 												</button>
 											</div>
-											<input type="hidden" name="passengers" id="passenger-hidden">
-											<input type="hidden" name="adultCount" id="adult-hidden" value="1">
+											<input type="hidden" name="resnum" id="resnum-hidden" value="1">
 											<div id="passenger-selection-popup" class="passenger-popup" style="display: none;">
 												<span class="close-btn" onclick="closePopup('passenger')">&times;</span>
 												<h2>인원</h2>
-												<div class="passenger-counter">
+												<div class="passenger-er">
 													<div class="passenger-type">
-														<button type="button" class="decrease-btn" onclick="decrease('adult')">-</button>
-														<span id="adult-count">1</span>
-														<button type="button"class="increase-btn" onclick="increase('adult')">+</button>
+														<button type="button" class="decrease-btn" onclick="decrease('resnum')">-</button>
+														<span id="resnum">1</span>
+														<button type="button"class="increase-btn" onclick="increase('resnum')">+</button>
 													</div>
 												</div>
 											</div>
