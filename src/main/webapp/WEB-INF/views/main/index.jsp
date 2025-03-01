@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 	body {
 		margin: 0;
@@ -53,59 +52,13 @@
 		top: 35rem;
 		display: block;
 		width: 100%;
-		height: 54px;
+		
 		content: "";
 		z-index: 2;
 		margin: auto;
 	}
-	.booking_widget_list {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		height: 40px;
-		position: relative;
-	}
-	.booking_widget_list li {
-		flex: 1;
-		text-align: center;
-		border: 1px solid #65728a;
-		padding-block: 15px;
-		margin: 0.5px;
-		background-color: #65728a;
-		z-index: 2;
-		height: 65px;
-	}
-	.booking_widget_list li.active {
-		background-color: rgba(0, 91, 172, 0.5);
-		border: 3px solid white;
-	}
-	.booking_widget_list li.active span {
-		background-color: rgba(0, 91, 172, 0.5);
-		font-weight: 900;
-	}
 	#booking_menu {
 		display: inline-block;
-	}
-	.booking_widget_list button {
-		width: 100%;
-		height: 100%;
-		background: none;
-		border: none;
-		font-size: 16px;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.booking_widget_list button span {
-		font-size: 16px;
-		color: white;
-		position: relative;
-		top: -5px;
 	}
 	.booking_contents {
 		display: flex;
@@ -115,7 +68,7 @@
 		background-color: rgba(7, 142, 185, 0.8);
 		border: none;
 		width: 100%;
-		height: 130px;
+		height: 120px;
 		z-index: 3;
 	}
 	.booking_methods {
@@ -124,7 +77,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 130px;
+		height: 120px;
 	}
 	.b_methodbox {
 		float: left;
@@ -172,39 +125,47 @@
 		z-index:2;
 	}
 	#quick_booking {
-		margin-left:20px;
-		margin-right:40px;
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
 		width: 280px;
-		height: 80px;
-		padding:0px;
+		height: 100px;
+		margin-right: 20px;
 	}
 	.qbbtitle {
-		display: inline-block;
+		display: block;
 		width: 280px;
 		justify-content: space-between;
 		font-size: 18px;
 		font-weight: 600;
 		color: white;
 	}
+	.quickbook {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		align-self: flex-start;
+		width: 280px;
+		height: 80px;
+		padding:0px;	
+	}
 	.qbbdep {
 		display: inline-block;
-		width: 130px;
+		width: 137px;
 		text-align: center;
 	}
 	.qbbarr {
 		display: inline-block;
-		width: 130px;
+		width: 137px;
 		text-align: center;
 	}
 	.quick_booking_button {
 		flex: 1;
 		text-align: center;
 		margin: 0 5px;
-		padding: 0px;
+		padding: 5px;
 		border: none;
 		background-color: white;
 		cursor: pointer;
@@ -406,10 +367,9 @@
 		margin-left: 10px;
 		margin-bottom:5px;
 	}
-	#search_airline {
+	#search {
 		display: flex;
 		justify-content: flex-start;
-		align-self: flex-end;
 		align-items: center;
 	}
 	#station-list li, #arrival-list li {
@@ -473,9 +433,6 @@
 	}
 	.input-group input:focus {
 		border-color: #1f0c59;
-	}
-	form {
-		margin-top:20px;
 	}
 	h3 {
 		margin-bottom: 20px;
@@ -644,17 +601,6 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/l10n/ko.js"></script>
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		const generalButton = document.getElementById('general');
-		const mileageButton = document.getElementById('mileage');
-		generalButton.classList.add('active-button');
-		generalButton.addEventListener('click', function() {
-			generalButton.classList.add('active-button');
-			generalButton.classList.add('active-button:hover');
-			mileageButton.classList.remove('active-button');
-			mileageButton.classList.remove('active-button:hover');
-		});
-	});
 	function openPopup(type) {
 		closeAllPopups();
 		if (type === 'passenger') {
@@ -778,8 +724,6 @@
 			var stationList = document.getElementById('arrival-list');
 			stationList.innerHTML = '';
 			data.forEach(function(station, index) {
-				console.log(`역 ${index + 1}:`, station);
-				
 				var li = document.createElement('li');
 				var location = document.createElement('span');
 				location.classList.add('location');
@@ -797,7 +741,6 @@
 					document.getElementById('to-text').textContent = station.station_name;
 					document.getElementById('arrival-text').textContent = station.location;
 					document.getElementById('to-hidden').value = station.station_name;
-					console.log("도착지 설정됨: " + station.location);
 					closePopup('arrival');
 				};
 				
@@ -817,22 +760,7 @@
 	        showContent('booking');
 	        bookingButton.parentNode.classList.add('active');
 	    }
-
-	    document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
-	        el.classList.remove('active');
-	    });
-
-	    function activateMenu(event) {
-	        document.querySelectorAll('.booking_widget_list li').forEach(function(el) {
-	            el.classList.remove('active');
-	        });
-	        event.currentTarget.parentNode.classList.add('active');
-	    }
-
-	    document.querySelectorAll('.booking_widget_list li button').forEach(function(button) {
-	        button.addEventListener('click', activateMenu);
-	    });
-
+	    
 	    flatpickr("#date-btn", {
 	        locale: "ko",
 	        mode: "single",
@@ -847,22 +775,10 @@
 	            }
 	        }
 	    });
-
+	    
 	    if (dateInput) {
 	        dateInput.placeholder = "가는 날";
 	    }
-	});
-
-	
-	document.addEventListener('DOMContentLoaded', function() {
-		flatpickr("#date", {
-			locale: "ko",
-			dateFormat: "Y-m-d",
-			allowInput: true,
-			showMonths: 2,
-			maxDate: new Date().fp_incr(365),
-			minDate: "today"
-		});
 	});
 	function showContent(type) {
 		document.querySelectorAll('.booking_contents').forEach(function(el) {
@@ -959,21 +875,16 @@
 			$('.main_content').show();
 		}
 	});
-	window.onload=function() {
-		document.getElementById("txt").focus();
-	}
 	function selectDeparture(station_name, station_name) {
 		document.getElementById('from-text').textContent = station_name;
 		document.getElementById('departure-text').textContent = station_name;
 		document.getElementById('from-hidden').value = station_name;
-		console.log("출발지 설정: " + station_name);
 		closePopup('departure');
 	}
 	function selectArrival(station_name, station_name) {
 		document.getElementById('to-text').textContent = station_name;
 		document.getElementById('arrival-text').textContent = station_name;
 		document.getElementById('to-hidden').value = station_name;
-		console.log("도착지 설정: " + station_name);
 		closePopup('arrival');
 	}
 	function getDayOfWeek(day) {
@@ -995,7 +906,7 @@
 			var option = document.createElement('option');
 			option.value = dateValue;
 			option.textContent = dateString;
-			select.appendChild(option);
+			
 		}
 	}
 	document.addEventListener('DOMContentLoaded', function() {
@@ -1020,23 +931,21 @@
 								<div class="booking_methods">
 									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
 									<form action="${pageContext.request.contextPath}/routes/search" method="get">
-										<div class="qbbtitle">
-											<div class="qbbdep">출발</div>
-											<div class="qbbarr">도착</div>
-										</div>
 										<div class="quick_booking_aligner">
 											<div id="quick_booking">
-												<div class="quick_booking_button">
-												<button type="button" class="quick_booking_button" onclick="openPopup('departure')">
-													<span id="from-text">From</span> 
-													<span id="departure-text">&nbsp;출발지</span>
-												</button>
+												<div class="qbbtitle">
+													<div class="qbbdep">출발</div>
+													<div class="qbbarr">도착</div>
 												</div>
-												<div class="quick_booking_button">
-												<button type="button" class="quick_booking_button" onclick="openPopup('arrival')">
-													<span id="to-text">To</span> 
-													<span id="arrival-text">&nbsp;도착지</span>
-												</button>
+												<div class="quickbook">
+													<div class="quick_booking_button" onclick="openPopup('departure')">
+														<span id="from-text">From</span> 
+														<span id="departure-text">&nbsp;출발지</span>
+													</div>
+													<div class="quick_booking_button" onclick="openPopup('arrival')">
+														<span id="to-text">TO</span> 
+														<span id="arrival-text">&nbsp;도착지</span>
+													</div>
 												</div>
 											</div>
 											<div id="popup" class="popup" style="display: none;">
@@ -1077,7 +986,7 @@
 													</div>
 												</div>
 											</div>
-											<div id="search_airline">
+											<div id="search">
 												<button type="submit" id="search_button">
 													<span>열차조회</span>
 												</button>

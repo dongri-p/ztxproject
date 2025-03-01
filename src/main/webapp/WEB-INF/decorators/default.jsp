@@ -116,15 +116,22 @@
 		height: 50px;
 		background: #083B82;
 		align-items: center;
+	}
+	#logocontainer {
+		margin: auto;
+		max-width: 1200px;
+		min-width: 1000px;
+		height: 50px;
+		background: none;
+		align-items: left;
 		display: flex;
 	}
-	#logo > #logoimg {
-		margin-left: 15%;
+	#logo > #logocontainer > #logoimg {
 		width: 50px;
 		height: 50px;
 		background: #083B82;
 	}
-	#logo > #logotext {
+	#logo > #logocontainer > #logotext {
 		height: 50px;
 		width: 200px;
 		background: #083B82;
@@ -526,15 +533,17 @@
 			</div>
 		</div>
 		<div id="logo">
-			<div id="logoimg">
-				<a href="../main/index">
-					<img src="../static/resources/train(white).png" height="50px" align="middle">
-				</a>
-			</div>
-			<div id="logotext">
-				<a href="../main/index">
-					Let's GGoRail
-				</a>
+			<div id="logocontainer">
+				<div id="logoimg">
+					<a href="../main/index">
+						<img src="../static/resources/train(white).png" height="50px" align="middle">
+					</a>
+				</div>
+				<div id="logotext">
+					<a href="../main/index">
+						Let's GGoRail
+					</a>
+				</div>
 			</div>
 		</div>
 		<div id="section2">
@@ -546,11 +555,11 @@
 							<ul class="menu">
 								<li><a href="../reserve/reservation">예약</a></li>
 								<li><a href="../reserve/reserveInfo">예약 조회</a></li>
-								<li><a href="../reserve/routeList">운항정보</a></li>
+								<li><a href="../reserve/routeList">운행 정보</a></li>
 							</ul>
 						</li>
 						<li id="main2" onmouseover="viewMenu(1)" onmouseout="hideMenu(1)">
-							<a href="../guide/checkinGuide"><span class="iconb">🚄</span>관광열차</a>
+							<a href="../guide/checkinGuide"><span class="iconb">🚄</span>철도역·열차</a>
 							<ul class="menu">
 								<li><a href="../guide/boardingGuide">탑승 안내</a></li>
 								<li><a href="../guide/seatGuide">좌석 안내</a></li>
@@ -558,26 +567,25 @@
 							</ul>
 						</li>
 						<li id="main3" onmouseover="viewMenu(2)" onmouseout="hideMenu(2)">
-							<a href="../guide/travel"><span class="iconc">🚄</span>자유여행</a>
+							<a href="../guide/travel"><span class="iconc">🚄</span>여행상품</a>
 							<ul class="menu">
-								<li><a href="">국내 여행</a></li>
-								<li><a href="">해외 여행</a></li>
+								<li><a href="">여행 명소</a></li>
 								<li><a href="">테마 여행</a></li>
 							</ul>
 						</li>
 						<li id="main4" onmouseover="viewMenu(3)" onmouseout="hideMenu(3)">
-							<a href="../guide/travel"><span class="icond">🚄</span>여행상품</a>
+							<a href="../guide/travel"><span class="icond">🚄</span>고객서비스</a>
 							<ul class="menu">
-								<li><a href="">국내 여행</a></li>
-								<li><a href="">해외 여행</a></li>
-								<li><a href="">테마 여행</a></li>
+								<li><a href="">고객센터</a></li>
+								<li><a href="">유실물</a></li>
+								<li><a href="">열차 서비스</a></li>
 							</ul>
 						</li>
 						<li id="main5" onmouseover="viewMenu(4)" onmouseout="hideMenu(4)">
-							<span class="icone">🚄</span>이용안내
+							<span class="icone">🚄</span>꼬레일 멤버십
 							<ul class="menu">
-								<li><a href="https://www.agoda.com/" target="_blank" rel="noopener noreferrer"> 호텔 </a></li>
-								<li><a href="https://www.skyscanner.co.kr/car-hire" target="_blank" rel="noopener noreferrer"> 렌터카 </a></li>
+								<li><a href="">멤버십 소개</a></li>
+								<li><a href="">멤버십 가입신청</a></li>
 							</ul>
 						</li>
 					</ul>
