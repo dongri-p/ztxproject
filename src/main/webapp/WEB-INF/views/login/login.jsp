@@ -21,6 +21,9 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+  section div {
+    margin-top:10px;
+  }
   h3 {
     text-align: center;
     color: #333;
