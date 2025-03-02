@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
 	public String userOk(UserDto udto) {
 		
 		Integer u=mapper.useridCheck(udto.getUserid());
+		
 		if(u == 0)
 		{
 			mapper.userOk(udto);
