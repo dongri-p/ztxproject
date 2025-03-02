@@ -6,52 +6,55 @@
 <title>회원가입</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    font-family:Arial, sans-serif;
+    background-color:#f4f4f4;
+    margin:0;
+    padding:0;
   }
   section {
-    max-width: 500px;
-    margin: 50px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width:500px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  section div {
+    margin-top:10px;
   }
   h3 {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align:center;
+    margin-bottom:20px;
   }
   input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border:1px solid #ccc;
+    border-radius:4px;
+    font-size:16px;
+    box-sizing:border-box;
   }
   input[type="submit"], input[type="button"] {
-    width: 49%;
-    cursor: pointer;
-    border: none;
-    padding: 12px;
+    width:49%;
+    cursor:pointer;
+    border:none;
+    padding:12px;
   }
   #submit {
-    background-color: #083B82;
-    color: white;
+    background-color:#083B82;
+    color:white;
   }
   #submit:hover {
-    background-color: #45a049;
+    background-color:#45a049;
   }
   .email-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    display:flex;
+    align-items:center;
+    gap:5px;
   }
   .email-container input {
-    flex: 1;
+    flex:1;
   }
   .email-container select {
     width:44%;
