@@ -14,7 +14,10 @@
   <select id="userView" resultType="com.example.demo.dto.UserDto">
     select * from user where userid=#{userid}
   </select>
-	
+
+  <update id="chgEmail">
+    update user set email=#{email} where userid=#{userid}
+  </update>
 	
 	
 </mapper>

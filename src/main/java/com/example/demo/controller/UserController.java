@@ -45,4 +45,10 @@ public class UserController {
 		return service.userView(session, model);
 	}
 	
+	@GetMapping("/user/chgEmail")
+	public String chgEmail(HttpSession session, HttpServletRequest request)
+	{
+		return service.chgEmail(session, request);
+	}
+	
 }

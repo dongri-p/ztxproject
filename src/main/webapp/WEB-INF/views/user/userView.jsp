@@ -11,7 +11,18 @@
   <script>
     function chgEmail()
     {
-    	var email=document.getElementById("email")
+    	var email=document.getElementById("email").value;
+    	
+    	var chk=new XMLHttpRequest();
+    	chk.onload=function()
+    	{
+    		if(chk.responseText == "0")
+    		{
+    			location="../login/login";
+    		}
+    	}
+    	chk.open("get", "chgEmail?email="+email);
+    	chk.send();
     }
   </script>
 </head>

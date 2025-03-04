@@ -66,5 +66,23 @@ public class UserServiceImpl implements UserService {
 			return "/user/userView";
 		}
 	}
+
+	@Override
+	public String chgEmail(HttpSession session, HttpServletRequest request)
+	{
+		if(session.getAttribute("userid") == null)
+		{
+			return "0";
+		}
+		else
+		{
+			String email=request.getParameter("email");
+			String userid=session.getAttribute("userid").toString();
+			
+			mapper.chgEmail(email, userid);
+			
+			return "1";
+		}
+	}
 	
 }
