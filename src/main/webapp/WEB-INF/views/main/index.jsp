@@ -131,14 +131,13 @@
 		align-items: center;
 		align-self: flex-start;
 		width: 280px;
-		height: 100px;
 		margin-right: 20px;
 	}
 	.qbbtitle {
 		display: block;
 		width: 280px;
 		justify-content: space-between;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 600;
 		color: white;
 	}
@@ -148,7 +147,6 @@
 		align-items: center;
 		align-self: flex-start;
 		width: 280px;
-		height: 80px;
 		padding:0px;	
 	}
 	.qbbdep {
@@ -167,12 +165,11 @@
 		margin: 0 5px;
 		padding: 5px;
 		border: none;
-		background-color: white;
+		background: none;
 		cursor: pointer;
 		font-size: 16px;
-		color: #333;
+		color: white;
 		border-radius: 15px;
-		height: 70px;
 	}
 	.quick_booking_button span {
 		display:block;
@@ -186,17 +183,13 @@
 	.quick_booking_button:hover {
 		background-color: #ddd;
 	}
-	#from-text, #departure-text {
+	#from-text {
 		display: block;
 		margin: 0;
 	}
 	#from-text, #to-text {
-		font-size: 32px;
+		font-size: 22px;
 		font-weight: bold;
-	}
-	#departure-text, #arrival-text {
-		font-size: 14px;
-		color: #666;
 	}
 	.popup {
 		position: absolute;
@@ -233,6 +226,7 @@
 	}
 	p {
 		font-size: 15px;
+		font-weight: 600;
 		color: white;
 	}
 	#date_selection, #passenger_selection {
@@ -650,14 +644,12 @@
 				var stationList = document.getElementById('station-list');
 				if (stationList) {
 					stationList.innerHTML = '';
-					var defaultStation = data.find(station => station.station_name === 'SEL');
+					var defaultStation = data.find(station => station.station_name === '서울');
 					if (defaultStation) {
 						document.getElementById('from-text').textContent = defaultStation.station_name;
-						document.getElementById('departure-text').textContent = defaultStation.station_name;
 					}
 					else {
-						document.getElementById('from-text').textContent = 'SEL';
-						document.getElementById('departure-text').textContent = '서울';
+						document.getElementById('from-text').textContent = '서울';
 					}
 					data.forEach(function(station) {
 						var li = document.createElement('li');
@@ -675,12 +667,6 @@
 						li.appendChild(stationInfo);
 						li.onclick = function() {
 							document.getElementById('from-text').textContent = station.station_name;
-							if (station.line == 'null' || station.line == null) {
-								document.getElementById('departure-text').textContent = station.location;
-							}
-							else {
-								document.getElementById('departure-text').textContent = station.location;
-							}
 							document.getElementById('from-hidden').value = station.station_name;
 							closePopup('departure');
 						};
@@ -693,14 +679,12 @@
 			}
 			else if (xhr.readyState === 4 && xhr.status !== 200) {
 				console.error('Failed to load stations data. Status: ' + xhr.status);
-				document.getElementById('from-text').textContent = 'SEL';
-				document.getElementById('departure-text').textContent = '서울';
+				document.getElementById('from-text').textContent = '서울';
 			}
 		};
 		xhr.onerror = function() {
 			console.error('Request failed');
-			document.getElementById('from-text').textContent = 'SEL';
-			document.getElementById('departure-text').textContent = '서울';
+			document.getElementById('from-text').textContent = '서울';
 		};
 		xhr.send();
 	}
@@ -730,16 +714,13 @@
 				
 				// 올바른 키명을 확인 후 적용
 				location.textContent = station.station_name +' / ';
-				
 				var stationInfo = document.createElement('span');
 				stationInfo.textContent = (station.location && station.location !== "null") ? station.location : "정보 없음";
-				
 				li.appendChild(location);
 				li.appendChild(stationInfo);
 				
 				li.onclick = function() {
 					document.getElementById('to-text').textContent = station.station_name;
-					document.getElementById('arrival-text').textContent = station.location;
 					document.getElementById('to-hidden').value = station.station_name;
 					closePopup('arrival');
 				};
@@ -877,13 +858,11 @@
 	});
 	function selectDeparture(station_name, station_name) {
 		document.getElementById('from-text').textContent = station_name;
-		document.getElementById('departure-text').textContent = station_name;
 		document.getElementById('from-hidden').value = station_name;
 		closePopup('departure');
 	}
 	function selectArrival(station_name, station_name) {
 		document.getElementById('to-text').textContent = station_name;
-		document.getElementById('arrival-text').textContent = station_name;
 		document.getElementById('to-hidden').value = station_name;
 		closePopup('arrival');
 	}
@@ -906,7 +885,6 @@
 			var option = document.createElement('option');
 			option.value = dateValue;
 			option.textContent = dateString;
-			
 		}
 	}
 	document.addEventListener('DOMContentLoaded', function() {
@@ -940,11 +918,9 @@
 												<div class="quickbook">
 													<div class="quick_booking_button" onclick="openPopup('departure')">
 														<span id="from-text">From</span> 
-														<span id="departure-text">&nbsp;출발지</span>
 													</div>
 													<div class="quick_booking_button" onclick="openPopup('arrival')">
-														<span id="to-text">TO</span> 
-														<span id="arrival-text">&nbsp;도착지</span>
+														<span id="to-text">부산</span> 
 													</div>
 												</div>
 											</div>

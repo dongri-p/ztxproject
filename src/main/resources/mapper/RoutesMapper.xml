@@ -2,20 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.RoutesMapper">
 	<select id="findRoutes" resultType="com.example.demo.dto.RoutesDto">
-    SELECT * from routes where seat > #{resnum}
-    <if test="departure != null and departure != ''">
+		SELECT * from routes where seat > #{resnum}
+		<if test="departure != null and departure != ''">
 		and departure=#{departure}
-    </if>
-    <if test="arrival != null and arrival != ''">
-		 AND arrival=#{arrival}
-    </if>
-    <!-- 출발일 필터링 -->
-    <if test="departureDate != null and departureDate != ''">
-        AND DATE(departure_time) = #{departureDate}
-    </if>
-</select>
-
-
+		</if>
+		<if test="arrival != null and arrival != ''">
+		AND arrival=#{arrival}
+		</if>
+		<if test="departureDate != null and departureDate != ''">
+		AND DATE(departure_time) = #{departureDate}
+		</if>
+	</select>
+	<select id="getAvailableSeats" parameterType="int" resultType="com.example.demo.dto.SeatDto">
+		SELECT * FROM trainseat
+		WHERE routeId = #{routeId} AND reserv = 0;
+	</select>
+	
+	
 </mapper>
 
 
