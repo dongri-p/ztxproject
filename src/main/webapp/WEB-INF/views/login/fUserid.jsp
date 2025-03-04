@@ -85,7 +85,7 @@
 	    
 	    if (!name || !email)
 	    {
-	        alert("빈칸이 있습니다.");
+	        alert("빈칸이 있습니다	.");
 	        return;
 	      }
 
