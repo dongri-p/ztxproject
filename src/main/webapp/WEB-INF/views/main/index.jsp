@@ -130,12 +130,12 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
-		width: 280px;
+		width: 300px;
 		margin-right: 20px;
 	}
 	.qbbtitle {
 		display: block;
-		width: 280px;
+		width: 300px;
 		justify-content: space-between;
 		font-size: 16px;
 		font-weight: 600;
@@ -146,17 +146,17 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
-		width: 280px;
+		width: 300px;
 		padding:0px;	
 	}
 	.qbbdep {
 		display: inline-block;
-		width: 137px;
+		width: 147px;
 		text-align: center;
 	}
 	.qbbarr {
 		display: inline-block;
-		width: 137px;
+		width: 147px;
 		text-align: center;
 	}
 	.quick_booking_button {
