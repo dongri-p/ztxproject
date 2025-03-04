@@ -25,6 +25,7 @@ public class LoginServiceImpl implements LoginService {
 		String err=request.getParameter("err");
 		
 		model.addAttribute("err", err);
+		
 		return "/login/login";
 	}
 

@@ -22,11 +22,13 @@
   section div {
     margin-top:10px;
   }
-  h3 {
+  section h3 {
     text-align:center;
-    margin-bottom:20px;
+    color:#333;
+    font-size:24px;
+    margin-bottom:25px;
   }
-  input, select {
+  section input, select {
     width:100%;
     padding:10px;
     margin:5px 0;
@@ -35,31 +37,37 @@
     font-size:16px;
     box-sizing:border-box;
   }
-  input[type="submit"], input[type="button"] {
+  input[type="submit"],
+  input[type="button"] {
     width:49%;
     cursor:pointer;
     border:none;
     padding:12px;
   }
-  #submit {
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color:#66afe9;
+    outline:none;
+  }
+  section #submit {
     background-color:#083B82;
     color:white;
   }
-  #submit:hover {
+  section #submit:hover {
     background-color:#45a049;
   }
-  .email-container {
+  section .email-container {
     display:flex;
     align-items:center;
     gap:5px;
   }
-  .email-container input {
+  section .email-container input {
     flex:1;
   }
-  .email-container select {
+  section .email-container select {
     width:44%;
   }
-  #umsg, #pmsg {
+  section #umsg, #pmsg {
     font-size:12px;
   }
 </style>
@@ -120,8 +128,8 @@
   }
   
   function getServer(gs)
-  {
-	  document.uform.server.value=gs.value;
+  { 
+  	document.mform.server.value=gs.value;  	
   }
   
   var uchk=0;
@@ -144,7 +152,7 @@
 		  alert("이름을 입력하세요.");
 		  return false;
 	  }
-	  else if(document.uform.phone.value.trim() == 0)
+	  else if(document.uform.phone.value.trim() == "")
 	  {
 		  alert("전화번호를 입력하세요.");
 		  return false;
@@ -158,7 +166,7 @@
 </head>
 <body> <!-- user/user.jsp -->
  <section>
-  <form method="post" name="uform" action="userOk" onsubmit="return check();">
+  <form method="post" name="uform" action="userOk" onsubmit="return check()">
     <input type="hidden" name="email">
     <h3>회원 가입</h3>
     <div>
@@ -178,7 +186,6 @@
     <div class="email-container">
       <input type="text" name="uid" class="email"> @
       <select name="dserver" id="select" onchange="getServer(this)">
-        <option value=""> 직접입력 </option>
         <option value="naver.com"> naver.com </option>
         <option value="daum.net"> daum.net </option>
         <option value="gmail.com"> gmail.com </option>
