@@ -3,11 +3,13 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.example.demo.dto.UserDto;
 import com.example.demo.mapper.UserMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 @Qualifier("us")
@@ -43,6 +45,43 @@ public class UserServiceImpl implements UserService {
 		else
 		{
 			return "redirect:/user/user?err=1";
+		}
+	}
+
+	@Override
+	public String userView(HttpSession session, Model model)
+	{		
+		if(session.getAttribute("userid") == null)
+		{
+			return "redirect:/login/login";
+		}
+		else
+		{
+			String userid=session.getAttribute("userid").toString();
+			
+			UserDto udto=mapper.userView(userid);
+			
+			model.addAttribute("udto", udto);
+			
+			return "/user/userView";
+		}
+	}
+
+	@Override
+	public String chgEmail(HttpSession session, HttpServletRequest request)
+	{
+		if(session.getAttribute("userid") == null)
+		{
+			return "0";
+		}
+		else
+		{
+			String email=request.getParameter("email");
+			String userid=session.getAttribute("userid").toString();
+			
+			mapper.chgEmail(email, userid);
+			
+			return "1";
 		}
 	}
 	
