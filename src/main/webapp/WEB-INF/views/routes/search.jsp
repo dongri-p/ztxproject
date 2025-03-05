@@ -66,7 +66,7 @@
                 <td>${route.seat}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/routes/resCheck" method="post">
-                        <input type="hidden" name="routeId" value="${route.routeid}">
+                        <input type="hidden" name="routeid" value="${route.routeid}">
                         <input type="hidden" name="routeDeparture" value="${route.departure}">
                         <input type="hidden" name="routeArrival" value="${route.arrival}">
                         <input type="hidden" name="routeTime" value="${route.departureTime}">

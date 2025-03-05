@@ -1,13 +1,11 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.example.demo.dto.InquiryDto;
 import com.example.demo.mapper.InquiryMapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,16 +18,20 @@ public class InquiryServiceImpl implements InquiryService {
 	private InquiryMapper mapper;
 
 	@Override
-	public String inquiryList(HttpSession session, Model model) 
-	{
-		
-			return "/inquiry/inquiryList";
-		
+	public String inquiryList(HttpSession session, Model model) {
+		return "/inquiry/inquiryList";
 	}
-
+	
 	@Override
-	public String inquiryWrite(HttpSession session, Model model) 
-	{
-		return "redirect:/inquiry/inquiryWrite";
+	public String inquiryWrite(HttpSession session, Model model) {
+		return "/inquiry/inquiryWrite";
 	}
+	
+	@Override
+	public String inquiryWriteOk(InquiryDto idto, HttpSession session, Model model) {
+		mapper.writeOk(idto);
+		return "redirect:/inquiry/inquiryList";
+	}
+	
+	
 }

@@ -152,51 +152,35 @@
 	}
 	
 	function confirmSelection() {
-		if (selectedSeats.length === 0) {
-			alert('최소 한 개의 좌석을 선택해야 합니다.');
-			return;
-		}
-		
-		if (selectedSeats.length !== maxSelectableSeats) {
-			alert('탑승객 수에 맞게 좌석을 선택해 주세요.');
-			return;
-		}
-		
-		// 선택한 좌석 정보를 서버로 전송
-		var form = document.createElement('form');
-		form.method = 'post';
-		form.action = '${pageContext.request.contextPath}/flights/confirmSeats';
-		
-		// 필요한 데이터 추가
-		var flightIdInput = document.createElement('input');
-		flightIdInput.type = 'hidden';
-		flightIdInput.name = 'routeid';
-		flightIdInput.value = '${routeid}';
-		form.appendChild(flightIdInput);
-		
-		var passengersInput = document.createElement('input');
-		passengersInput.type = 'hidden';
-		passengersInput.name = 'resnum';
-		passengersInput.value = '${resnum}';
-		form.appendChild(passengersInput);
-		
-		var selectedSeatsInput = document.createElement('input');
-		selectedSeatsInput.type = 'hidden';
-		selectedSeatsInput.name = 'selectedSeats';
-		selectedSeatsInput.value = selectedSeats.join(',');  // 선택한 좌석 목록을 콤마로 구분
-		form.appendChild(selectedSeatsInput);
-		
-		document.body.appendChild(form);
-		
-		window.opener.updateSelectedSeats(selectedSeats);  // 부모 창에 선택 좌석 정보 전달
-		window.close();  // 창 닫기
+	    if (selectedSeats.length === 0) {
+	        alert('최소 한 개의 좌석을 선택해야 합니다.');
+	        return;
+	    }
+	    
+	    if (selectedSeats.length !== maxSelectableSeats) {
+	        alert('탑승객 수에 맞게 좌석을 선택해 주세요.');
+	        return;
+	    }
+	    
+	    // 부모 페이지로 데이터 전송
+	    window.parent.postMessage({ type: 'goingSeatsSelected', seats: selectedSeats }, '*');
 	}
+
 </script>
 </head>
 <body>
 	<div class="container">
 		<h2 class="mt-4">좌석 선택 - ${resnum}</h2>
-		<p><b>열차 ID:&nbsp;</b> ${routeId} &nbsp;&nbsp;<b>탑승객 수:&nbsp;</b> ${resnum}명</p>
+		<p><b>열차:&nbsp;</b> 은하-${routeid}&nbsp;&nbsp;<b>탑승객 수:&nbsp;</b> ${resnum}명</p>
+		<div class="pagination">
+			<c:if test="${currentPage > 0}">
+			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage - 1}&size=${pageSize}">이전</a>
+			</c:if>
+			<span>${currentPage + 1}호차</span>
+			<c:if test="${seats.size() == pageSize}">
+			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage + 1}&size=${pageSize}">다음</a>
+			</c:if>
+		</div>
 		<!-- 선택한 좌석 표시 -->
 		<div class="mt-4">
 			<h4>선택한 좌석:&nbsp; <span id="selectedSeatsDisplay"></span></h4> 
