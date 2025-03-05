@@ -64,11 +64,11 @@ public class RoutesServiceImpl implements RoutesService {
 			@RequestParam int routeId,
 			@RequestParam int resnum,  // 추가된 부분
 			Model model) {
-		List<SeatDto> availableSeats = mapper.getAvailableSeats(routeId);
+		List<SeatDto> avaiSeats = mapper.getAvaiSeats(routeId);
 		// 좌석 데이터의 크기를 출력하여 데이터가 조회되는지 확인
-		System.out.println("Available seats count: " + availableSeats.size());
+		System.out.println("Available seats count: " + avaiSeats.size());
 		
-		model.addAttribute("seats", availableSeats);
+		model.addAttribute("seats", avaiSeats);
 		model.addAttribute("routeId", routeId);
 		model.addAttribute("resnum", resnum);  // 추가된 부분
 		
@@ -77,13 +77,12 @@ public class RoutesServiceImpl implements RoutesService {
 	
 	@PostMapping("/confirmSeats")
 	public String confirmSeats(
-			@RequestParam int flightId,
-			@RequestParam String seatClass,
+			@RequestParam int routeId,
 			@RequestParam String selectedSeats,
-			@RequestParam int passengers,  // 추가된 부분
+			@RequestParam int resnum,  // 추가된 부분
 			HttpSession session, Model model) {
 		String[] seatArray = selectedSeats.split(",");
-		if (seatArray.length != passengers) {
+		if (seatArray.length != resnum) {
 			model.addAttribute("errorMessage", "선택한 좌석 수가 탑승객 수와 일치하지 않습니다.");
 			
 			return "flight/seats"; // 에러 메시지를 표시하고 좌석 선택 페이지로 돌아갑니다.
@@ -94,7 +93,7 @@ public class RoutesServiceImpl implements RoutesService {
 		// 예를 들어, 오는편 flightId 등을 세션 또는 모델에 저장
 		System.out.println("가는편 선택한 좌석: " + selectedSeats);
 		// 오는편 좌석 선택 페이지로 리다이렉트
-		return "redirect:/flights/seatsReturn?seatClass=" + seatClass + "&passengers=" + passengers;
+		return "redirect:/flights/seatsReturn?&resnum=" + resnum;
 	}
 	
 	

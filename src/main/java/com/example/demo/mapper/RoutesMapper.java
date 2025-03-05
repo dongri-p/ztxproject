@@ -11,7 +11,7 @@ import com.example.demo.dto.SeatDto;
 public interface RoutesMapper {
 
 	List<RoutesDto> findRoutes(String departure, String arrival, String departureDate, Integer resnum);
-	List<SeatDto> getAvailableSeats(int flightId);
+	List<SeatDto> getAvaiSeats(int flightId);
 	
 	
 	

@@ -15,7 +15,7 @@
 		margin-top: 20px;
 		max-width: 800px; /* 창 폭 제한 */
 	}
-	.airplane {
+	.train {
 		margin-top: 30px;
 		display: flex;
 		flex-direction: column;
@@ -82,6 +82,7 @@
 	.selected {
 		box-shadow: 0px 0px 15px 5px #90EE90; /* 선택된 좌석에 연두색 그림자 추가 */
 		transform: scale(1.1); /* 선택된 좌석을 약간 키움 */
+		overflow: hidden;
 	}
 	.aisle {
 		width: 30px;
@@ -118,7 +119,7 @@
 	}
 </style>
 <script>
-	var maxSelectableSeats = ${passengers};  // 탑승객 수
+	var maxSelectableSeats = ${resnum};  // 탑승객 수
 	var selectedSeats = [];
 	
 	function selectSeat(element) {
@@ -169,20 +170,14 @@
 		// 필요한 데이터 추가
 		var flightIdInput = document.createElement('input');
 		flightIdInput.type = 'hidden';
-		flightIdInput.name = 'flightId';
-		flightIdInput.value = '${flightId}';
+		flightIdInput.name = 'routeid';
+		flightIdInput.value = '${routeid}';
 		form.appendChild(flightIdInput);
-		
-		var seatClassInput = document.createElement('input');
-		seatClassInput.type = 'hidden';
-		seatClassInput.name = 'seatClass';
-		seatClassInput.value = '${seatClass}';
-		form.appendChild(seatClassInput);
 		
 		var passengersInput = document.createElement('input');
 		passengersInput.type = 'hidden';
-		passengersInput.name = 'passengers';
-		passengersInput.value = '${passengers}';
+		passengersInput.name = 'resnum';
+		passengersInput.value = '${resnum}';
 		form.appendChild(passengersInput);
 		
 		var selectedSeatsInput = document.createElement('input');
@@ -200,67 +195,33 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mt-4">비행기 좌석 선택 - ${seatClass}</h2>
-		<p><b>비행기 ID:&nbsp;</b> ${flightId} &nbsp;&nbsp;<b>탑승객 수:&nbsp;</b> ${passengers}명</p>
+		<h2 class="mt-4">좌석 선택 - ${resnum}</h2>
+		<p><b>열차 ID:&nbsp;</b> ${routeId} &nbsp;&nbsp;<b>탑승객 수:&nbsp;</b> ${resnum}명</p>
 		<!-- 선택한 좌석 표시 -->
 		<div class="mt-4">
 			<h4>선택한 좌석:&nbsp; <span id="selectedSeatsDisplay"></span></h4> 
 			<!-- 선택 완료 버튼 -->
 			<input type="button" class="btn btn-primary mt-4" onclick="confirmSelection()" value="선택 완료">
 		</div>
-		<!-- 비행기 좌석 배치 -->
-		<div id="seatsContainer" class="airplane">
+		<div id="seatsContainer" class="train">
 			<c:set var="currentRow" value="" />
 			<c:forEach var="seat" items="${seats}" varStatus="status">
-			<c:set var="seatRow" value="${seat.seatNumber.substring(0, seat.seatNumber.length() - 1)}" />
-			<c:if test="${status.first || seatRow != currentRow}">
-			<c:set var="currentRow" value="${seatRow}" />
-			<div class="row">
-			</c:if>
 				<c:choose>
-				<c:when test="${seatRow >= 1 && seatRow <= 10}">
-				<div class="seat-container">
-				    <div class="seatf ${seat.available ? 'available' : 'unavailable'}" data-seat-number="${seat.seatNumber}" data-available="${seat.available}" onclick="selectSeat(this)">
-				    	${seat.seatNumber}
-				    </div>
-				</div>
-				<div class="aisle"></div>
-				</c:when>
-				<c:when test="${seatRow >= 11 && seatRow <= 30}">
-				<div class="seat-container">
-				    <div class="seatb ${seat.available ? 'available' : 'unavailable'}" data-seat-number="${seat.seatNumber}" data-available="${seat.available}" onclick="selectSeat(this)">
-						${seat.seatNumber}
-				    </div>
-				</div>
-				<div class="aisle"></div>
-				</c:when>
-				<c:when test="${seatRow >= 31 && seatRow <= 49}">
-				<div class="seat-container">
-				    <div class="seat ${seat.available ? 'available' : 'unavailable'}" data-seat-number="${seat.seatNumber}" data-available="${seat.available}" onclick="selectSeat(this)">
-						${seat.seatNumber}
-				    </div>
-				</div>
-				<c:if test="${status.index % 3 == 2}">
-				<div class="aisle"></div>
-				</c:if>
-				</c:when>
-				<c:when test="${seatRow >= 50}">
-				<div class="seat-container">
-				    <div class="seat ${seat.available ? 'available' : 'unavailable'}" data-seat-number="${seat.seatNumber}" data-available="${seat.available}" onclick="selectSeat(this)">
-						${seat.seatNumber}
-				    </div>
-				</div>
-				<c:if test="${status.index % 3 == 2}">
-				<div class="aisle"></div>
-				</c:if>
-				</c:when>
+					<c:when test="${seat.reserv == true}">
+						<div class="seat ${seat.reserv ? 'available' : 'unavailable'}" 
+							data-seat-number="${seat.seatnum}" data-available="true" onclick="selectSeat(this)">
+							${seat.seatnum}
+						</div>
+					</c:when>
+					<c:otherwise>
+			        	<div class="seat unavailable" 
+							data-seat-number="${seat.seatnum}" data-available="false" onclick="selectSeat(this)">
+							${seat.seatnum}
+						</div>
+					</c:otherwise>
 				</c:choose>
-			<c:if test="${status.last || seatRow != seats[status.index + 1].seatNumber.substring(0, seats[status.index + 1].seatNumber.length() - 1)}">
-			</div><!-- row end -->
-			</c:if>
 			</c:forEach>
 		</div>
 	</div>
-	
 </body>
 </html>
