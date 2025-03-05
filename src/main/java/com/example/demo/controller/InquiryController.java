@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.dto.InquiryDto;
 import com.example.demo.service.InquiryService;
 
 import org.springframework.ui.Model;
@@ -27,6 +28,12 @@ public class InquiryController {
 	public String inquiryWrite(HttpSession session,Model model)
 	{
 		return service.inquiryWrite(session,model);
+	}
+	
+	@GetMapping("/inquiry/inquiryWriteOk")
+	public String inquiryWriteOk(InquiryDto idto, HttpSession session,Model model)
+	{
+		return service.inquiryWriteOk(idto,session,model);
 	}
 	
 }

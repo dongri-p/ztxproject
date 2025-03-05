@@ -13,8 +13,8 @@
 		AND DATE(departure_time) = #{departureDate}
 		</if>
 	</select>
-	<select id="getAvaiSeats" parameterType="int" resultType="com.example.demo.dto.SeatDto">
-		SELECT * FROM trainseat WHERE routeId = #{routeId};
+	<select id="getAvaiSeats" resultType="com.example.demo.dto.SeatDto">
+		SELECT * FROM trainseat WHERE routeid = #{routeid} LIMIT #{offset}, #{size}
 	</select>
 	
 	

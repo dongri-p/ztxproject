@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.dto.InquiryDto;
+
 @Mapper
 public interface InquiryMapper {
-
-	public ArrayList<HashMap> inquiryList(String userid);
+	ArrayList<HashMap> inquiryList(String userid);
+	void writeOk(InquiryDto idto);
 	
 }
