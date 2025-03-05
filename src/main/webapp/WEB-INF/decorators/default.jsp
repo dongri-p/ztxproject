@@ -513,7 +513,7 @@
 				<div id="myInfo" onmouseover="viewMmenu(0)" onmouseout="hideMmenu(0)">
 					<span> ${name}님 &nbsp;|&nbsp; </span>
 					<ul class="mmenu">
-						<li><a href="../member/memberView">나의정보</a></li>
+						<li><a href="../user/userView">나의정보</a></li>
 						<li><a href="../reserve/list">예약정보</a></li>
 						<li><a href="../member/myInq">나의문의</a></li>
 						<li><a href="../member/myRev">나의후기</a></li>
@@ -525,7 +525,7 @@
 					<span>고객센터</span>
 					<ul class="cmenu">
 						<li><a href="../gongji/list"> 공지사항 </a></li>
-						<li><a href="../inquiry/list"> Q＆A </a></li>
+						<li><a href="../inquiry/inquiryList"> Q＆A </a></li>
 						<li><a href="../promot/list"> 이벤트 </a></li>
 						<li><a href="../review/list"> 여행후기 </a></li>
 					</ul>

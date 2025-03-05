@@ -30,37 +30,9 @@
 		z-index: 2;
 		margin: auto;
 	}
-	.train_align {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	.train_contentbox {
-		position: relative;
-		top: 35.3rm;
-		left: 0;
-		width: 100%;
-		height: 50%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		z-index: 2;
-	}
-	.train_widget {
-		position: relative;
-		top: 35rem;
-		display: block;
-		width: 100%;
-		
-		content: "";
-		z-index: 2;
-		margin: auto;
-	}
-	#booking_menu {
-		display: inline-block;
-	}
 	.booking_contents {
+		position: relative;
+		top: 36.3rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -70,36 +42,7 @@
 		width: 100%;
 		height: 120px;
 		z-index: 3;
-	}
-	.booking_methods {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 120px;
-	}
-	.b_methodbox {
-		float: left;
-		width: auto;
-		margin-left: 10px;
-		margin-top: 0;
-		margin-right: 3.5rem;
-		margin-bottom: 1rem;
-		text-align: left;
-	}
-	.booking_types {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		justify-content: space-between;
-		border: 1px solid #ccc;
-		border-radius: 25px;
-	}
-	.booking_types li {
-		flex: 1;
-		text-align: center;
+		margin: auto;
 	}
 	.active-button  {
 		background-color: #1f0c59 !important;
@@ -130,12 +73,22 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
+<<<<<<< HEAD
 		width: 300px;
 		margin-right: 20px;
+=======
+		width: 500px;
+		margin-right: 15px;
+>>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 	}
 	.qbbtitle {
+<<<<<<< HEAD
 		display: block;
 		width: 300px;
+=======
+		display: flex;
+		width: 500px;
+>>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 		justify-content: space-between;
 		font-size: 16px;
 		font-weight: 600;
@@ -146,11 +99,16 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
+<<<<<<< HEAD
 		width: 300px;
+=======
+		width: 500px;
+>>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 		padding:0px;	
 	}
-	.qbbdep {
+	.qbbdep, .qbbarr {
 		display: inline-block;
+<<<<<<< HEAD
 		width: 147px;
 		text-align: center;
 	}
@@ -158,21 +116,48 @@
 		display: inline-block;
 		width: 147px;
 		text-align: center;
+=======
+		width: 247px;
+		text-align: left;
+		padding: 5px;
+		margin: 0 5px;
+>>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 	}
 	.quick_booking_button {
+		display: flex;
+		justify-content: space-between; /* 내부 요소를 양쪽 끝으로 정렬 */
+		align-items: center; /* 세로 중앙 정렬 */
 		flex: 1;
-		text-align: center;
+		text-align: left;
 		margin: 0 5px;
 		padding: 5px;
-		border: none;
+		border-bottom: 1px solid white;
 		background: none;
 		cursor: pointer;
 		font-size: 16px;
 		color: white;
-		border-radius: 15px;
+		width: 100%; /* 버튼이 충분한 너비를 가지도록 설정 */
+	}
+	.date_wrap, .passenger-btn {
+		display: flex;
+		justify-content: space-between; /* 내부 요소를 양쪽 끝으로 정렬 */
+		align-items: center; /* 세로 중앙 정렬 */
+		flex: 1;
+		text-align: left;
+		padding: 5px;
+		background: none;
+		cursor: pointer;
+		font-size: 16px;
+		color: white;
+		width: 100%; /* 버튼이 충분한 너비를 가지도록 설정 */
 	}
 	.quick_booking_button span {
+		flex: 1; /* 텍스트가 왼쪽으로 정렬되도록 설정 */
+		text-align: left; /* 왼쪽 정렬 */
 		display:block;
+	}
+	.quick_booking_button i {
+		position: static; /* 아이콘과 텍스트 간격 조정 */
 	}
 	.quick_booking_button:first-child {
 		flex-grow: 2;
@@ -180,22 +165,19 @@
 	.quick_booking_button:last-child {
 		flex-grow: 2;
 	}
-	.quick_booking_button:hover {
-		background-color: #ddd;
-	}
 	#from-text {
 		display: block;
 		margin: 0;
 	}
 	#from-text, #to-text {
-		font-size: 22px;
+		font-size: 20px;
 		font-weight: bold;
 	}
 	.popup {
-		position: absolute;
-		top: 130px;
+		position: fixed;
+		top: 150px;
 		left: 20%;
-		width: 740px;
+		width: 760px;
 		padding: 20px;
 		background-color: white;
 		border: 1px solid #ccc;
@@ -205,8 +187,28 @@
 		list-style:none;
 	}
 	.station-list {
-		height:270px;
-		overflow-y:auto;
+	    padding: 10px;
+	    margin: 0;
+	}
+	
+	.station-row {
+	    display: flex;
+	    justify-content: space-between;
+	    margin-bottom: 10px;
+	}
+	.station-btn {
+	    width: 18%;
+	    padding: 10px 5px;
+	    font-size: 12px;
+	    background-color: white;
+	    border: 1px solid #ddd;
+	    border-radius: 18px;
+	    cursor: pointer;
+	    text-align: center;
+	    margin-bottom: 5px;
+	}
+	.station-btn:hover {
+	    background-color: #e0e0e0;
 	}
 	.quick_booking_aligner {	
 		display: flex;
@@ -216,78 +218,71 @@
 	    width: 100%;
 	}
 	.flatpickr-calendar {
-		position: absolute !important;
-		left: 35% !important;
-		top : 760px !important;
-		border-radius: 10px !important;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
-		font-size: 16px !important;
+		position: fixed;
+		left: 40%;
+		top : 500px;
+		border-radius: 10px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		font-size: 16px;
 		font-weight: 500;
 	}
-	p {
-		font-size: 15px;
+	.datetitle, .passtitle {
+		display: flex;
+		width: 200px;
+		justify-content: space-between;
+		font-size: 16px;
 		font-weight: 600;
 		color: white;
 	}
-	#date_selection, #passenger_selection {
-		margin-right: 40px;
+	.date_selection {
+		margin-top: 4px;
 	}
-	#date_selection input, #passenger_selection button {
-		padding-top: 20px;
-		padding-bottom: 5px;
+	.date_selection, #passenger_selection {
+		margin-right: 15px;
+		border-bottom: 1px solid white;
+	}
+	.date_selection input, #passenger_selection .passenger-btn {
 		background-color: transparent;
 		border: none;
-		border-bottom: 1px solid #333;
-		font-size: 16px;
+		font-size: 20px;
 		color: white;
 		cursor: pointer;
 		text-align: left;
 		outline: none;
 	}
-	#date_selection .date_wrap {
+	.date_selection .date_wrap {
 		position:relative;
-		width: 310px;
+		width: 220px;
 	}
-	#date_selection .date_wrap i {
-		position:absolute;
-		top:18px;
-		left:0;
-		font-size:18px;
+	i {
+		font-size:20px;
 		color: white;
 	}
-	#date_selection .date_wrap input {
+	.date_selection .date_wrap input {
 		width:100%;
-		padding-left:30px;
+		
 	}
 	#date-btn {
 		display: flex;
 		align-items: center;
 		padding-right: 10px;
 	}
-	#date-btn i {
-		font-size: 18px;
-		margin-right: 10px;
-		color: white;
+	#passenger_selection .passenger-btn {
+		width: 100%;
 	}
-	#passenger_selection button {
-		width: 160px;
+	.passenger-btn span {
+		flex: 1; /* 텍스트가 왼쪽으로 정렬되도록 설정 */
+		text-align: left; /* 왼쪽 정렬 */
 	}
-	#passenger-btn {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	#passenger-btn i {
-		position: absolute;
-		top: 169px;
-		right: 470px;
-		font-size: 18px;
+	.passenger-btn i {
+		position: static;
+		font-size:20px;
 		color: white;
 	}
 	.passenger-popup {
 		position: absolute;
-		top: 130px;
-		left: 58%;
+		top: -70px;
+		left: 60%;
 		width: 180px;
 		padding: 20px;
 		background-color: white;
@@ -320,33 +315,6 @@
 		cursor: pointer;
 		margin: 0 10px;
 	}
-	input[name="t_methods"] {
-		display: none;
-	}
-	#trip-methods label {
-		cursor: pointer;
-		padding: 5px 10px;
-		font-size: 16px;
-		border: none;
-		display: inline-block;
-		margin-right: 10px;
-		position: relative;
-		color: white;
-	}
-	input[name="t_methods"]:checked + label {
-		font-weight: bold;
-		color: black;
-	}
-	input[name="t_methods"]:checked + label::after {
-		content: "";
-		display: block;
-		width: 80%;
-		height: 3px;
-		background-color: red;
-		position: absolute;
-		bottom: -2px;
-		left: 10%;
-	}
 	#search_button {
 		width: 140px;
 		background-color: white;
@@ -376,20 +344,6 @@
 		color: #333;
 		transition: background-color 0.3s ease;
 	}
-	#station-list li:hover, #arrival-list li:hover {
-		background-color: #e0e0e0;
-		color: #000;
-	}
-	#station-list li.selected, #arrival-list li.selected {
-		background-color: #1f0c59;
-		color: white;
-	}
-	#station-list li::before, #arrival-list li::before {
-		content: "🚄";
-		font-family: "Font Awesome 5 Free";
-		margin-right: 10px;
-		font-weight: 900;
-	}
 	.popup-overlay {
 		position: fixed;
 		top: 0;
@@ -406,27 +360,6 @@
 		font-size: 24px;
 		cursor: pointer;
 		color: #333;
-	}
-	.input-group {
-		position: relative;
-		margin-bottom: 15px;
-	}
-	.input-group label {
-		display: block;
-		margin-bottom: 5px;
-		font-size: 14px;
-		color: #555;
-	}
-	.input-group input {
-		width: 100%;
-		padding: 10px;
-		font-size: 16px;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		transition: border 0.3s ease;
-	}
-	.input-group input:focus {
-		border-color: #1f0c59;
 	}
 	h3 {
 		margin-bottom: 20px;
@@ -521,74 +454,11 @@
 	.station-code {
 		font-weight: bold;
 	}
-	#date, #cdate{
-		width: 100%;
-		border: none;
-		border-bottom: 1px solid black;
-		padding: 10px;
-		margin-top:15px;
-		background-color: white;
-		cursor: pointer;
-		margin-right:30px;
-	}
-	#select_selection, #check-in_selection {
-		display: flex;
-		justify-content: flex-start;
-		align-self: flex-end;
-		align-items: center;
-	}
-	#select_button, #cselect_button {
-		width: 115px;
-		background-color: #1f0c59;
-		color: white;
-		padding: 10px 20px;
-		border: none;
-		border-radius: 15px;
-		cursor: pointer;
-		height: 45px;
-		font-size: 16px;
-		margin-left:25px;
-	}
-	#select_button:hover, #check-in_button:hover {
-		background-color: #0055a5;
-	}
-	#select_agree_contents, #check-in_agree_contents {
-		margin-top: 10px;
-		text-align: left;
-		font-size: 14px;
-	}
-	#select_agree_contents input, #check-in_agree_contents input {
-		margin-right: 10px;
-		width: 13px;
-		height: 13px;
-		transform: scale(1.5);
-		cursor: pointer;
-	}
-	#daselect, #week_schedule {
-		padding: 10px 20px;
-		background-color: white;
-		color: #1f0c59;
-		border: 1px solid #ccc;
-		cursor: pointer;
-		border-radius: 25px;
-		list-style-type: none;
-		transition: background-color 0.3s, color 0.3s;
-		font-size:16px;
-		border:none;
-	}
-	.s_methodbox {
-		float: left;
-		width: 240px;
-		margin-left: 10px;
-		margin-top: 0;
-		margin-right: 3.5rem;
-		margin-bottom: 1rem;
-		text-align: left;
-	}
 	a {
 		text-decoration: none;
 		color: black;
 	}
+	
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -636,101 +506,104 @@
 		loadDeparture();
 	});
 	function loadDeparture() {
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/train/stations');
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				var data = JSON.parse(xhr.responseText);
-				var stationList = document.getElementById('station-list');
-				if (stationList) {
-					stationList.innerHTML = '';
-					var defaultStation = data.find(station => station.station_name === '서울');
-					if (defaultStation) {
-						document.getElementById('from-text').textContent = defaultStation.station_name;
-					}
-					else {
-						document.getElementById('from-text').textContent = '서울';
-					}
-					data.forEach(function(station) {
-						var li = document.createElement('li');
-						var location = document.createElement('span');
-						location.classList.add('location');
-						location.textContent = station.station_name;
-						var stationInfo = document.createElement('span');
-						if (station.line == 'null' || station.line == null) {
-							stationInfo.textContent =' / ' + station.location;
-						}
-						else {
-							stationInfo.textContent =' / ' + station.location;
-						}
-						li.appendChild(location);
-						li.appendChild(stationInfo);
-						li.onclick = function() {
-							document.getElementById('from-text').textContent = station.station_name;
-							document.getElementById('from-hidden').value = station.station_name;
-							closePopup('departure');
-						};
-						stationList.appendChild(li);
-					});
-				}
-				else {
-					console.error('The element with id "station-list" is not found.');
-				}
-			}
-			else if (xhr.readyState === 4 && xhr.status !== 200) {
-				console.error('Failed to load stations data. Status: ' + xhr.status);
-				document.getElementById('from-text').textContent = '서울';
-			}
-		};
-		xhr.onerror = function() {
-			console.error('Request failed');
-			document.getElementById('from-text').textContent = '서울';
-		};
-		xhr.send();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('GET', '/train/stations');
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState === 4 && xhr.status === 200) {
+	            var data = JSON.parse(xhr.responseText);
+	            var stationList = document.getElementById('station-list');
+	            if (stationList) {
+	                stationList.innerHTML = '';  // 리스트 초기화
+	                var defaultStation = data.find(station => station.station_name === '서울');
+	                if (defaultStation) {
+	                    document.getElementById('from-text').textContent = defaultStation.station_name;
+	                } else {
+	                    document.getElementById('from-text').textContent = '서울';
+	                }
+
+	                // 역 버튼을 4개씩 한 줄에 배치
+	                var row;
+	                data.forEach(function(station, index) {
+	                    if (index % 5 === 0) {
+	                        row = document.createElement('div');
+	                        row.classList.add('station-row');
+	                        stationList.appendChild(row);
+	                    }
+
+	                    var button = document.createElement('button');
+	                    button.classList.add('station-btn');
+	                    button.textContent = station.station_name;
+	                    
+	                    // 클릭 시 값 전달하고, 페이지 이동 방지
+	                    button.onclick = function(event) {
+	                        event.preventDefault();  // 페이지 이동 방지
+	                        document.getElementById('from-text').textContent = station.station_name;
+	                        document.getElementById('from-hidden').value = station.station_name;
+	                        closePopup('departure');  // 팝업 닫기
+	                    };
+	                    row.appendChild(button);
+	                });
+	            } else {
+	                console.error('The element with id "station-list" is not found.');
+	            }
+	        } else if (xhr.readyState === 4 && xhr.status !== 200) {
+	            console.error('Failed to load stations data. Status: ' + xhr.status);
+	            document.getElementById('from-text').textContent = '서울';
+	        }
+	    };
+	    xhr.onerror = function() {
+	        console.error('Request failed');
+	        document.getElementById('from-text').textContent = '서울';
+	    };
+	    xhr.send();
 	}
-	document.addEventListener('DOMContentLoaded', function () {
-		loadArrival();
-	});
+
 	function loadArrival() {
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/train/stations');
-		xhr.onload = function() {
-			var data;
-			try {
-				data = JSON.parse(xhr.responseText);
-			}
-			catch (error) {
-				return;
-			}
-			if (!Array.isArray(data)) {
-				return;
-			}
-			var stationList = document.getElementById('arrival-list');
-			stationList.innerHTML = '';
-			data.forEach(function(station, index) {
-				var li = document.createElement('li');
-				var location = document.createElement('span');
-				location.classList.add('location');
-				
-				// 올바른 키명을 확인 후 적용
-				location.textContent = station.station_name +' / ';
-				var stationInfo = document.createElement('span');
-				stationInfo.textContent = (station.location && station.location !== "null") ? station.location : "정보 없음";
-				li.appendChild(location);
-				li.appendChild(stationInfo);
-				
-				li.onclick = function() {
-					document.getElementById('to-text').textContent = station.station_name;
-					document.getElementById('to-hidden').value = station.station_name;
-					closePopup('arrival');
-				};
-				
-				stationList.appendChild(li);
-			});
-		};
-		xhr.send();
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('GET', '/train/stations');
+	    xhr.onload = function() {
+	        var data;
+	        try {
+	            data = JSON.parse(xhr.responseText);
+	        } catch (error) {
+	            return;
+	        }
+	        if (!Array.isArray(data)) {
+	            return;
+	        }
+	        var stationList = document.getElementById('arrival-list');
+	        if (stationList) {
+	            stationList.innerHTML = '';  // 리스트 초기화
+
+	            // 역 버튼을 4개씩 한 줄에 배치
+	            var row;
+	            data.forEach(function(station, index) {
+	                if (index % 5 === 0) {
+	                    row = document.createElement('div');
+	                    row.classList.add('station-row');
+	                    stationList.appendChild(row);
+	                }
+
+	                var button = document.createElement('button');
+	                button.classList.add('station-btn');
+	                button.textContent = station.station_name;
+	                
+	                // 클릭 시 값 전달하고, 페이지 이동 방지
+	                button.onclick = function(event) {
+	                    event.preventDefault();  // 페이지 이동 방지
+	                    document.getElementById('to-text').textContent = station.station_name;
+	                    document.getElementById('to-hidden').value = station.station_name;
+	                    closePopup('arrival');  // 팝업 닫기
+	                };
+	                row.appendChild(button);
+	            });
+	        } else {
+	            console.error('The element with id "arrival-list" is not found.');
+	        }
+	    };
+	    xhr.send();
 	}
-	
+
 	document.addEventListener('DOMContentLoaded', function () {
 	    const bookingButton = document.getElementById('booking');
 	    const dateInput = document.getElementById('date-btn');
@@ -746,7 +619,7 @@
 	        locale: "ko",
 	        mode: "single",
 	        dateFormat: "Y-m-d",
-	        showMonths: 2,
+	        showMonths: 1,
 	        defaultDate: "today",
 	        minDate: "today",
 	        onChange: function (selectedDates, dateStr, instance) {
@@ -771,14 +644,12 @@
 	}
 	function updateButtonTextWithIcon(buttonId, newText) {
 		var button = document.getElementById(buttonId);
-		var icon = button.querySelector('i');
+		
 		var span = button.querySelector('span');
 		if (span) {
 			span.textContent = newText;
 		}
-		if (icon) {
-			button.appendChild(icon);
-		}
+		
 	}
 	function updatePassengerButton() {
 		var resnum = parseInt(document.getElementById('resnum').textContent, 10) || 0;
@@ -795,11 +666,10 @@
 		document.getElementById('passenger-btn').innerHTML = passengerText;
 		var passengerBtn = document.getElementById('passenger-btn');
 		passengerBtn.innerHTML = '';
-		var icon = document.createElement('i');
-		passengerBtn.appendChild(icon);
 		passengerBtn.append(' ' + passengerText);
 		var passengersValue = resnum;
 		document.getElementById('resnum-hidden').value = resnum;
+		
 	}
 	document.addEventListener('DOMContentLoaded', function() {
 		updatePassengerButton();
@@ -901,80 +771,80 @@
 	<section>
 		<div class="main_content">
 			<div class="train_service">
-				<div class="train_align">
-					<div class="train_contentbox">
-						<div id="train_alert"></div>
-						<div class="train_widget" >
-							<div class="booking_contents">
-								<div class="booking_methods">
-									<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
-									<form action="${pageContext.request.contextPath}/routes/search" method="get">
-										<div class="quick_booking_aligner">
-											<div id="quick_booking">
-												<div class="qbbtitle">
-													<div class="qbbdep">출발</div>
-													<div class="qbbarr">도착</div>
-												</div>
-												<div class="quickbook">
-													<div class="quick_booking_button" onclick="openPopup('departure')">
-														<span id="from-text">From</span> 
-													</div>
-													<div class="quick_booking_button" onclick="openPopup('arrival')">
-														<span id="to-text">부산</span> 
-													</div>
-												</div>
-											</div>
-											<div id="popup" class="popup" style="display: none;">
-												<span class="close-btn" onclick="closePopup('departure')">&times;</span>
-												<h2>출발지 선택</h2>
-												<ul id="station-list" class="station-list"></ul>
-											</div>
-											<div id="arrival-popup" class="popup" style="display: none;">
-												<span class="close-btn" onclick="closePopup('arrival')">&times;</span>
-												<h2>도착지 선택</h2>
-												<ul id="arrival-list" class="station-list"></ul>
-											</div>
-											<input type="hidden" name="departure" id="from-hidden">
-											<input type="hidden" name="arrival" id="to-hidden">
-											<div id="date_selection">
-												<p>출발일&nbsp;</p>
-												<div class="date_wrap">
-													<i class="fa-regular fa-calendar"></i>
-													<input type="text" id="date-btn" placeholder="가는 날 ~ 오는 날">
-												</div>
-											</div>
-											<input type="hidden" name="departureDate" id="departureDate-hidden">
-											<div id="passenger_selection">
-												<p>인원&nbsp;</p>
-												<button type="button" id="passenger-btn" onclick="openPopup('passenger')">
-													<span>인원수</span>
-												</button>
-											</div>
-											<input type="hidden" name="resnum" id="resnum-hidden" value="1">
-											<div id="passenger-selection-popup" class="passenger-popup" style="display: none;">
-												<span class="close-btn" onclick="closePopup('passenger')">&times;</span>
-												<h2>인원</h2>
-												<div class="passenger-er">
-													<div class="passenger-type">
-														<button type="button" class="decrease-btn" onclick="decrease('resnum')">-</button>
-														<span id="resnum">1</span>
-														<button type="button"class="increase-btn" onclick="increase('resnum')">+</button>
-													</div>
-												</div>
-											</div>
-											<div id="search">
-												<button type="submit" id="search_button">
-													<span>열차조회</span>
-												</button>
-											</div>
-										</div>
-									</form>
+				<div class="booking_contents">
+					<div id="popup-overlay" class="popup-overlay" style="display: none;"></div>
+					<form action="${pageContext.request.contextPath}/routes/search" method="get">
+						<div class="quick_booking_aligner">
+							<div id="quick_booking">
+								<div class="qbbtitle">
+									<div class="qbbdep">출발</div>
+									<div class="qbbarr">도착</div>
+								</div>
+								<div class="quickbook">
+									<div class="quick_booking_button" onclick="openPopup('departure')">
+										<span id="from-text">From</span>
+										<i class="fa-solid fa-paper-plane"></i>
+									</div>
+									
+									<div class="quick_booking_button" onclick="openPopup('arrival')">
+										<span id="to-text">부산</span>
+										<i class="fa-solid fa-location-dot"></i>
+									</div>
 								</div>
 							</div>
+							<div id="popup" class="popup" style="display: none;">
+								<span class="close-btn" onclick="closePopup('departure')">&times;</span>
+								<h2>출발지 선택</h2>
+								<div id="station-list" class="station-list"></div>
+							</div>
+								
+							<div id="arrival-popup" class="popup" style="display: none;">
+								<span class="close-btn" onclick="closePopup('arrival')">&times;</span>
+								<h2>도착지 선택</h2>
+								<div id="arrival-list" class="station-list"></div>
+							</div>
+							<input type="hidden" name="departure" id="from-hidden">
+							<input type="hidden" name="arrival" id="to-hidden">
+							<div class="date_selection">
+								<div class="datetitle">
+									<div class="qbbdep">출발일</div>
+								</div>
+								<div class="date_wrap">
+									<input type="text" id="date-btn" placeholder="가는 날 : ">
+									<i class="fa-solid fa-calendar-alt"></i>
+								</div>
+							</div>
+							<input type="hidden" name="departureDate" id="departureDate-hidden">
+							<div id="passenger_selection">
+								<div class="passtitle">
+									<div class="qbbdep">인원</div>
+								</div>
+								<div class="passenger-btn" onclick="openPopup('passenger')">
+									<span id="passenger-btn">인원수</span>
+									<i class="fa-solid fa-user"></i>
+								</div>
+							</div>
+							<input type="hidden" name="resnum" id="resnum-hidden" value="1">
+							<div id="passenger-selection-popup" class="passenger-popup" style="display: none;">
+								<span class="close-btn" onclick="closePopup('passenger')">&times;</span>
+								<h2>인원</h2>
+								<div class="passenger-er">
+									<div class="passenger-type">
+										<button type="button" class="decrease-btn" onclick="decrease('resnum')">-</button>
+										<span id="resnum">1</span>
+										<button type="button"class="increase-btn" onclick="increase('resnum')">+</button>
+									</div>
+								</div>
+							</div>
+							<div id="search">
+								<button type="submit" id="search_button">
+									<span>열차조회</span>
+								</button>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
-			</div>		
+			</div>
 		</div>
 		<div id="sec2" class="sec2 promotion-section fade-in-section">
 			<h3 style="text-align: center;">프로모션</h3>

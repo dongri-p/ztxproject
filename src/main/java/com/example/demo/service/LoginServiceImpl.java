@@ -25,6 +25,7 @@ public class LoginServiceImpl implements LoginService {
 		String err=request.getParameter("err");
 		
 		model.addAttribute("err", err);
+		
 		return "/login/login";
 	}
 
@@ -32,6 +33,16 @@ public class LoginServiceImpl implements LoginService {
 	public String loginOk(UserDto udto, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session)
 	{
+		String name=mapper.loginOk(udto);
+		if(name == null)
+		{
+			return "redirect:/login/login?err=1";
+		}
+		else
+		{
+			session.setAttribute("userid", udto.getUserid());
+			session.setAttribute("name", name);
+		}
 		return "redirect:/main/index";
 	}
 	
