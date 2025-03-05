@@ -73,22 +73,12 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
-<<<<<<< HEAD
-		width: 300px;
-		margin-right: 20px;
-=======
 		width: 500px;
 		margin-right: 15px;
->>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 	}
 	.qbbtitle {
-<<<<<<< HEAD
-		display: block;
-		width: 300px;
-=======
 		display: flex;
 		width: 500px;
->>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 		justify-content: space-between;
 		font-size: 16px;
 		font-weight: 600;
@@ -99,29 +89,15 @@
 		justify-content: space-between;
 		align-items: center;
 		align-self: flex-start;
-<<<<<<< HEAD
-		width: 300px;
-=======
 		width: 500px;
->>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 		padding:0px;	
 	}
 	.qbbdep, .qbbarr {
 		display: inline-block;
-<<<<<<< HEAD
-		width: 147px;
-		text-align: center;
-	}
-	.qbbarr {
-		display: inline-block;
-		width: 147px;
-		text-align: center;
-=======
 		width: 247px;
 		text-align: left;
 		padding: 5px;
 		margin: 0 5px;
->>>>>>> branch 'master' of https://github.com/Seojaekyun/ztxproject.git
 	}
 	.quick_booking_button {
 		display: flex;
