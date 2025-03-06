@@ -9,7 +9,7 @@
 <body> <!-- inqueryWrite.jsp -->
 <section>
 	<form name="iform" method="post" action="inquiryWriteOk">
-		<caption> <h3> 문의 작성하기 </h3> </caption>
+		<caption> <h3> 문의 작성하기</h3> </caption>
 			<tr>
 				<div> 이름 : <input type="text" name="name"></div>
 				<div>비밀번호 : <input type="password" name="pwd"></div>
