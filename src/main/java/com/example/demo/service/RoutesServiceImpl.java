@@ -58,7 +58,10 @@ public class RoutesServiceImpl implements RoutesService {
 	@Override
 	public String showSeatSelection(int routeid, int resnum, int page, int size, Model model) {
 		int offset = page * size;
+		int totalseat=mapper.getTotalSeat(routeid);
 		List<SeatDto> avaiSeats = mapper.getAvaiSeats(routeid, offset, size);
+		
+		int totalPages = (int) Math.ceil((double) totalseat / size);
 		
 		// 모델에 필요한 데이터 추가
 		model.addAttribute("seats", avaiSeats);
@@ -66,6 +69,7 @@ public class RoutesServiceImpl implements RoutesService {
 		model.addAttribute("resnum", resnum);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("pageSize", size);
+		model.addAttribute("totalPages", totalPages);
 		
 		return "routes/seats";
 	}

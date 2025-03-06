@@ -14,7 +14,10 @@
 		</if>
 	</select>
 	<select id="getAvaiSeats" resultType="com.example.demo.dto.SeatDto">
-		SELECT * FROM trainseat WHERE routeid = #{routeid} LIMIT #{offset}, #{size}
+		SELECT * FROM trainseat WHERE routeid = #{routeid} order by seatid asc LIMIT #{offset}, #{size}
+	</select>
+	<select id="getTotalSeat" resultType="int">
+		SELECT COUNT(*) FROM trainseat WHERE routeid = #{routeid}
 	</select>
 	
 	

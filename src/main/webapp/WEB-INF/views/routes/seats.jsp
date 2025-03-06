@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,22 +14,26 @@
 	}
 	.container {
 		margin-top: 20px;
-		max-width: 800px; /* 창 폭 제한 */
+		max-width: 100%; /* 창 폭 제한 */
 	}
 	.train {
-		margin-top: 30px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    background-image: url('../static/resources/trainseat.jpg');
+	    background-size: 1060px 270px;
+	    background-repeat: no-repeat;
 	}
 	.seat-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: flex-start;
+	    padding-left: 150px;
+	    padding-top: 15px;
 	}
 	.seatf {
-		width: 40px; /* 크기 줄임 */
-		height: 50px; /* 크기 줄임 */
+		width: 42px; /* 크기 줄임 */
+		height: 40px; /* 크기 줄임 */
 		background-color: #00aaff; /* 하늘색 */
 		color: white;
 		font-size: 12px; /* 글씨 크기 줄임 */
@@ -37,12 +42,12 @@
 		line-height: 60px;
 		cursor: pointer;
 		border-radius: 8px;
-		margin: 4px;
+		margin: 2px 5px;
 		transition: transform 0.3s, box-shadow 0.3s;
 	}
 	.seatb {
-		width: 40px; /* 크기 줄임 */
-		height: 50px; /* 크기 줄임 */
+		width: 42px; /* 크기 줄임 */
+		height: 40px; /* 크기 줄임 */
 		background-color: #00aaff;
 		color: white;
 		font-size: 12px; /* 글씨 크기 줄임 */
@@ -51,49 +56,49 @@
 		line-height: 55px;
 		cursor: pointer;
 		border-radius: 8px;
-		margin: 4px;
+		margin: 2px 5px;
 		transition: transform 0.3s, box-shadow 0.3s;
 	}
 	.seat {
-		width: 30px; /* 크기 줄임 */
-		height: 40px; /* 크기 줄임 */
-		background-color: #00aaff;
-		color: white;
-		font-size: 12px; /* 글씨 크기 줄임 */
-		font-weight: bold;
-		text-align: center;
-		line-height: 45px;
-		cursor: pointer;
-		border-radius: 8px;
-		margin: 4px;
-		transition: transform 0.3s, box-shadow 0.3s;
+	    width: 42px;  /* 좌석의 너비 */
+	    height: 40px; /* 좌석의 높이 */
+	    background-color: #00aaff;
+	    color: white;
+	    font-size: 12px;
+	    font-weight: bold;
+	    text-align: center;
+	    line-height: 50px;
+	    cursor: pointer;
+	    border-radius: 8px;
+	    margin: 2px 5px;
+	    transition: transform 0.3s, box-shadow 0.3s;
 	}
 	.seat-number {
-		font-size: 10px;
-		font-weight: normal;
+	    font-size: 10px;
+	    font-weight: normal;
 	}
 	.available {
-		opacity: 1;
+	    opacity: 1;
 	}
 	.unavailable {
-		opacity: 0.5;
-		cursor: not-allowed;
+	    opacity: 0.5;
+	    cursor: not-allowed;
 	}
 	.selected {
-		box-shadow: 0px 0px 15px 5px #90EE90; /* 선택된 좌석에 연두색 그림자 추가 */
-		transform: scale(1.1); /* 선택된 좌석을 약간 키움 */
-		overflow: hidden;
+	    box-shadow: 0px 0px 15px 5px #90EE90;
+	    transform: scale(1.1);
 	}
 	.aisle {
-		width: 30px;
-		height: 100%;
-		background-color: transparent;
+	    width: 30px;
+	    height: 100%;
+	    background-color: transparent;
 	}
 	.row {
-		display: flex;
-		gap: 8px;
-		justify-content: center;
-		margin-bottom: 12px;
+	    display: flex;
+	    flex-wrap: wrap; /* 한 줄에 4개씩 배치하도록 설정 */
+	    gap: 8px;
+	    justify-content: center;
+	    margin-bottom: 12px;
 	}
 	input [type="button"] {
 		width: 100px;
@@ -113,9 +118,13 @@
 	.seat-container div {
 		transition: transform 0.3s, background-color 0.3s;
 	}
-	.seat-container div:hover {
+	.seat-container .row div:hover {
 		transform: scale(1.1);
 		background-color: #0099cc; /* 좌석 호버 시 색상 */
+	}
+	.mt-5 {
+	display: flex;
+		justify-content: space-between;
 	}
 </style>
 <script>
@@ -123,7 +132,7 @@
 	var selectedSeats = [];
 	
 	function selectSeat(element) {
-		var isAvailable = element.getAttribute('data-available') === 'true';
+		var isAvailable = element.getAttribute('data-available') === 'false';
 		if (!isAvailable) {
 			return; // 선택 불가능한 좌석
 		}
@@ -174,37 +183,42 @@
 		<p><b>열차:&nbsp;</b> 은하-${routeid}&nbsp;&nbsp;<b>탑승객 수:&nbsp;</b> ${resnum}명</p>
 		<div class="pagination">
 			<c:if test="${currentPage > 0}">
-			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage - 1}&size=${pageSize}">이전</a>
+			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage - 1}&size=${pageSize}">이전호&nbsp;</a>
 			</c:if>
-			<span>${currentPage + 1}호차</span>
-			<c:if test="${seats.size() == pageSize}">
-			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage + 1}&size=${pageSize}">다음</a>
+			<span>${1 + currentPage}호차</span>
+			<c:if test="${(currentPage+1) < totalPages}">
+			<a href="/routes/seats?routeid=${routeid}&resnum=${resnum}&page=${currentPage + 1}&size=${pageSize}">&nbsp;다음호</a>
 			</c:if>
+			
 		</div>
 		<!-- 선택한 좌석 표시 -->
-		<div class="mt-4">
-			<h4>선택한 좌석:&nbsp; <span id="selectedSeatsDisplay"></span></h4> 
+		<div class="mt-5">
+			<span>선택한 좌석:&nbsp;<span id="selectedSeatsDisplay"></span></span>
 			<!-- 선택 완료 버튼 -->
 			<input type="button" class="btn btn-primary mt-4" onclick="confirmSelection()" value="선택 완료">
 		</div>
 		<div id="seatsContainer" class="train">
-			<c:set var="currentRow" value="" />
-			<c:forEach var="seat" items="${seats}" varStatus="status">
-				<c:choose>
-					<c:when test="${seat.reserv == true}">
-						<div class="seat ${seat.reserv ? 'available' : 'unavailable'}" 
-							data-seat-number="${seat.seatnum}" data-available="true" onclick="selectSeat(this)">
-							${seat.seatnum}
-						</div>
-					</c:when>
-					<c:otherwise>
-			        	<div class="seat unavailable" 
-							data-seat-number="${seat.seatnum}" data-available="false" onclick="selectSeat(this)">
-							${seat.seatnum}
-						</div>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
+		    <div class="seat-container">
+		        <!-- 4개씩 세로로 배치 -->
+		        <c:forEach var="col" begin="0" end="3">
+			        <c:if test="${col == 2}">
+				        <div class="aisle" style="height:30px;"></div>
+				    </c:if>
+		            <div class="row">
+		                <c:forEach var="row" begin="0" end="${fn:length(seats) / 4}">
+		                    <c:set var="index" value="${row * 4 + (3 - col)}" />
+		                    <c:if test="${index < fn:length(seats)}">
+		                        <div class="seat ${seats[index].reserv ? 'available' : 'unavailable'}" 
+								     data-seat-number="${seats[index].seatnum}" 
+								     data-available="${seats[index].reserv ? 'false' : 'true'}" 
+								     onclick="selectSeat(this)">
+								    ${seats[index].seatnum}
+								</div>
+		                    </c:if>
+		                </c:forEach>
+		            </div>
+		        </c:forEach>
+		    </div>
 		</div>
 	</div>
 </body>

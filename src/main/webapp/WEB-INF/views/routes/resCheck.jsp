@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>항공편 선택 확인 - eLT항공</title>
+<title>선택 확인 - 은하철도</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <style>
 	body {
@@ -53,6 +53,12 @@
 	}
 	.seat-selection-btn {
 		margin-right: 10px;
+	}
+	#seatSelectionModal {
+		width: 1500px;
+	}
+	.modal-content {
+		width: 1100px;
 	}
 
 </style>
@@ -160,7 +166,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<iframe id="seatSelectionFrame" style="width:100%; height:500px; border:none;"></iframe>
+					<iframe id="seatSelectionFrame" style="width:100%; height:600px; border:none;"></iframe>
 				</div>
 			</div>
 		</div>
