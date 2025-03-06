@@ -66,8 +66,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 <script>
 	function confirmRsv() {
-		var goingSelectedSeats = document.getElementById('goingSelectedSeats').value;
-		if (goingSelectedSeats === '') {
+		var selectedSeats = document.getElementById('selectedSeats').value;
+		if (selectedSeats === '') {
 			alert('좌석을 선택해 주세요.');
 			return false;
 		}
@@ -83,7 +83,7 @@
 	}
 	
 	function updateSelectedSeats(seatNumbers) {
-		document.getElementById('goingSelectedSeats').value = seatNumbers.join(',');
+		document.getElementById('selectedSeats').value = seatNumbers.join(',');
 		document.getElementById('goingSeatsDisplay').innerText = seatNumbers.join(', ');
 		var seatButtonContainer = document.getElementById('goingSeatButtonContainer');
 		seatButtonContainer.innerHTML = '<button class="btn-seat-select" onclick="openSeatSelection()">좌석 변경</button>';
@@ -145,12 +145,11 @@
 		</table>
 	
 		<!-- 예약하기 버튼 -->
-		<form action="${pageContext.request.contextPath}/flights/booking" method="post" onsubmit="return confirmRsv()">
+		<form action="${pageContext.request.contextPath}/reserv/booking" method="post" onsubmit="return confirmRsv()">
 			<input type="hidden" name="routeid" value="${routeid}">
 			<input type="hidden" name="routeDeparture" value="${routeDeparture}">
 			<input type="hidden" name="resnum" value="${resnum}">
-			<input type="hidden" name="goingSelectedSeats" id="goingSelectedSeats">
-			<input type="hidden" name="returnSelectedSeats" id="returnSelectedSeats">
+			<input type="hidden" name="selectedSeats" id="selectedSeats">
 			<button type="submit" class="btn btn-success btn-reservation">예약하기</button>
 		</form>
 	</div>
