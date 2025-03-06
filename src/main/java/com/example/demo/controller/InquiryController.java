@@ -18,6 +18,12 @@ public class InquiryController {
 	@Qualifier("iq")
 	private InquiryService service;
 	
+	@GetMapping("/inquiry/inquiryMain")
+	public String inquiryMain()
+	{
+		return "/inquiry/inquiryMain";
+	}
+	
 	@GetMapping("/inquiry/inquiryList")
 	public String inquiryList(HttpSession session,Model model)
 	{

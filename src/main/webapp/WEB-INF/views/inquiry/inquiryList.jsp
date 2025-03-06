@@ -32,6 +32,7 @@
 </head>
 <body> <!-- qnaList.jsp -->
 <section>
+<h3>나의 VOC조회</h3>
  <table>
 	<thead>
 		<tr>
@@ -43,10 +44,12 @@
     	</tr>
     </thead>
    <tbody>
-   	
+   	<c:forEach items="${mapALL}" var="inquiry">
+   		<tr></tr>
+   	</c:forEach>
    </tbody>
  </table>
- <a href="/inquery/inqueryWrite" class="btn">문의 작성하기</a>
+ <a href="/inquiry/inquiryWrite" class="btn">문의 작성하기</a>
 </section>
 </body>
 </html>
