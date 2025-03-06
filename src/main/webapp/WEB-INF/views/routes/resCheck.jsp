@@ -145,9 +145,12 @@
 		</table>
 	
 		<!-- 예약하기 버튼 -->
-		<form action="${pageContext.request.contextPath}/reserv/booking" method="post" onsubmit="return confirmRsv()">
+		<form action="${pageContext.request.contextPath}/reserv/reservCheck" method="post" onsubmit="return confirmRsv()">
 			<input type="hidden" name="routeid" value="${routeid}">
 			<input type="hidden" name="routeDeparture" value="${routeDeparture}">
+			<input type="hidden" name="routeArrival" value="${routeArrival}">
+			<input type="hidden" name="routeTime" value="${routeTime}">
+			<input type="hidden" name="routeArrivalTime" value="${routeArrivalTime}">
 			<input type="hidden" name="resnum" value="${resnum}">
 			<input type="hidden" name="selectedSeats" id="selectedSeats">
 			<button type="submit" class="btn btn-success btn-reservation">예약하기</button>

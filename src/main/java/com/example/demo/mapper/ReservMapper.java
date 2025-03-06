@@ -1,16 +1,16 @@
 package com.example.demo.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
-import com.example.demo.dto.RoutesDto;
-import com.example.demo.dto.SeatDto;
+import org.apache.ibatis.annotations.Param;
+
+import com.example.demo.dto.ReservDto;
 
 @Mapper
 public interface ReservMapper {
-	List<RoutesDto> findRoutes(String departure, String arrival, String departureDate, Integer resnum);
-	List<SeatDto> getAvaiSeats(int routeid, int offset, int size);
-	int getTotalSeat(int routeid);
+	void addReserv(ReservDto resDto);
+	int getSeatid(String trim, int routeid);
+	void upTrainSeatAvai(@Param("routeid") int routeid, @Param("seatid") int seatid,
+			@Param("reservid") int reservid);
 	
 	
 }

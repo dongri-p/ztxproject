@@ -2,10 +2,11 @@ package com.example.demo.service;
 
 import org.springframework.ui.Model;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 public interface ReservService {
-	String booking(int routeid, int resnum, String routeDeparture, String selectedSeats);
+	String reservCheck(int routeid, String routeDeparture, String routeArrival, String routeTime,
+			String routeArrivalTime, int resnum, String selectedSeats, Model model);
+	String reservConfirm(int routeid, String routeDeparture, String routeArrival, String routeTime,
+			String routeArrivalTime, int resnum, String selectedSeats, Model model);
 	
 	
 }

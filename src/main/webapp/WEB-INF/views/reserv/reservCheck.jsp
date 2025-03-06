@@ -51,12 +51,12 @@
 					<td>${routeArrivalTime}</td>
 				</tr>
 				<tr>
-					<th>선택한 좌석</th>
-					<td>${selectedSeats}</td>
-				</tr>
-				<tr>
 					<th>예약인원</th>
 					<td>${resnum}</td>
+				</tr>
+				<tr>
+					<th>선택한 좌석</th>
+					<td>${selectedSeats}</td>
 				</tr>
 				<tr>
 					<th>금액</th>
@@ -84,7 +84,7 @@
 		</div>
 		<!-- 버튼 -->
 		<div class="buttons">
-			<form action="${pageContext.request.contextPath}/reserv/confirmBooking" method="post" style="display:inline;">
+			<form action="${pageContext.request.contextPath}/reserv/reservConfirm" method="post" style="display:inline;">
 				<input type="hidden" name="routeid" value="${routeid}">
 				<input type="hidden" name="selectedSeats" value="${selectedSeats}">
 				<input type="hidden" name="resnum" value="${resnum}">
