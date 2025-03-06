@@ -46,7 +46,7 @@
    	
    </tbody>
  </table>
- <a href="/inquery/inqueryWrite" class="btn">문의 작성하기</a>
+ <a href="/inquiry/inquiryWrite" class="btn">문의 작성하기</a>
 </section>
 </body>
 </html>
