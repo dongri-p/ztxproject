@@ -53,7 +53,7 @@ public class InquiryServiceImpl implements InquiryService {
                         ? session.getAttribute("userid").toString() 
                         : "guest"; // ✅ 비회원일 경우 기본값 설정
 
-        List<InquiryDto> inquiries = mapper.inquiryList(userid);
+        List<InquiryDto> inquiries = mapper.inquiryList(userid, index);
         model.addAttribute("mapAll", inquiries);
         return "/inquiry/inquiryList";
     }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface InquiryMapper {
-   public List<InquiryDto> inquiryList(@Param("userid") String userid);
+   public List<InquiryDto> inquiryList(@Param("userid") String userid, int index);
    public UserDto getMemberinfo(@Param("userid") String userid);
    public void inquiryWriteOk(InquiryDto idto);
    public InquiryDto readnum(@Param("id") int id);
