@@ -514,7 +514,7 @@
 					<span> ${name}님 &nbsp;|&nbsp; </span>
 					<ul class="mmenu">
 						<li><a href="../user/userView">나의정보</a></li>
-						<li><a href="../reserve/list">예약정보</a></li>
+						<li><a href="../reserv/list">예약정보</a></li>
 						<li><a href="../inquiry/inquiryMyList">나의문의</a></li>
 						<li><a href="../member/myRev">나의후기</a></li>
 					</ul>
@@ -553,9 +553,9 @@
 						<li id="main1" onmouseover="viewMenu(0)" onmouseout="hideMenu(0)">
 							<span class="icona">🚄</span>승차권
 							<ul class="menu">
-								<li><a href="../reserve/reservation">예약</a></li>
-								<li><a href="../reserve/reserveInfo">예약 조회</a></li>
-								<li><a href="../reserve/routeList">운행 정보</a></li>
+								<li><a href="../reserv/reservation">예약</a></li>
+								<li><a href="../reserv/reserveInfo">예약 조회</a></li>
+								<li><a href="../reserv/routeList">운행 정보</a></li>
 							</ul>
 						</li>
 						<li id="main2" onmouseover="viewMenu(1)" onmouseout="hideMenu(1)">
