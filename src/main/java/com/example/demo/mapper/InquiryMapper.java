@@ -1,15 +1,15 @@
 package com.example.demo.mapper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.apache.ibatis.annotations.Mapper;
-
+import org.apache.ibatis.annotations.Param;
 import com.example.demo.dto.InquiryDto;
+import com.example.demo.dto.UserDto;
+import java.util.List;
 
 @Mapper
 public interface InquiryMapper {
-	ArrayList<HashMap> inquiryList(String userid);
-	void writeOk(InquiryDto idto);
-	
+   public List<InquiryDto> inquiryList(@Param("userid") String userid);
+   public UserDto getMemberinfo(@Param("userid") String userid);
+   public void inquiryWriteOk(InquiryDto idto);
+   public InquiryDto readnum(@Param("id") int id);
 }

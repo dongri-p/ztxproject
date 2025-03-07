@@ -20,15 +20,15 @@
 	    display: flex;
 	    flex-direction: column;
 	    justify-content: center;
-	    background-image: url('../static/resources/trainseat.jpg');
-	    background-size: 1060px 270px;
+	    background-image: url('../static/resources/trainseat2.jpg');
+	    background-size: 1035px 270px;
 	    background-repeat: no-repeat;
 	}
 	.seat-container {
 	    display: flex;
 	    flex-direction: column;
 	    align-items: flex-start;
-	    padding-left: 150px;
+	    padding-left: 143px;
 	    padding-top: 15px;
 	}
 	.seatf {

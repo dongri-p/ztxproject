@@ -515,7 +515,7 @@
 					<ul class="mmenu">
 						<li><a href="../user/userView">나의정보</a></li>
 						<li><a href="../reserve/list">예약정보</a></li>
-						<li><a href="../member/myInq">나의문의</a></li>
+						<li><a href="../inquiry/inquiryMyList">나의문의</a></li>
 						<li><a href="../member/myRev">나의후기</a></li>
 					</ul>
 				</div>
@@ -595,15 +595,14 @@
 	</header>
 	<hr>
 <script>
-	function endChat() {
+	function endChat() { // 닫기 버튼
 		sendMessage("상담이 종료되었습니다.");
 		var endButton = document.getElementById('endChatButton');
 		endButton.innerText = '닫기';
 		endButton.onclick = closeAndResetChat;
 	}
-	// 닫기 버튼
-	/* 채팅 */
-	function closeAndResetChat() {
+	
+	function closeAndResetChat() { // 채팅
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "../main/resetChatHistory", true);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -622,8 +621,8 @@
 		};
 		xhr.send();
 	}
-	// 메시지 전송 함수
-	function sendMessage(message) {
+	
+	function sendMessage(message) { // 메시지 전송 함수
 		var messageInput = message || document.getElementById('chat-message').value;
 		var chatBody = document.getElementById('chat-body');
 		if (messageInput.trim() === "") return;
@@ -641,8 +640,8 @@
 		};
 		xhr.send("message=" + encodeURIComponent(messageInput) + "&isAdmin=false");
 	}
-	// Enter 키로 메시지 전송
-	document.addEventListener('DOMContentLoaded', function() {
+	
+	document.addEventListener('DOMContentLoaded', function() { // Enter 키로 메시지 전송
 		document.getElementById('chat-message').addEventListener('keydown', function(event) {
 			if (event.key === "Enter") {
 				event.preventDefault();
@@ -650,8 +649,8 @@
 			}
 		});
 	});
-	// 채팅 창 토글
-	function toggleChat() {
+	
+	function toggleChat() { // 채팅 창 토글
 		var chatConsole = document.getElementById('chat-console');
 		var chatToggle = document.getElementById('chat-toggle');
 		if (chatConsole.style.display === 'none' || chatConsole.style.display === '') {
@@ -663,8 +662,8 @@
 			chatToggle.style.display = 'block';
 		}
 	}
-	// 메시지 갱신
-	function pollMessages() {
+	
+	function pollMessages() { // 메시지 갱신
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "/main/getMessages", true);
 		xhr.onreadystatechange = function() {
