@@ -116,6 +116,44 @@
     </table>
     <br>
     <a href="/inquiry/inquiryWrite" class="btn">문의 작성하기</a>
+    
+    <tr>
+     <td>
+     <!-- 이전 그룹 -->
+     	<c:if test="${istart != 1}">
+     		<a href="inquiryList?page=${pstart-1}&id=${id}"><img src="../static/4.png"></a>
+     	</c:if>
+     	<c:if test="${istart == 1}">
+     		<img src="../static/4.png">
+     	</c:if>
+     <!-- 이전 페이지 -->
+     	<c:if test="${page != 1}">
+     		<a href="inquiryList?page=${page-1}&id=${id}"><img src="../static/3.png"></a>
+     	</c:if>
+     	<c:if test="${page == 1}">
+     		<img src="../static/3.png">
+     	</c:if>
+     
+     	<c:forEach var="i" begin="${istart}" end="${iend}">
+     	 <c:if test="${page == i}">
+     		<a href="inquiryList?page=${i}&id=${id}" style="color:#003b8b"> ${i} </a>
+     	 </c:if>
+     	 <c:if test="${page != i}">
+     		<a href="inquiryList?page=${i}&id=${id}"> ${i} </a>
+     	 </c:if>
+     	</c:forEach>
+     	
+     <!-- 다음 페이지 -->
+     	<c:if test="${page != chong}">
+     		<a href="inquiryList?page=${page+1}&id=${id}"> <img src="../static/2.png"> </a>
+     	</c:if>
+     	<c:if test="${page==chong}">
+     		<img src="../static/2.png">
+     	</c:if>
+     	
+     	
+     </td>
+    </tr>
  </section>
 
 </body>

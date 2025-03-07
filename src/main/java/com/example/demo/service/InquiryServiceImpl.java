@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import com.example.demo.dto.InquiryDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.mapper.InquiryMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
@@ -16,8 +18,38 @@ public class InquiryServiceImpl implements InquiryService {
     private InquiryMapper mapper;
 
     @Override
-    public String inquiryList(HttpSession session, Model model) {
-        String userid = (session.getAttribute("userid") != null) 
+    public String inquiryList(HttpSession session,HttpServletRequest request,Model model) {
+        
+    	String id=request.getParameter("id");
+    	
+    	int page=1;
+    	if(request.getParameter("page")!=null)
+    	{
+    		page=Integer.parseInt(request.getParameter("page"));
+    	}
+    	
+    	int index=(page-1)*20;
+    	
+    	int istart,iend,chong;
+    	
+    	istart=page/10;
+    	if(page%10==0)
+    		istart--;
+    	
+    	istart=istart*10+1;
+    	iend=istart+9;
+    	
+    	chong=mapper.getChong(id);
+    	
+    	if(iend>chong)
+    		iend=chong;
+    	
+    	model.addAttribute("id",id);
+    	model.addAttribute("istart",istart);
+    	model.addAttribute("iend",iend);
+    	model.addAttribute("chong",chong);
+    	
+    	String userid = (session.getAttribute("userid") != null) 
                         ? session.getAttribute("userid").toString() 
                         : "guest"; // ✅ 비회원일 경우 기본값 설정
 
