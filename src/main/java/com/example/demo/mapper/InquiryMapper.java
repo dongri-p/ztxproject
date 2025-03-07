@@ -12,4 +12,5 @@ public interface InquiryMapper {
    public UserDto getMemberinfo(@Param("userid") String userid);
    public void inquiryWriteOk(InquiryDto idto);
    public InquiryDto readnum(@Param("id") int id);
+   public int getChong(String id);
 }

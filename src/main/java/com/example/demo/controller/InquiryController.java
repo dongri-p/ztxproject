@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.dto.InquiryDto;
 import com.example.demo.service.InquiryService;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -16,8 +18,8 @@ public class InquiryController {
     private InquiryService service;
 
     @GetMapping("/inquiry/inquiryList")
-    public String inquiryList(HttpSession session, Model model) {
-        return service.inquiryList(session, model);
+    public String inquiryList(HttpSession session,HttpServletRequest request, Model model) {
+        return service.inquiryList(session,request,model);
     }
 
     @GetMapping("/inquiry/inquiryWrite")

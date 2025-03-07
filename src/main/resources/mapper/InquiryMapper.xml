@@ -8,6 +8,7 @@
     <select id="inquiryList" resultType="com.example.demo.dto.InquiryDto">
     	SELECT * FROM inquiry
     	ORDER BY writeday DESC
+    	limit #{index},20
 	</select>
 
 
@@ -35,5 +36,10 @@
     	WHERE i.id = #{id};
 	</select>
     
+    <select id="getChong" resultType="Integer">
+    	select ceil (count(*)/20)
+    	from inquiry
+    	where id like concat(#{concat},'%')
+    </select>
 
 </mapper>
