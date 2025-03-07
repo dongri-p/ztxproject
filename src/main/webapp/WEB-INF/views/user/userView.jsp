@@ -84,7 +84,7 @@
   }
   form {
     margin-top:10px;
-  }   
+  }
   </style>
   <script>
     function pwdCheck()
@@ -134,9 +134,8 @@
       <td>
         <input type="password" name="oPwd" id="pwd" onblur="pwdCheck()" placeholder="현재 비밀번호"> <p>
         <br> <span id="pmsg"> </span>
-        새 비밀번호 <input type="password" name="nPwd" id="pwd" onkeyup="pwdCk()"> <p>
-        
-        비밀번호 확인 <input type="password" name="nPwd2" id="pwd" onkeyup="pwdCk()"> <p>
+        <input type="password" name="nPwd" id="pwd" onkeyup="pwdCk()" placeholder="새 비밀번호"> <p> 
+        <input type="password" name="nPwd2" id="pwd" onkeyup="pwdCk()" placeholder="비밀번호 확인"> <p>
         <br> <span id="pmsg1"> </span>
       </td>
     </tr>
