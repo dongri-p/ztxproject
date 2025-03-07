@@ -68,21 +68,34 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String chgEmail(HttpSession session, HttpServletRequest request)
+	public String updateOk(HttpSession session, HttpServletRequest request, UserDto udto)
 	{
 		if(session.getAttribute("userid") == null)
 		{
-			return "0";
+			return "redirect:/login/login";
+		}
+		else
+		{		
+			return "";
+		}
+	}
+
+	@Override
+	public String pwdCheck(HttpSession session, HttpServletRequest request)
+	{
+		String userid=session.getAttribute("userid").toString();
+		String oPwd=request.getParameter("oPwd");
+		String pwd=mapper.pwdCheck(userid);
+		
+		if(!oPwd.equals(pwd))
+		{
+			return "비밀번호가 일치하지 않습니다.";
 		}
 		else
 		{
-			String email=request.getParameter("email");
-			String userid=session.getAttribute("userid").toString();
-			
-			mapper.chgEmail(email, userid);
-			
-			return "1";
+			return "";
 		}
+
 	}
 	
 }

@@ -81,6 +81,9 @@
     text-decoration: none;
     color:#083B82;
   }
+  a {
+  	text-decoration: none;
+  }
 </style>
 <script>
   function findU()
@@ -129,9 +132,11 @@
     <div class="footer-links">
       <span onclick="findU()">아이디 찾기</span> |
       <span onclick="findP()">비밀번호 찾기</span> |
-      <span onclick="location='../user/user'">회원가입</a></span>
+      <span onclick="location='../user/user'">회원가입</span>
     </div>
   </form>
+	
  </section>
+ <a href="loginAd"><span style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 </body>
 </html>

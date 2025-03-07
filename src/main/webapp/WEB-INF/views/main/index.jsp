@@ -490,9 +490,9 @@
 	            var stationList = document.getElementById('station-list');
 	            if (stationList) {
 	                stationList.innerHTML = '';  // 리스트 초기화
-	                var defaultStation = data.find(station => station.station_name === '서울');
+	                var defaultStation = data.find(station => station.stationName === '서울');
 	                if (defaultStation) {
-	                    document.getElementById('from-text').textContent = defaultStation.station_name;
+	                    document.getElementById('from-text').textContent = defaultStation.stationName;
 	                } else {
 	                    document.getElementById('from-text').textContent = '서울';
 	                }
@@ -508,13 +508,13 @@
 
 	                    var button = document.createElement('button');
 	                    button.classList.add('station-btn');
-	                    button.textContent = station.station_name;
+	                    button.textContent = station.stationName;
 	                    
 	                    // 클릭 시 값 전달하고, 페이지 이동 방지
 	                    button.onclick = function(event) {
 	                        event.preventDefault();  // 페이지 이동 방지
-	                        document.getElementById('from-text').textContent = station.station_name;
-	                        document.getElementById('from-hidden').value = station.station_name;
+	                        document.getElementById('from-text').textContent = station.stationName;
+	                        document.getElementById('from-hidden').value = station.stationName;
 	                        closePopup('departure');  // 팝업 닫기
 	                    };
 	                    row.appendChild(button);
@@ -562,13 +562,13 @@
 
 	                var button = document.createElement('button');
 	                button.classList.add('station-btn');
-	                button.textContent = station.station_name;
+	                button.textContent = station.stationName;
 	                
 	                // 클릭 시 값 전달하고, 페이지 이동 방지
 	                button.onclick = function(event) {
 	                    event.preventDefault();  // 페이지 이동 방지
-	                    document.getElementById('to-text').textContent = station.station_name;
-	                    document.getElementById('to-hidden').value = station.station_name;
+	                    document.getElementById('to-text').textContent = station.stationName;
+	                    document.getElementById('to-hidden').value = station.stationName;
 	                    closePopup('arrival');  // 팝업 닫기
 	                };
 	                row.appendChild(button);
@@ -702,14 +702,14 @@
 			$('.main_content').show();
 		}
 	});
-	function selectDeparture(station_name, station_name) {
-		document.getElementById('from-text').textContent = station_name;
-		document.getElementById('from-hidden').value = station_name;
+	function selectDeparture(stationName, stationName) {
+		document.getElementById('from-text').textContent = stationName;
+		document.getElementById('from-hidden').value = stationName;
 		closePopup('departure');
 	}
-	function selectArrival(station_name, station_name) {
-		document.getElementById('to-text').textContent = station_name;
-		document.getElementById('to-hidden').value = station_name;
+	function selectArrival(stationName, stationName) {
+		document.getElementById('to-text').textContent = stationName;
+		document.getElementById('to-hidden').value = stationName;
 		closePopup('arrival');
 	}
 	function getDayOfWeek(day) {

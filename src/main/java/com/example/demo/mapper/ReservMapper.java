@@ -11,6 +11,7 @@ public interface ReservMapper {
 	int getSeatid(String trim, int routeid);
 	void upTrainSeatAvai(@Param("routeid") int routeid, @Param("seatid") int seatid,
 			@Param("reservid") int reservid);
+	void upRouteSeat(int routeid, int resnum);
 	
 	
 }

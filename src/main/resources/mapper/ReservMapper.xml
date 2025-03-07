@@ -3,14 +3,17 @@
 <mapper namespace="com.example.demo.mapper.ReservMapper">
 	<insert id="addReserv" parameterType="com.example.demo.dto.ReservDto" useGeneratedKeys="true" keyProperty="reservid">
 		INSERT INTO reservlist
-		(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, reservday, PNR)
-		VALUES (#{routeid}, #{routeDeparture}, #{routeArrival}, #{routeTime}, #{routeArrivalTime}, #{resnum}, now(), #{PNR})
+		(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, reservday, PNR, userid)
+		VALUES (#{routeid}, #{routeDeparture}, #{routeArrival}, #{routeTime}, #{routeArrivalTime}, #{resnum}, now(), #{PNR}, #{userid})
 	</insert>
 	<select id="getSeatid" parameterType="map" resultType="int">
 		SELECT seatid FROM trainseat WHERE seatnum = #{trim} and routeid=#{routeid}
 	</select>
 	<update id="upTrainSeatAvai" parameterType="com.example.demo.dto.ReservDto">
 		UPDATE trainseat SET reserv=0, resid= #{reservid} WHERE routeid = #{routeid} AND seatid = #{seatid}
+	</update>
+	<update id="upRouteSeat" parameterType="com.example.demo.dto.ReservDto">
+		UPDATE routes SET seat=(seat-#{resnum}) WHERE routeid = #{routeid}
 	</update>
 	
 	
