@@ -15,9 +15,24 @@
 	<update id="upRouteSeat" parameterType="com.example.demo.dto.ReservDto">
 		UPDATE routes SET seat=(seat-#{resnum}) WHERE routeid = #{routeid}
 	</update>
-	
-	<select id="list" resultType="com.example.demo.dto.ReservDto">
-	  select * from reservlist order by reservid desc
+  
+  <select id="list" resultType="com.example.demo.dto.ReservDto">
+  select * from reservlist order by reservid desc
+  </select>    
+
+	<select id="getRsvanow" resultType="com.example.demo.dto.ReservDto">
+		SELECT r.routeid, r.*, ro.departure, ro.trainid,
+		ro.departure_time, COUNT(r.reservid) AS reservCount FROM reservlist r JOIN routes ro
+		ON r.routeid = ro.routeid WHERE ro.departure_time >= NOW() GROUP BY r.routeid ORDER BY ro.departure_time
+	</select>
+	<select id="getRsvByDate" resultType="com.example.demo.dto.ReservDto">
+		SELECT r.routeid, r.*, ro.departure, ro.trainid,
+		ro.departure_time, COUNT(r.reservid) FROM reservlist r
+		JOIN routes ro ON r.routeid = ro.routeid WHERE DATE(ro.departure_time) = #{selectedDate}
+		GROUP BY r.routeid ORDER BY ro.departure
+	</select>
+	<select id="getAvaiSeatCountByRouteid" resultType="map">
+		SELECT routeid, COUNT(*) AS availableSeats FROM trainseat WHERE reserv = 1 GROUP BY routeid
 	</select>
 	
 	

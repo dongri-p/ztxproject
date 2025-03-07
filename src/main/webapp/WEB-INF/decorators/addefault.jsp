@@ -214,7 +214,7 @@
 				</div>
 			</div>
 			<div id="two">
-				<button onclick="location.href='reserveList'">예약현황</button>
+				<button onclick="location.href='reservList'">예약현황</button>
 				<button onclick="location.href='gongjiList'">공지사항</button>
 				<button onclick="location.href='inquiryList'">고객문의</button>
 				<button onclick="location.href='memberList'">회원관리</button>
