@@ -12,6 +12,7 @@ public interface UserService {
 	String useridCheck(HttpServletRequest request);
 	String userOk(UserDto udto);
 	String userView(HttpSession session, Model model);
-	String chgEmail(HttpSession session, HttpServletRequest request);
+	String updateOk(HttpSession session, HttpServletRequest request, UserDto udto);
+	String pwdCheck(HttpSession session, HttpServletRequest request);
 
 }
