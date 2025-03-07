@@ -84,7 +84,7 @@
   }
   form {
     margin-top:10px;
-  }   
+  }
   </style>
   <script>
     function pwdCheck()
@@ -94,9 +94,18 @@
     	var chk=new XMLHttpRequest();
     	chk.onload=function()
     	{
-    		
+    		//alert(chk.responseText);
+    		if(chk.responseText=="0")
+    		{
+    			document.getElementById("pmsg").innerText="틀린비밀번호";
+    			document.getElementById("pmsg").style.color="red";
+    		}
+    		else
+    		{
+    			document.getElementById("pmsg").innerText="";
+    		}
     	}
-    	chk.open("get", "pwdCk?userid="+userid+"&oPwd="+oPwd);
+    	chk.open("get", "pwdCheck?oPwd="+oPwd);
     	chk.send();
     }
   </script>
@@ -123,11 +132,11 @@
     <tr>
       <td> 비밀번호 변경 </td>
       <td>
-        현재비밀번호 <input type="password" name="oPwd" id="pwd" onkeyup="pwdCheck()"> <br>
-        <span id="pmsg"> </span>
-        새 비밀번호 <input type="password" name="nPwd" id="pwd" onkeyup="pwdCk()"> <br>
-        비밀번호 확인 <input type="password" name="nPwd2" id="pwd" onkeyup="pwdCk()"> <br>
-        <span id="pmsg1"> </span>
+        <input type="password" name="oPwd" id="pwd" onblur="pwdCheck()" placeholder="현재 비밀번호"> <p>
+        <br> <span id="pmsg"> </span>
+        <input type="password" name="nPwd" id="pwd" onkeyup="pwdCk()" placeholder="새 비밀번호"> <p> 
+        <input type="password" name="nPwd2" id="pwd" onkeyup="pwdCk()" placeholder="비밀번호 확인"> <p>
+        <br> <span id="pmsg1"> </span>
       </td>
     </tr>
     <tr>

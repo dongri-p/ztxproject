@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,16 @@ public class ReservServiceImpl implements ReservService {
 		model.addAttribute("routeArrivalTime", routeArrivalTime);
 		
 		return "/reserv/reservConfirm";
+	}
+
+	@Override
+	public String list(Model model)
+	{	
+		ArrayList<ReservDto> reslist=resMapper.list();
+		
+		model.addAttribute("reslist", reslist);
+		
+		return "/reserv/list";
 	}
 	
 	

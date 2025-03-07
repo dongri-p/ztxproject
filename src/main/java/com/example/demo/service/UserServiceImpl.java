@@ -89,11 +89,11 @@ public class UserServiceImpl implements UserService {
 		
 		if(!oPwd.equals(pwd))
 		{
-			return "비밀번호가 일치하지 않습니다.";
+			return "0";
 		}
 		else
 		{
-			return "";
+			return "1";
 		}
 
 	}

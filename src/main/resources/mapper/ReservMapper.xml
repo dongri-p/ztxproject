@@ -15,7 +15,11 @@
 	<update id="upRouteSeat" parameterType="com.example.demo.dto.ReservDto">
 		UPDATE routes SET seat=(seat-#{resnum}) WHERE routeid = #{routeid}
 	</update>
-	
+  
+  <select id="list" resultType="com.example.demo.dto.ReservDto">
+  select * from reservlist order by reservid desc
+  </select>    
+
 	<select id="getRsvanow" resultType="com.example.demo.dto.ReservDto">
 		SELECT r.routeid, r.*, ro.departure, ro.trainid,
 		ro.departure_time, COUNT(r.reservid) AS reservCount FROM reservlist r JOIN routes ro

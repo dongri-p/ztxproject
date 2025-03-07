@@ -52,7 +52,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/pwdCheck")
-	public String pwdCk(HttpSession session, HttpServletRequest request)
+	public @ResponseBody String pwdCk(HttpSession session, HttpServletRequest request)
 	{
 		return service.pwdCheck(session, request);
 	}
