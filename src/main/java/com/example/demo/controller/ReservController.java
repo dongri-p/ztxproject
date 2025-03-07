@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +36,12 @@ public class ReservController {
 			Model model, HttpSession session) {
 		// 예약 처리 로직 추가
 		return resService.reservConfirm(userid, routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model, session);
+	}
+	
+	@GetMapping("/reserv/list")
+	public String list(Model model)
+	{
+		return resService.list(model);
 	}
 	
 	

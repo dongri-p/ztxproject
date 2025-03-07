@@ -16,6 +16,10 @@
 		UPDATE routes SET seat=(seat-#{resnum}) WHERE routeid = #{routeid}
 	</update>
 	
+	<select id="list" resultType="com.example.demo.dto.ReservDto">
+	  select * from reservlist order by reservid desc
+	</select>
+	
 	
 </mapper>
 

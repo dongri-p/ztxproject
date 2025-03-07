@@ -9,6 +9,7 @@ public interface ReservService {
 			String routeArrivalTime, int resnum, String selectedSeats, Model model, HttpSession session);
 	String reservConfirm(String userid, int routeid, String routeDeparture, String routeArrival, String routeTime,
 			String routeArrivalTime, int resnum, String selectedSeats, Model model, HttpSession session);
+	String list(Model model);
 	
 	
 }
