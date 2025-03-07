@@ -1,5 +1,8 @@
 package com.example.demo.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +15,9 @@ public interface ReservMapper {
 	void upTrainSeatAvai(@Param("routeid") int routeid, @Param("seatid") int seatid,
 			@Param("reservid") int reservid);
 	void upRouteSeat(int routeid, int resnum);
+	List<ReservDto> getRsvByDate(String selectedDate);
+	List<ReservDto> getRsvanow();
+	List<Map<String, Object>> getAvaiSeatCountByRouteid();
 	
 	
 }

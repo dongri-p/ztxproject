@@ -9,6 +9,7 @@ import com.example.demo.service.AdminService;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController {
@@ -19,6 +20,15 @@ public class AdminController {
 	@GetMapping("/admin/index")
 	public String adminIndex(HttpServletRequest request, Model model) {
 		return service.adminIndex(request, model);
+	}
+	
+	@GetMapping("/admin/reservList")
+	public String reservList(@RequestParam(required=false) String selectedDate,
+			@RequestParam(required=false, defaultValue="1") Integer seoulPage,
+			@RequestParam(required=false, defaultValue="1") Integer pusanPage,
+			@RequestParam(required=false, defaultValue="1") Integer otherPage,
+			@RequestParam(required=false, defaultValue="1") Integer page, Model model) {
+		return service.reservList(selectedDate, seoulPage, pusanPage, otherPage, page, model);
 	}
 	
 }
