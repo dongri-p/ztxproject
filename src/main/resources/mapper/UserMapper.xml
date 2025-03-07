@@ -15,9 +15,14 @@
     select * from user where userid=#{userid}
   </select>
 
-  <update id="chgEmail">
-    update user set email=#{email} where userid=#{userid}
+  <update id="updateOk">
+    update user set email=#{email} pwd=#{pwd} phone=#{phone}
+    where userid=#{userid}
   </update>
+  
+  <select id="pwdCheck" resultType="String">
+    select pwd from user where userid=#{userid}
+  </select>
 	
 	
 </mapper>

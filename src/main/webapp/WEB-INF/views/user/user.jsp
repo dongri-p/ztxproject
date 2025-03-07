@@ -74,6 +74,8 @@
 <script>
   function useridCheck(userid)
   {
+	  userid=userid.trim();
+	  
 	  if(userid.length >= 6)
 	  {
 		  var chk=new XMLHttpRequest();

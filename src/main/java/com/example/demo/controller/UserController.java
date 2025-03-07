@@ -45,10 +45,16 @@ public class UserController {
 		return service.userView(session, model);
 	}
 	
-	@GetMapping("/user/chgEmail")
-	public String chgEmail(HttpSession session, HttpServletRequest request)
+	@PostMapping("/user/updateOk")
+	public String chgEmail(HttpSession session, HttpServletRequest request, UserDto udto)
 	{
-		return service.chgEmail(session, request);
+		return service.updateOk(session, request, udto);
+	}
+	
+	@GetMapping("/user/pwdCheck")
+	public String pwdCk(HttpSession session, HttpServletRequest request)
+	{
+		return service.pwdCheck(session, request);
 	}
 	
 }

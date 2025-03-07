@@ -9,5 +9,6 @@ public interface UserMapper {
 	public Integer useridCheck(String userid);
 	public void userOk(UserDto udto);
 	public UserDto userView(String userid);
-	public void chgEmail(String email, String userid);
+	public void updateOk(String email, String userid);
+	public String pwdCheck(String userid);
 }
