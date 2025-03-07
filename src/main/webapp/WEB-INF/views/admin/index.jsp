@@ -117,14 +117,14 @@
 	                <td>출발시간</td>
 	                <td>예약</td>
 	            </tr>
-	            <c:forEach items="${gmpRsv}" var="grsv">
+	            <c:forEach items="${seoulRsv}" var="srsv">
 	                <tr>
-	                    <td>${grsv.flightName}</td>
-	                    <td>${grsv.departureTime}</td>
-	                    <td>${grsv.reservationCount}</td>
+	                    <td>${srsv.trainid}</td>
+	                    <td>${srsv.departureTime}</td>
+	                    <td>${srsv.reservCount}</td>
 	                </tr>
 	            </c:forEach>
-	            <c:if test="${empty gmpRsv}">
+	            <c:if test="${empty seoulRsv}">
 	                <tr>
 	                    <td colspan="3">예약 데이터가 없습니다.</td>
 	                </tr>
@@ -136,17 +136,17 @@
 	            <caption><span id="h5"> 부산역 출발 </span></caption>
 	            <tr>
 	                <td>출발일</td>
-	                <td>출항시간</td>
+	                <td>출발시간</td>
 	                <td>예약</td>
 	            </tr>
-	            <c:forEach items="${icnRsv}" var="irsv">
+	            <c:forEach items="${pusanRsv}" var="prsv">
 	                <tr>
-	                    <td>${irsv.flightName}</td>
-	                    <td>${irsv.departureTime}</td>
-	                    <td>${irsv.reservationCount}</td>
+	                    <td>${prsv.trainid}</td>
+	                    <td>${prsv.departureTime}</td>
+	                    <td>${prsv.reservCount}</td>
 	                </tr>
 	            </c:forEach>
-	            <c:if test="${empty icnRsv}">
+	            <c:if test="${empty pusanRsv}">
 	                <tr>
 	                    <td colspan="3">예약 데이터가 없습니다.</td>
 	                </tr>
@@ -158,14 +158,14 @@
 	            <caption><span id="h5"> 기타 </span></caption>
 	            <tr>
 	                <td>출발일</td>
-	                <td>출항시간</td>
+	                <td>출발시간</td>
 	                <td>예약</td>
 	            </tr>
 	            <c:forEach items="${otherRsv}" var="orsv">
 	                <tr>
-	                    <td>${orsv.flightName}</td>
+	                    <td>${orsv.trainid}</td>
 	                    <td>${orsv.departureTime}</td>
-	                    <td>${orsv.reservationCount}</td>
+	                    <td>${orsv.reservCount}</td>
 	                </tr>
 	            </c:forEach>
 	            <c:if test="${empty otherRsv}">
@@ -177,7 +177,7 @@
 	    </div>
 	</div>
 	<hr>
-	<h4>&nbsp;&nbsp;&nbsp; | 항공편 현황</h4>
+	<h4>&nbsp;&nbsp;&nbsp; | 열차편 현황</h4>
 	<div id="second">
 		<div id="flights">
 			<table>
@@ -187,39 +187,16 @@
 					<td>도착</td>
 					<td>출발 시간</td>
 					<td>도착 시간</td>
-					<td>여객 시간</td>
+					<td>예약</td>
 				</tr>
-				<c:forEach items="${departureList}" var="flight">
-					<c:if test="${(flight.departureAirport eq 'GMP')||(flight.departureAirport eq 'ICN')}">
+				<c:forEach items="${departureList}" var="route">
+					<c:if test="${(route.departure eq '서울역')||(route.departure eq '부산역')}">
 						<tr>
-							<td>${flight.departureAirport}</td>
-							<td>${flight.arrivalAirport}</td>
-							<td>${flight.departureTime}</td>
-							<td>${flight.arrivalTime}</td>
-							<td>${flight.flightDuration}</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</table>
-		</div>
-		<div id="flights">
-			<table>
-				<caption><span id="h5"> 도착 </span></caption>
-				<tr>
-					<td>출발</td>
-					<td>도착</td>
-					<td>출발 시간</td>
-					<td>도착 시간</td>
-					<td>여객 시간</td>
-				</tr>
-				<c:forEach items="${arrivalList}" var="flight">
-					<c:if test="${(flight.arrivalAirport eq 'GMP')||(flight.arrivalAirport eq 'ICN')}">
-						<tr>
-							<td>${flight.departureAirport}</td>
-							<td>${flight.arrivalAirport}</td>
-							<td>${flight.departureTime}</td>
-							<td>${flight.arrivalTime}</td>
-							<td>${flight.flightDuration}</td>
+							<td>${route.departure}</td>
+							<td>${route.arrival}</td>
+							<td>${route.departureTime}</td>
+							<td>${route.arrivalTime}</td>
+							<td>${900-route.seat}</td>
 						</tr>
 					</c:if>
 				</c:forEach>

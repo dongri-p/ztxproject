@@ -11,6 +11,8 @@ public interface RoutesMapper {
 	List<RoutesDto> findRoutes(String departure, String arrival, String departureDate, Integer resnum);
 	List<SeatDto> getAvaiSeats(int routeid, int offset, int size);
 	int getTotalSeat(int routeid);
+	List<RoutesDto> getDepartureRoutes();
+	List<RoutesDto> getArrivalRoutes();
 	
 	
 }

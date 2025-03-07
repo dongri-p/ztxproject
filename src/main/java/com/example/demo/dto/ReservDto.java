@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class ReservDto {
 	
 	private int reservid;
-    private int routeid, seatid, resnum, charge, payment, state, resid;
-    private String userid, routeDeparture, routeArrival, routeTime, routeArrivalTime, selectedSeats, reservday, PNR;
+    private int routeid, seatid, resnum, charge, payment, state, resid, trainid, seat;
+    private String userid, routeDeparture, routeArrival, routeTime, routeArrivalTime, selectedSeats, reservday, PNR, selectedDate, departure, arrival;
    
 	// 예약 DTO 생성자 (선택적으로 작성 가능)
 	public ReservDto(String userid, int routeid, String routeDeparture, String routeArrival, String routeTime,

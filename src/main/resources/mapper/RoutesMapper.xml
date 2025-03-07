@@ -19,6 +19,14 @@
 	<select id="getTotalSeat" resultType="int">
 		SELECT COUNT(*) FROM trainseat WHERE routeid = #{routeid}
 	</select>
+	<select id="getDepartureRoutes" resultType="com.example.demo.dto.RoutesDto">
+		SELECT * FROM routes WHERE departure_time >= '2025-01-01' AND departure IN ('서울역', '부산역')
+		ORDER BY departure_time desc LIMIT 5 
+	</select>
+	<select id="getArrivalRoutes" resultType="com.example.demo.dto.RoutesDto">
+		SELECT * FROM routes WHERE departure_time >= NOW() AND arrival IN ('서울역', '부산역')
+		ORDER BY departure_time LIMIT 5
+	</select>
 	
 	
 </mapper>

@@ -96,8 +96,7 @@ public class ReservServiceImpl implements ReservService {
 	}
 
 	@Override
-	public String list(Model model)
-	{	
+	public String list(Model model) {
 		ArrayList<ReservDto> reslist=resMapper.list();
 		
 		model.addAttribute("reslist", reslist);

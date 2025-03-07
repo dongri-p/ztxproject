@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.service.AdminService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,8 +19,8 @@ public class AdminController {
 	private AdminService service;
 	
 	@GetMapping("/admin/index")
-	public String adminIndex(HttpServletRequest request, Model model) {
-		return service.adminIndex(request, model);
+	public String adminIndex(HttpSession session, HttpServletRequest request, Model model) {
+		return service.adminIndex(session, request, model);
 	}
 	
 	@GetMapping("/admin/reservList")

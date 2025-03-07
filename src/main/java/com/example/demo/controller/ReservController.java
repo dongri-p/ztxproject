@@ -18,29 +18,28 @@ public class ReservController {
 	@Autowired
 	@Qualifier("ress")
 	private ReservService resService;
-		
+	
 	@PostMapping("/reserv/reservCheck")
-	public String reservCheck(@RequestParam("routeid") int routeid, @RequestParam("routeDeparture") String routeDeparture,
-			@RequestParam("routeArrival") String routeArrival, @RequestParam("routeTime") String routeTime,
-			@RequestParam("routeArrivalTime") String routeArrivalTime, @RequestParam("selectedSeats") String selectedSeats,
-			@RequestParam("resnum") int resnum, Model model, HttpSession session) {
+	public String reservCheck(@RequestParam int routeid, @RequestParam String routeDeparture,
+			@RequestParam String routeArrival, @RequestParam String routeTime,
+			@RequestParam String routeArrivalTime, @RequestParam String selectedSeats,
+			@RequestParam int resnum, Model model, HttpSession session) {
 		// 예약 처리 로직 추가
 		return resService.reservCheck(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model, session);
 	}
 	
 	@PostMapping("/reserv/reservConfirm")
-	public String reservConfirm(@RequestParam("userid") String userid, @RequestParam("routeid") int routeid,
-			@RequestParam("routeDeparture") String routeDeparture, @RequestParam("routeArrival") String routeArrival,
-			@RequestParam("routeTime") String routeTime, @RequestParam("routeArrivalTime") String routeArrivalTime,
-			@RequestParam("selectedSeats") String selectedSeats, @RequestParam("resnum") int resnum,
+	public String reservConfirm(@RequestParam String userid, @RequestParam int routeid,
+			@RequestParam String routeDeparture, @RequestParam String routeArrival,
+			@RequestParam String routeTime, @RequestParam String routeArrivalTime,
+			@RequestParam String selectedSeats, @RequestParam int resnum,
 			Model model, HttpSession session) {
 		// 예약 처리 로직 추가
 		return resService.reservConfirm(userid, routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model, session);
 	}
 	
 	@GetMapping("/reserv/list")
-	public String list(Model model)
-	{
+	public String list(Model model) {
 		return resService.list(model);
 	}
 	

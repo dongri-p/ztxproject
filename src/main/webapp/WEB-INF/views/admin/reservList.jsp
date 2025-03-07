@@ -91,7 +91,7 @@
 	}
 	.ui-datepicker td {
 		text-align: center;
-		padding: 8px;
+		padding: 4px;
 		border-radius: 4px;
 		transition: background-color 0.3s ease;
 	}
@@ -109,6 +109,7 @@
 		border: none;
 	}
 	#selectedDate {
+		display: inline-block;
 		font-size: 16px;
 		font-weight: bold;
 		color: #333;
@@ -153,6 +154,7 @@
 		cursor: pointer;
 		margin-bottom: 10px;
 		width: 120px;
+		display: inline-block;
 	}
 </style>
 </head>
@@ -162,28 +164,28 @@
 <section id="sec1">
 	<div id="cal">
 		<button id="clsd" onclick="clearDate()">날짜 선택 해제</button>
-		<div id="datepicker"></div>
 		<div id="selectedDate">
 			<c:if test="${not empty selectedDate}">
 				선택한 날짜: ${selectedDate}
 			</c:if>
 		</div>
+		<div id="datepicker"></div>
 	</div>
 	<div id="tables">
 		<!-- 전체 항공편 테이블 -->
-		<div class="table-container" id="alltrains">
+		<div class="table-container" id="allroutes">
 			<table>
 				<caption>전체 예약</caption>
 				<tr>
-					<th>항공편명</th>
-					<th>출항시간</th>
+					<th>열차</th>
+					<th>출발시간</th>
 					<th>잔여석</th>
 				</tr>
 				<c:forEach var="rsv" items="${rsvList}">
 					<tr>
-						<td><a href="rsvdList?trainName=${rsv.trainName}&departureTime=${rsv.departureTime}&reservationId=${rsv.reservationId}">${rsv.trainName}</a></td>
-						<td>${rsv.departureTime}</td>
-						<td>${availableSeatsMap[rsv.trainId] != null ? availableSeatsMap[rsv.trainId] : 0}</td>
+						<td><a href="rsvdList?trainid=${rsv.trainid}&routeTime=${rsv.routeTime}&reservid=${rsv.reservid}">은하-${rsv.trainid}호</a></td>
+						<td>${rsv.routeTime}</td>
+						<td>${rsv.seat}</td>
 					</tr>
 				</c:forEach>
 				<c:if test="${empty rsvList}">
@@ -213,19 +215,19 @@
 <section id="sec2">
 	<div id="tables">
 		<!-- seoul 항공편 테이블 -->
-		<div class="table-container" id="seoultrains">
+		<div class="table-container" id="seoulroutes">
 			<table>
-				<caption>seoul 출발 예약 </caption>
+				<caption>서울역 출발</caption>
 				<tr>
-					<th>항공편명</th>
-					<th>출항시간</th>
+					<th>열차</th>
+					<th>출발시간</th>
 					<th>잔여석</th>
 				</tr>
 				<c:forEach var="rsv" items="${seoulRsv}">
 					<tr>
-						<td><a href="rsvdList?trainName=${rsv.trainName}&departureTime=${rsv.departureTime}&reservationId=${rsv.reservationId}">${rsv.trainName}</a></td>
-						<td>${rsv.departureTime}</td>
-						<td>${availableSeatsMap[rsv.trainId] != null ? availableSeatsMap[rsv.trainId] : 0}</td>
+						<td><a href="rsvdList?trainid=${rsv.trainid}&routeTime=${rsv.routeTime}&reservid=${rsv.reservid}">은하-${rsv.trainid}호</a></td>
+						<td>${rsv.routeTime}</td>
+						<td>${rsv.seat}</td>
 					</tr>
 				</c:forEach>
 				<c:if test="${empty seoulRsv}">
@@ -250,9 +252,9 @@
 			</div>
 		</div>
 		<!-- pusan 항공편 테이블 -->
-		<div class="table-container" id="pusantrains">
+		<div class="table-container" id="pusanroutes">
 			<table>
-				<caption>서울역 예약</caption>
+				<caption>부산역 출발</caption>
 				<tr>
 					<th>열차</th>
 					<th>출발시간</th>
@@ -260,9 +262,9 @@
 				</tr>
 				<c:forEach var="rsv" items="${pusanRsv}">
 					<tr>
-						<td><a href="rsvdList?trainName=${rsv.trainName}&departureTime=${rsv.departureTime}&reservationId=${rsv.reservationId}">${rsv.trainName}</a></td>
-						<td>${rsv.departureTime}</td>
-						<td>${availableSeatsMap[rsv.trainId] != null ? availableSeatsMap[rsv.trainId] : 0}</td>
+						<td><a href="rsvdList?trainid=${rsv.trainid}&routeTime=${rsv.routeTime}&reservid=${rsv.reservid}">은하-${rsv.trainid}호</a></td>
+						<td>${rsv.routeTime}</td>
+						<td>${rsv.seat}</td>
 					</tr>
 				</c:forEach>
 				<c:if test="${empty pusanRsv}">
@@ -287,9 +289,9 @@
 			</div>
 		</div>
 		<!-- 기타 항공편 테이블 -->
-		<div class="table-container" id="othertrains">
+		<div class="table-container" id="otherroutes">
 			<table>
-				<caption>기타 출발 예약</caption>
+				<caption>기타 출발</caption>
 				<tr>
 					<th>항공편명</th>
 					<th>출항시간</th>
@@ -297,9 +299,9 @@
 				</tr>
 				<c:forEach var="rsv" items="${otherRsv}">
 					<tr>
-						<td><a href="rsvdList?trainid=${rsv.trainid}&departureTime=${rsv.departureTime}&reservid=${rsv.reservid}">${rsv.trainid}</a></td>
-						<td>${rsv.departureTime}</td>
-						<td>${availableSeatsMap[rsv.trainid] != null ? availableSeatsMap[rsv.trainid] : 0}</td>
+						<td><a href="rsvdList?trainid=${rsv.trainid}&routeTime=${rsv.routeTime}&reservid=${rsv.reservid}">은하-${rsv.trainid}호</a></td>
+						<td>${rsv.routeTime}</td>
+						<td>${rsv.seat}</td>
 					</tr>
 				</c:forEach>
 				<c:if test="${empty otherRsv}">
@@ -354,17 +356,17 @@
 	    }
 	    // 전체 예약 업데이트
 	    $.get(url, params, function (data) {
-	        $("#alltrains").html($(data).find("#alltrains").html());
-	        $("#seoultrains").html($(data).find("#seoultrains").html());
-	        $("#pusantrains").html($(data).find("#pusantrains").html());
-	        $("#othertrains").html($(data).find("#othertrains").html());
+	        $("#allroutes").html($(data).find("#allroutes").html());
+	        $("#seoulroutes").html($(data).find("#seoulroutes").html());
+	        $("#pusanroutes").html($(data).find("#pusanroutes").html());
+	        $("#otherroutes").html($(data).find("#otherroutes").html());
 	    }).fail(function () {
 	        alert("데이터를 불러오는 데 실패했습니다. 관리자에게 문의하세요.");
 	    });
 	}
 
 	function loadPage(page, type) {
-	    let url = "/admin/reserveList";
+	    let url = "/admin/reservList";
 	    let params = {
 	        page: page
 	    };
@@ -381,7 +383,7 @@
 	        params.otherPage = page;
 	    }
 	    $.get(url, params, function (data) {
-	        $("#" + type + "trains").html($(data).find("#" + type + "trains").html());
+	        $("#" + type + "routes").html($(data).find("#" + type + "routes").html());
 	    }).fail(function () {
 	        alert("데이터를 불러오는 데 실패했습니다. 관리자에게 문의하세요.");
 	    });
