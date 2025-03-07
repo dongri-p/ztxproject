@@ -57,5 +57,15 @@ public class LoginController {
 		return service.getPwd(udto);
 	}
 	
+	@GetMapping("/login/loginAd")
+	public String loginAd(HttpServletRequest request, Model model) {
+		return service.loginAd(request,model);
+	}
+	
+	@PostMapping("/login/loginAdmin")
+	public String loginAdmin(UserDto udto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		return service.loginAdmin(udto,session,request,response);
+	}
+	
 	
 }

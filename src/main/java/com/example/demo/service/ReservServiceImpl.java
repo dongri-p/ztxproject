@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import com.example.demo.dto.ReservDto;
 import com.example.demo.mapper.ReservMapper;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service("ress")
 public class ReservServiceImpl implements ReservService {
 	@Autowired
@@ -16,13 +18,13 @@ public class ReservServiceImpl implements ReservService {
 
 	@Override
 	public String reservCheck(int routeid, String routeDeparture, String routeArrival, String routeTime,
-			String routeArrivalTime, int resnum, String selectedSeats, Model model) {
+			String routeArrivalTime, int resnum, String selectedSeats, Model model, HttpSession session) {
 		
-		System.out.println("인원:"+resnum);
-		System.out.println("아이디:"+routeid);
-		System.out.println("의자:"+selectedSeats);
-		System.out.println("역사:"+routeDeparture);
+		String userid=(String) session.getAttribute("userid");
+		String name=(String) session.getAttribute("name");
 		
+		model.addAttribute("userid", userid);
+		model.addAttribute("name", name);
 		model.addAttribute("routeDeparture", routeDeparture);
 		model.addAttribute("routeArrival", routeArrival);
 		model.addAttribute("routeTime", routeTime);
@@ -45,13 +47,13 @@ public class ReservServiceImpl implements ReservService {
 	}
 
 	@Override
-	public String reservConfirm(int routeid, String routeDeparture, String routeArrival, String routeTime,
-            String routeArrivalTime, int resnum, String selectedSeats, Model model) {
+	public String reservConfirm(String userid, int routeid, String routeDeparture, String routeArrival, String routeTime,
+            String routeArrivalTime, int resnum, String selectedSeats, Model model, HttpSession session) {
 		String PNR = generatePNR();
 		String[] seatsArray = selectedSeats.split(",");
 		
 		// DTO 객체 생성 후 MyBatis에 전달
-		ReservDto resDto = new ReservDto(routeid, routeDeparture, routeArrival, routeTime,
+		ReservDto resDto = new ReservDto(userid, routeid, routeDeparture, routeArrival, routeTime,
 				routeArrivalTime, resnum, PNR);
 		
 		try {
@@ -78,7 +80,8 @@ public class ReservServiceImpl implements ReservService {
 			}
 		}
 		
-		// Model에 데이터 추가
+		resMapper.upRouteSeat(routeid, resnum);
+		
 		model.addAttribute("PNR", PNR);
 		model.addAttribute("routeid", routeid);
 		model.addAttribute("selectedSeats", selectedSeats);

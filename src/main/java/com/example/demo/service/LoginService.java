@@ -16,5 +16,7 @@ public interface LoginService {
 	String getUserid(UserDto udto);
 	String fPassword();
 	String getPwd(UserDto udto) throws Exception;
+	String loginAd(HttpServletRequest request, Model model);
+	String loginAdmin(UserDto udto, HttpSession session, HttpServletRequest request, HttpServletResponse response);
 	
 }

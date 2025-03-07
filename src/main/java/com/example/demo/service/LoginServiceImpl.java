@@ -102,6 +102,33 @@ public class LoginServiceImpl implements LoginService {
 		}
 		
 	}
+
+	@Override
+	public String loginAd(HttpServletRequest request, Model model) {
+		String err=request.getParameter("err");
+		model.addAttribute("err",err);
+		return "/login/loginAd";
+	}
+	
+	@Override
+	public String loginAdmin(
+			UserDto udto, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
+		String name = mapper.loginAdmin(udto);
+		
+		if (name != null) {
+			// 로그인 성공 시 세션에 사용자 정보 저장
+			session.setAttribute("userid", udto.getAdminid());
+			session.setAttribute("name", name);
+			
+			// 메인 페이지로 리다이렉트
+			return "redirect:/admin/index";
+		}
+		else {
+			// 로그인 실패 시 로그인 페이지로 리다이렉트 (에러 메시지 포함)
+			return "redirect:/login/loginAd?err=1";
+		}
+	}
 	
 
 }

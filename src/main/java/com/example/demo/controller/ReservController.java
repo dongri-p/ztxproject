@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.ReservService;
-import com.example.demo.service.RoutesService;
+
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ReservController {
 	
 	@Autowired
-	private RoutesService rouService;
-	
-	@Autowired
 	@Qualifier("ress")
 	private ReservService resService;
 		
@@ -24,18 +22,19 @@ public class ReservController {
 	public String reservCheck(@RequestParam("routeid") int routeid, @RequestParam("routeDeparture") String routeDeparture,
 			@RequestParam("routeArrival") String routeArrival, @RequestParam("routeTime") String routeTime,
 			@RequestParam("routeArrivalTime") String routeArrivalTime, @RequestParam("selectedSeats") String selectedSeats,
-			@RequestParam("resnum") int resnum, Model model) {
+			@RequestParam("resnum") int resnum, Model model, HttpSession session) {
 		// 예약 처리 로직 추가
-		return resService.reservCheck(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model);
+		return resService.reservCheck(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model, session);
 	}
 	
 	@PostMapping("/reserv/reservConfirm")
-	public String reservConfirm(@RequestParam("routeid") int routeid, @RequestParam("routeDeparture") String routeDeparture,
-			@RequestParam("routeArrival") String routeArrival, @RequestParam("routeTime") String routeTime,
-			@RequestParam("routeArrivalTime") String routeArrivalTime, @RequestParam("selectedSeats") String selectedSeats,
-			@RequestParam("resnum") int resnum, Model model) {
+	public String reservConfirm(@RequestParam("userid") String userid, @RequestParam("routeid") int routeid,
+			@RequestParam("routeDeparture") String routeDeparture, @RequestParam("routeArrival") String routeArrival,
+			@RequestParam("routeTime") String routeTime, @RequestParam("routeArrivalTime") String routeArrivalTime,
+			@RequestParam("selectedSeats") String selectedSeats, @RequestParam("resnum") int resnum,
+			Model model, HttpSession session) {
 		// 예약 처리 로직 추가
-		return resService.reservConfirm(routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model);
+		return resService.reservConfirm(userid, routeid, routeDeparture, routeArrival, routeTime, routeArrivalTime, resnum, selectedSeats, model, session);
 	}
 	
 	

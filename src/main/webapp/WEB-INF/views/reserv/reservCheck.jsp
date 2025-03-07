@@ -69,12 +69,12 @@
 			<h4>예약자 정보</h4>
 			<table class="table table-bordered">
 				<tr>
-					<th>이름</th>
-					<td>${userName}</td>
+					<th>예약자ID</th>
+					<td>${userid}</td>
 				</tr>
 				<tr>
-					<th>이메일</th>
-					<td>${userEmail}</td>
+					<th>예약자성함</th>
+					<td>${name}</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
@@ -85,6 +85,7 @@
 		<!-- 버튼 -->
 		<div class="buttons">
 			<form action="${pageContext.request.contextPath}/reserv/reservConfirm" method="post" style="display:inline;">
+				<input type="hidden" name="userid" value="${userid}">
 				<input type="hidden" name="routeid" value="${routeid}">
 				<input type="hidden" name="selectedSeats" value="${selectedSeats}">
 				<input type="hidden" name="resnum" value="${resnum}">

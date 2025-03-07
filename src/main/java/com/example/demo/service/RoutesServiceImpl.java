@@ -42,6 +42,7 @@ public class RoutesServiceImpl implements RoutesService {
 			@RequestParam String routeArrivalTime, @RequestParam Integer resnum, // 선택된 인원
 			@RequestParam(required = false, defaultValue = "") String[] goingSelectedSeats,
 			HttpSession session, Model model) {
+		
 		// 가는편 정보를 모델에 추가
 		model.addAttribute("routeid", routeid);
 		model.addAttribute("routeDeparture", routeDeparture);

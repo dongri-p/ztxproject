@@ -499,7 +499,7 @@
 	<header>
 		<div id="section1">
 			<div id="loginMenu">
-				<c:if test="${userid!=null&&userid=='admin'}">
+				<c:if test="${userid!=null&&userid=='administrator'}">
 					<a href="../admin/index" style="color: orange;"> 관리자 홈 </a>&nbsp;|&nbsp;
 				</c:if>
 				<c:if test="${userid==null}">

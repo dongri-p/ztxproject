@@ -11,4 +11,5 @@ public interface LoginMapper {
 	public String getUserid(UserDto udto);
 	public String getPwd(UserDto udto);
 	public int chgPwd(@Param("userid") String userid, @Param("pwd") String newPwd);
+	public String loginAdmin(UserDto udto);
 }
