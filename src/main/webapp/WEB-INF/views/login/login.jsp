@@ -57,11 +57,6 @@
   section #submit:hover {
     background-color: #45a049;
   }
-  section .error-message {
-    font-size:12px;
-    color:red;
-    margin-top:5px;
-  }
   section a {
     text-decoration:none;
     color:#083B82;
